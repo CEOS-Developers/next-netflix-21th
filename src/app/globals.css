@@ -1,26 +1,103 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+@import './fonts.css';
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Font Family */
+  --font-sans: 'SF Pro Display', sans-serif;
+
+  /* Headline Typegraphy System */
+  --text-headline-01: 26.75px;
+  --text-headline-01-line-height: 20px;
+  --text-headline-01-letter-spacing: -0.07px;
+  --text-headline-01-font-weight: 700;
+
+  --text-headline-02: 20.92px;
+  --text-headline-02-line-height: 15.64px;
+  --text-headline-02-letter-spacing: -0.06px;
+  --text-headline-02-font-weight: 700;
+
+  /* Subhead Typegraphy System */
+  --text-subhead-01: 20.46px;
+  --text-subhead-01-line-height: 30px;
+  --text-subhead-01-letter-spacing: -0.06px;
+  --text-subhead-01-font-weight: 600;
+
+  --text-subhead-02: 13.72px;
+  --text-subhead-02-line-height: 20px;
+  --text-subhead-02-letter-spacing: -0.04px;
+  --text-subhead-02-font-weight: 700;
+
+  /* Body Typegraphy System */
+  --text-body-01: 15.21px;
+  --text-body-01-line-height: 31px;
+  --text-body-01-letter-spacing: 0.21px;
+  --text-body-01-font-weight: 400;
+
+  --text-body-02: 14.72px;
+  --text-body-02-line-height: 30px;
+  --text-body-02-letter-spacing: 0.75px;
+  --text-body-02-font-weight: 400;
+
+  --text-body-03: 13.64px;
+  --text-body-03-line-height: 20px;
+  --text-body-03-letter-spacing: -0.04px;
+  --text-body-03-font-weight: 400;
+
+  --text-body-04: 11.14px;
+  --text-body-04-line-height: 14.17px;
+  --text-body-04-letter-spacing: -0.03px;
+  --text-body-04-font-weight: 400;
+
+  /* Caption Typegraphy System */
+  --caption-01: 17.2px;
+  --caption-01-line-height: 30.45px;
+  --caption-01-letter-spacing: 0.76px;
+  --caption-01-font-weight: 400;
+
+  --caption-02: 8.2px;
+  --caption-02-line-height: 30.4px;
+  --caption-02-letter-spacing: 0.26px;
+  --caption-02-font-weight: 500;
+
+  --caption-03: 6.86px;
+  --caption-03-line-height: 10px;
+  --caption-03-letter-spacing: -0.02px;
+  --caption-03-font-weight: 800;
+
+  --caption-04: 4.36px;
+  --caption-04-line-height: 7px;
+  --caption-04-letter-spacing: -0.02px;
+  --caption-04-font-weight: 800;
+
+  /* Grayscale Color System with Opacity */
+  --color-grayscale-00-black: #000000;
+  --color-grayscale-01: #8c8787;
+  --color-grayscale-02-white: #ffffff;
+  --color-grayscale-02-white-tp: rgba(255, 255, 255, 0.83);
+
+  /* Background Color System */
+  --color-background-01: #424242;
+  --color-background-02: #c4c4c4;
+
+  /* Gradient Color System */
+  --color-gradient-from: rgba(0, 0, 0, 0.45);
+  --color-gradient-via: rgba(0, 0, 0, 0);
+  --color-gradient-to: #000000;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    background: var(--color-grayscale-00-black);
+    color: var(--color-grayscale-02-white);
+    font-family: var(--font-sans);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .mobile-frame {
+    width: 375px;
+    height: 812px;
+    max-width: 100%;
+    max-height: 100%;
+  }
 }
