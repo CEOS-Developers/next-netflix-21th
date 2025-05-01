@@ -1,3 +1,7 @@
-export default function Page() {
-  return <div className="flex h-screen items-center justify-center text-2xl">Hello World from Root Page</div>;
+export default function PublicLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return <div>{children}</div>;
 }
