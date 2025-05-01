@@ -1,4 +1,6 @@
+import TrendingAllDay from "@/components/home/Header";
+
 const Home = () => {
-  return <div>홈페이지입니다</div>;
+  return <div><TrendingAllDay /></div>;
 };
 export default Home;
