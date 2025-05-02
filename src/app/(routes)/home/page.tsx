@@ -15,7 +15,7 @@ export default async function Home() {
       <HomeHeader />
       <div className="hide-scrollbar h-full overflow-y-auto pb-[85px]">
         <div className="h-[516px] w-full" />
-        <div className="flex flex-col gap-[25px]">
+        <div className="flex flex-col gap-[22px]">
           {allSections.map(({ title, items }) => (
             <ProductList key={title} title={title} items={items} />
           ))}
