@@ -1,4 +1,9 @@
-# 5~6주차 미션 - Next-Netflix (Team 프로메사: 권동욱, 김서연)
+# 5~6주차 미션 - Next-Netflix
+
+## Team 프로메사
+
+👨‍💻 권동욱
+👩‍💻 김서연
 
 ## Pages
 
@@ -13,8 +18,16 @@
 
 ## API
 
-    src/api
-        TBD
+| GET                           | Page | Section                   |
+| ----------------------------- | ---- | ------------------------- |
+| getThumbnailProduct           | home | Thumbnail                 |
+| getPopularProducts            | home | Previews                  |
+| getTrendingTodayTop10Products | home | Top 10 in Worldwide Today |
+| getKoreanMovies               | home | Korean Movies             |
+| getNetflixOriginalTVShows     | home | Netflix Originals         |
+| getNewReleaseProducts         | home | New Releases              |
+| getMysteryTVShows             | home | TV Mysteries              |
+| getKoreanTVShows              | home | KR TV Shows               |
 
 ## Usage
 
