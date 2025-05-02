@@ -14,10 +14,8 @@ export default function NavBar() {
 
         return (
           <Link key={href} href={href} className="flex flex-col items-center">
-            <span
-              className={`flex h-6 w-6 items-center justify-center ${isActive ? 'text-grayscale-02-white' : 'text-grayscale-01'}`}
-            >
-              <Icon />
+            <span className="flex h-6 w-6 items-center justify-center">
+              <Icon className={isActive ? 'text-grayscale-02-white' : 'text-grayscale-01'} />
             </span>
             <span className={`text-caption-02 ${isActive ? 'text-grayscale-02-white' : 'text-grayscale-01'}`}>
               {label}
