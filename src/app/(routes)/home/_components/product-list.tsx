@@ -16,7 +16,13 @@ export default function ProductList({ title, items }: ProductListProps) {
             item.name &&
             item.image && (
               <div key={item.id} className="flex-shrink-0 transition-transform duration-200 hover:scale-105">
-                <Image src={item.image} alt={item.name} width={103} height={161} className="rounded-xs" />
+                <Image
+                  src={item.image}
+                  alt={item.name}
+                  width={103}
+                  height={161}
+                  className="h-[161px] w-[103px] rounded-xs"
+                />
               </div>
             )
           );
