@@ -104,7 +104,9 @@
     box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
     overflow: hidden;
   }
+}
 
+@layer utilities {
   .hide-scrollbar::-webkit-scrollbar {
     display: none;
   }
