@@ -9,6 +9,14 @@ const compat = new FlatCompat({
   baseDirectory: __dirname,
 });
 
-const eslintConfig = [...compat.extends('next/core-web-vitals', 'next/typescript', 'plugin:prettier/recommended')];
+const eslintConfig = [
+  ...compat.extends('next/core-web-vitals', 'next/typescript', 'plugin:prettier/recommended'),
+  {
+    files: ['**/*.ts', '**/*.tsx'],
+    rules: {
+      '@typescript-eslint/no-explicit-any': 'off', // for TMDB item
+    },
+  },
+];
 
 export default eslintConfig;
