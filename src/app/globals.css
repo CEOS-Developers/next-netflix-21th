@@ -79,11 +79,7 @@
   --color-background-01: #121212;
   --color-background-02: #424242;
   --color-background-03: #c4c4c4;
-
-  /* Gradient Color System */
-  --color-gradient-from: rgba(0, 0, 0, 0.45);
-  --color-gradient-via: rgba(0, 0, 0, 0);
-  --color-gradient-to: #000000;
+  --color-background-03-hr: #a3a3a3;
 }
 
 @layer base {
