@@ -1,4 +1,4 @@
-import styles from './NotImplemented.module.css';
+import styles from './not-implemented.module.css';
 
 export default function NotImplemented() {
   return (
