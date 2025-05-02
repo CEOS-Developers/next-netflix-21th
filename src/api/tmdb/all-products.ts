@@ -46,6 +46,13 @@ export const getPopularProducts = async () => {
   return products;
 };
 
+export const getThumbnailProduct = async (): Promise<{ product: Product; index: number }> => {
+  const products = await getTrendingTodayTop10Products();
+  const randomIndex = Math.floor(Math.random() * products.length);
+
+  return { product: products[randomIndex], index: randomIndex };
+};
+
 export const getTrendingTodayTop10Products = async (): Promise<Product[]> => {
   const { data } = await tmdb.get('/trending/all/day', { params: { pages: 1 } });
 
