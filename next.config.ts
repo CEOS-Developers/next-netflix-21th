@@ -8,13 +8,11 @@ const nextConfig: NextConfig = {
     });
     return config;
   },
-  experimental: {
-    turbo: {
-      rules: {
-        '*.svg': {
-          loaders: ['@svgr/webpack'],
-          as: '*.ts',
-        },
+  turbopack: {
+    rules: {
+      '*.svg': {
+        loaders: ['@svgr/webpack'],
+        as: '*.ts',
       },
     },
   },
