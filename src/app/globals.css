@@ -49,25 +49,25 @@
   --text-body-04-font-weight: 400;
 
   /* Caption Typegraphy System */
-  --caption-01: 17.2px;
-  --caption-01-line-height: 30.45px;
-  --caption-01-letter-spacing: 0.76px;
-  --caption-01-font-weight: 400;
+  --text-caption-01: 17.2px;
+  --text-caption-01-line-height: 30.45px;
+  --text-caption-01-letter-spacing: 0.76px;
+  --text-caption-01-font-weight: 400;
 
-  --caption-02: 8.2px;
-  --caption-02-line-height: 30.4px;
-  --caption-02-letter-spacing: 0.26px;
-  --caption-02-font-weight: 500;
+  --text-caption-02: 8.2px;
+  --text-caption-02-line-height: 30.4px;
+  --text-caption-02-letter-spacing: 0.26px;
+  --text-caption-02-font-weight: 500;
 
-  --caption-03: 6.86px;
-  --caption-03-line-height: 10px;
-  --caption-03-letter-spacing: -0.02px;
-  --caption-03-font-weight: 800;
+  --text-caption-03: 6.86px;
+  --text-caption-03-line-height: 10px;
+  --text-caption-03-letter-spacing: -0.02px;
+  --text-caption-03-font-weight: 800;
 
-  --caption-04: 4.36px;
-  --caption-04-line-height: 7px;
-  --caption-04-letter-spacing: -0.02px;
-  --caption-04-font-weight: 800;
+  --text-caption-04: 4.36px;
+  --text-caption-04-line-height: 7px;
+  --text-caption-04-letter-spacing: -0.02px;
+  --text-caption-04-font-weight: 800;
 
   /* Grayscale Color System with Opacity */
   --color-grayscale-00-black: #000000;
@@ -76,8 +76,9 @@
   --color-grayscale-02-white-tp: rgba(255, 255, 255, 0.83);
 
   /* Background Color System */
-  --color-background-01: #424242;
-  --color-background-02: #c4c4c4;
+  --color-background-01: #121212;
+  --color-background-02: #424242;
+  --color-background-03: #c4c4c4;
 
   /* Gradient Color System */
   --color-gradient-from: rgba(0, 0, 0, 0.45);
@@ -87,7 +88,7 @@
 
 @layer base {
   body {
-    background: var(--color-grayscale-00-black);
+    background: var(--color-grayscale-02-white);
     color: var(--color-grayscale-02-white);
     font-family: var(--font-sans);
   }
