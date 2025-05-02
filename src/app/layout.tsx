@@ -13,8 +13,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="flex min-h-screen items-center justify-center antialiased">
-        <div className="mobile-frame relative">{children}</div>
+      <body className="min-h-screen flex items-center justify-center">
+        <div className="mobile-frame relative bg-grayscale-00-black">{children}</div>
       </body>
     </html>
   );
