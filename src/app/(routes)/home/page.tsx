@@ -4,9 +4,9 @@ import ProductList from './_components/product-list';
 
 export default async function Home() {
   const allSections = await Promise.all(
-    sectionItems.map(async ({ title, fetchFn }) => {
+    sectionItems.map(async ({ title, fetchFn, option }) => {
       const items = await fetchFn();
-      return { title, items };
+      return { title, items, option };
     }),
   );
 
@@ -16,8 +16,8 @@ export default async function Home() {
       <div className="hide-scrollbar h-full overflow-y-auto pb-[85px]">
         <div className="h-[516px] w-full" />
         <div className="flex flex-col gap-[22px]">
-          {allSections.map(({ title, items }) => (
-            <ProductList key={title} title={title} items={items} />
+          {allSections.map(({ title, items, option }) => (
+            <ProductList key={title} title={title} items={items} option={option} />
           ))}
         </div>
       </div>
