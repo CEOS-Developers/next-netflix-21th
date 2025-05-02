@@ -1,3 +1,5 @@
+import NotImplemented from '@components/NotImplemented';
+
 export default function More() {
-  return <div></div>;
+  return <NotImplemented />;
 }
