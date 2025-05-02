@@ -8,7 +8,7 @@ export default function NavBar() {
   const pathName = usePathname();
 
   return (
-    <nav className="bg-background-01 absolute bottom-[27px] flex h-12 w-full justify-between pt-2 pr-[29px] pl-[26px]">
+    <nav className="bg-background-01 absolute bottom-[27px] z-990 flex h-12 w-full justify-between pt-2 pr-[29px] pl-[26px]">
       {navItems.map(({ href, label, Icon }) => {
         const isActive = pathName.startsWith(href);
 
