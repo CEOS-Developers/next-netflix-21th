@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation';
 import Lottie from 'lottie-react';
 
-import LogoAnimation from '@/app/assets/lottie/LogoAnimation.json';
+import LogoAnimation from '@/assets/lottie/LogoAnimation.json';
 
 export default function Landing() {
   const router = useRouter();
