@@ -11,12 +11,16 @@ export default async function Home() {
   );
 
   return (
-    <div className="hide-scrollbar h-full overflow-y-auto pb-[85px]">
+    <>
       <HomeHeader />
-      <div className="h-[516px] w-full" />
-      {allSections.map(({ title, items }) => (
-        <ProductList key={title} title={title} items={items} />
-      ))}
-    </div>
+      <div className="hide-scrollbar h-full overflow-y-auto pb-[85px]">
+        <div className="h-[516px] w-full" />
+        <div className="flex flex-col gap-[25px]">
+          {allSections.map(({ title, items }) => (
+            <ProductList key={title} title={title} items={items} />
+          ))}
+        </div>
+      </div>
+    </>
   );
 }
