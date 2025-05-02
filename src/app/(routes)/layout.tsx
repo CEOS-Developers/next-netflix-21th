@@ -1,4 +1,5 @@
 import NavBar from '@components/nav-bar';
+import IndicatorBar from '@components/indicator-bar';
 
 export default function Layout({
   children,
@@ -9,6 +10,7 @@ export default function Layout({
     <>
       {children}
       <NavBar />
+      <IndicatorBar />
     </>
   );
 }
