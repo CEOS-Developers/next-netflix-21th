@@ -1,6 +1,6 @@
 import { tmdb } from '@api/client';
 import type { Product } from '@models/product';
-import { mapToProduct } from './mapToProduct.util';
+import { mapToProductList } from './mapToProduct.utils';
 
 export const getKoreanTVShows = async (): Promise<Product[]> => {
   const { data } = await tmdb.get('/discover/tv', {
@@ -11,7 +11,7 @@ export const getKoreanTVShows = async (): Promise<Product[]> => {
     },
   });
 
-  const products = mapToProduct(data.results);
+  const products = mapToProductList(data.results);
 
   return products;
 };
@@ -24,7 +24,7 @@ export const getNetflixOriginalTVShows = async (): Promise<Product[]> => {
     },
   });
 
-  const products = mapToProduct(data.results);
+  const products = mapToProductList(data.results);
 
   return products;
 };
@@ -37,7 +37,7 @@ export const getMysteryTVShows = async (): Promise<Product[]> => {
     },
   });
 
-  const products = mapToProduct(data.results);
+  const products = mapToProductList(data.results);
 
   return products;
 };

@@ -1,6 +1,6 @@
 import { tmdb } from '@api/client';
 import type { Product } from '@models/product';
-import { mapToProduct } from './mapToProduct.util';
+import { mapToProductList } from './mapToProduct.utils';
 
 export const getKoreanMovies = async (): Promise<Product[]> => {
   const { data } = await tmdb.get('/discover/movie', {
@@ -11,7 +11,7 @@ export const getKoreanMovies = async (): Promise<Product[]> => {
     },
   });
 
-  const products = mapToProduct(data.results);
+  const products = mapToProductList(data.results);
 
   return products;
 };

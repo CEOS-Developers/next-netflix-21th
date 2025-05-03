@@ -1,8 +1,18 @@
 import { tmdb } from '@api/client';
 import type { Product } from '@models/product';
-import { mapToProduct } from './mapToProduct.util';
+import { mapToProduct, mapToProductList } from './mapToProduct.utils';
 
-export const getNewReleaseProducts = async () => {
+// detail
+export const getDetailProduct = async (type: Product['type'], id: Product['id']) => {
+  const { data } = await tmdb.get(`/${type}/${id}`);
+
+  const product = mapToProduct(data);
+
+  return product;
+};
+
+// home
+export const getNewReleaseProducts = async (): Promise<Product[]> => {
   const [movieRes, tvRes] = await Promise.all([
     tmdb.get('/discover/movie', {
       params: {
@@ -26,12 +36,12 @@ export const getNewReleaseProducts = async () => {
     })
     .slice(0, 20);
 
-  const products = mapToProduct(filtered);
+  const products = mapToProductList(filtered);
 
   return products;
 };
 
-export const getPopularProducts = async () => {
+export const getPopularProducts = async (): Promise<Product[]> => {
   const [movieRes, tvRes] = await Promise.all([
     tmdb.get('/movie/popular', { params: { pages: 1 } }),
     tmdb.get('/tv/popular', { params: { pages: 1 } }),
@@ -41,7 +51,7 @@ export const getPopularProducts = async () => {
     .sort((a, b) => b.popularity - a.popularity)
     .slice(0, 20);
 
-  const products = mapToProduct(filtered);
+  const products = mapToProductList(filtered);
 
   return products;
 };
@@ -60,7 +70,7 @@ export const getTrendingTodayTop10Products = async (): Promise<Product[]> => {
     .filter((item: any) => item.media_type === 'movie' || item.media_type === 'tv')
     .slice(0, 10);
 
-  const products = mapToProduct(filtered);
+  const products = mapToProductList(filtered);
 
   return products;
 };
