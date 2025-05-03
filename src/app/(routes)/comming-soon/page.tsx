@@ -1,4 +1,4 @@
-import NotImplemented from '@/components/NotImplemented/NotImplemented';
+import NotImplemented from '@components/not-implemented';
 
 export default function CommingSoon() {
   return <NotImplemented />;
