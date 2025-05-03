@@ -1,20 +1,5 @@
-'use client';
-
-import { useRouter } from 'next/navigation';
-import Lottie from 'lottie-react';
-
-import LogoAnimation from '@/assets/lottie/LogoAnimation.json';
+import LottieLogo from './_components/lottie-logo';
 
 export default function Landing() {
-  const router = useRouter();
-
-  const handleComplete = () => {
-    router.push('/home');
-  };
-
-  return (
-    <div className="flex justify-center items-center min-h-screen">
-      <Lottie animationData={LogoAnimation} loop={false} onComplete={handleComplete} />
-    </div>
-  );
+  return <LottieLogo />;
 }
