@@ -11,7 +11,7 @@ export const getKoreanMovies = async (): Promise<Product[]> => {
     },
   });
 
-  const products = mapToProductList(data.results);
+  const products = mapToProductList(data.results, 'movie');
 
   return products;
 };

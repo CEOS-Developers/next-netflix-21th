@@ -11,7 +11,7 @@ export const getKoreanTVShows = async (): Promise<Product[]> => {
     },
   });
 
-  const products = mapToProductList(data.results);
+  const products = mapToProductList(data.results, 'tv');
 
   return products;
 };
@@ -24,7 +24,7 @@ export const getNetflixOriginalTVShows = async (): Promise<Product[]> => {
     },
   });
 
-  const products = mapToProductList(data.results);
+  const products = mapToProductList(data.results, 'tv');
 
   return products;
 };
@@ -37,7 +37,7 @@ export const getMysteryTVShows = async (): Promise<Product[]> => {
     },
   });
 
-  const products = mapToProductList(data.results);
+  const products = mapToProductList(data.results, 'tv');
 
   return products;
 };
