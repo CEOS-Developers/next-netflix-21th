@@ -3,4 +3,5 @@ export interface Product {
   type: 'movie' | 'tv';
   name: string | null;
   image: string | null;
+  description: string | null;
 }
