@@ -1,5 +1,5 @@
 export interface Product {
-  id: number;
+  id: string;
   type: 'movie' | 'tv';
   name: string | null;
   image: string | null;
