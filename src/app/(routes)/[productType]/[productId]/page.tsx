@@ -26,7 +26,7 @@ export default async function ProductDetail({ params }: ProductDetailProps) {
         <span className="text-subhead-01 text-grayscale-00-black">Play</span>
       </div>
       <div className="mx-8 flex flex-col gap-6">
-        <span className="text-headline-01 text-grayscale-02-white">Previews</span>
+        <span className="text-headline-01 text-grayscale-02-white">{item.name}</span>
         <span className="text-body-04 text-grayscale-02-white-tp wrap-break-word break-all">{item.description}</span>
       </div>
     </section>
