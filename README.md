@@ -27,17 +27,17 @@
 
 ## API
 
-| GET                           | Page                          | Section                   |
-| ----------------------------- | ----------------------------- | ------------------------- |
-| getDetailProduct              | \[productType\]/\[productId\] |                           |
-| getThumbnailProduct           | home                          | Thumbnail                 |
-| getPopularProducts            | home                          | Previews                  |
-| getTrendingTodayTop10Products | home                          | Top 10 in Worldwide Today |
-| getKoreanMovies               | home                          | Korean Movies             |
-| getNetflixOriginalTVShows     | home                          | Netflix Originals         |
-| getNewReleaseProducts         | home                          | New Releases              |
-| getMysteryTVShows             | home                          | TV Mysteries              |
-| getKoreanTVShows              | home                          | KR TV Shows               |
+| Method | URL                             | Description               |
+| ------ | ------------------------------- | ------------------------- |
+| GET    | \[productType\]/\[productId\]   | Product Detail            |
+| GET    | /api/movies/korean              | Korean Movies             |
+| GET    | /api/products/new-releases      | New Releases              |
+| GET    | /api/products/popular           | Previews                  |
+| GET    | /api/products/thumbnail         | Thumbnail                 |
+| GET    | /api/products/trending-top10    | Top 10 in Worldwide Today |
+| GET    | /api/tv-shows/mystery           | TV Mysteries              |
+| GET    | /api/tv-shows/netflix-originals | Netflix Originals         |
+| GET    | /api/tv-shows/korean            | KR TV Shows               |
 
 ## Usage
 

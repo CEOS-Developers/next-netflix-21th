@@ -1,16 +1,29 @@
+'use client';
+
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import InformationIcon from '@public/icons/home/infomation.svg';
 import PlayIcon from '@public/icons/home/play.svg';
 import PlusIcon from '@public/icons/home/plus.svg';
-import { Product } from '@models/product';
+import type { Product } from '@models/product';
 
-interface ThumbNailProps {
-  item: Product;
-  index: number;
-}
+export default function ThumbNail() {
+  const [item, setItem] = useState<Product | null>(null);
+  const [index, setIndex] = useState<number>(0);
 
-export default function ThumbNail({ item, index }: ThumbNailProps) {
+  useEffect(() => {
+    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products/thumbnail`)
+      .then((res) => res.json())
+      .then(({ product: item, index }) => {
+        setItem(item);
+        setIndex(index);
+      })
+      .catch(console.error);
+  }, []);
+
+  if (!item) return null;
+
   return (
     <section className="overflow-x-hidden">
       <div className="relative left-[-24.52px] h-[415px] w-[424.05px]">
