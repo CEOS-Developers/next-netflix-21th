@@ -1,8 +1,12 @@
 import type { NextRequest } from 'next/server';
 import { tmdb } from '@app/api/_clients';
 import { ok, err, mapToProduct } from '@app/api/_utils';
+import type { Product } from '@models/product';
 
-export async function GET(_: NextRequest, { params }: { params: { productType: 'movie' | 'tv'; productId: string } }) {
+export async function GET(
+  _: NextRequest,
+  { params }: { params: { productType: Product['type']; productId: Product['id'] } },
+) {
   const { productType, productId } = params;
 
   try {
