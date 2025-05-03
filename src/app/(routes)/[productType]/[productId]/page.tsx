@@ -14,7 +14,7 @@ export default async function ProductDetail({ params }: { params: ProductDetailP
   const item = await getDetailProduct(productType, productId);
 
   return (
-    <section className="hide-scrollbar h-full overflow-x-hidden overflow-y-auto">
+    <section className="hide-scrollbar h-full overflow-x-hidden overflow-y-auto pb-[85px]">
       <div className="relative left-[-24.52px] h-[415px] w-[424.05px]">
         {item.image && item.name && <Image src={item.image} alt={item.name} fill className="object-cover" priority />}
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.45)_0%,rgba(0,0,0,0)_87.26%,#000_100%)]" />
