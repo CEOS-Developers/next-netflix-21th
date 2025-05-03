@@ -8,13 +8,22 @@
 ## Pages
 
     src/app
-        (public)
-            page.tsx    # Landing page
+    ├── (public)
+        └── page.tsx            # Landing page
         (routes)
-            [productType]/[productId]/page.tsx # Product detail page
-            home/page.tsx   # Home page
-            search/page.tsx # Search page
-            comming-soon,downloads,more/page.tsx    # Not implemented pages
+        ├── [productType]/
+        │   └── [productId]/
+        │       └── page.tsx    # Product detail page
+        ├── home/
+        │   └── page.tsx        # Home page
+        ├── search/
+        │   └── page.tsx        # Search page
+        ├── comming-soon/
+        │   └── page.tsx        # Not implemented ...
+        ├── downloads/
+        │   └── page.tsx        # Not implemented ...
+        ├── more/
+        │   └── page.tsx        # Not implemented ...
 
 ## API
 
