@@ -11,7 +11,7 @@ interface ThumbNailProps {
 
 export default function ThumbNail({ item, index }: ThumbNailProps) {
   return (
-    <section>
+    <section className="overflow-x-hidden">
       <div className="relative left-[-24.52px] h-[415px] w-[424.05px]">
         {item.image && item.name && <Image src={item.image} alt={item.name} fill className="object-cover" priority />}
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.45)_0%,rgba(0,0,0,0)_87.26%,#000_100%)]" />
