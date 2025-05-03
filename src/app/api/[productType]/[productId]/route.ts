@@ -2,8 +2,8 @@ import type { NextRequest } from 'next/server';
 import { tmdb } from '@app/api/_clients';
 import { ok, err, mapToProduct } from '@app/api/_utils';
 
-export async function GET(_: NextRequest, context: { params: { productType: 'movie' | 'tv'; productId: string } }) {
-  const { productType, productId } = context.params;
+export async function GET(_: NextRequest, { params }: { params: { productType: 'movie' | 'tv'; productId: string } }) {
+  const { productType, productId } = params;
 
   try {
     const { data } = await tmdb.get(`/${productType}/${productId}`);
