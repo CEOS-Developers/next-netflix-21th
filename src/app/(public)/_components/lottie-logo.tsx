@@ -14,7 +14,7 @@ export default function LottieLogo() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center">
+    <div className="absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2">
       <Lottie animationData={LogoAnimation} loop={false} onComplete={handleComplete} />
     </div>
   );
