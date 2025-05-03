@@ -23,7 +23,7 @@ export default function ThumbNail({ item, index }: ThumbNailProps) {
             <span className="text-caption-04 text-grayscale-02-white">TOP</span>
             <span className="text-caption-03 text-grayscale-02-white">10</span>
           </div>
-          <span className="text-subhead-02 text-grayscale-02-white">#{index} in Worldwide Today</span>
+          <span className="text-subhead-02 text-grayscale-02-white">#{index + 1} in Worldwide Today</span>
         </div>
       </div>
       <div className="mt-[13px] mr-[62px] mb-[43px] ml-[54px] flex justify-between">
