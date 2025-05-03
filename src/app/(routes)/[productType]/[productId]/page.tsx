@@ -3,15 +3,13 @@ import type { Product } from '@models/product';
 import PlayIcon from '@public/icons/home/play.svg';
 import { getDetailProduct } from '@api/tmdb/all-products';
 
-export default async function ProductDetail({
-  params,
-}: {
-  params: {
-    productType: Product['type'];
-    productId: string;
-  };
-}) {
-  const { productType, productId } = params;
+type ProductDetailProps = Promise<{
+  productType: Product['type'];
+  productId: Product['id'];
+}>;
+
+export default async function ProductDetail({ params }: { params: ProductDetailProps }) {
+  const { productType, productId } = await params;
 
   const item = await getDetailProduct(productType, productId);
 
