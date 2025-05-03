@@ -3,7 +3,7 @@ import type { Product } from '@models/product';
 import { mapToProduct, mapToProductList } from './mapToProduct.utils';
 
 // detail
-export const getDetailProduct = async (type: Product['type'], id: Product['id']) => {
+export const getDetailProduct = async (type: Product['type'], id: Product['id']): Promise<Product> => {
   const { data } = await tmdb.get(`/${type}/${id}`);
 
   const product = mapToProduct(data);
