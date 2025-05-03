@@ -1,15 +1,7 @@
 import type { Product } from '@models/product';
+import type { RawTMDB } from '@models/raw-tmdb';
 
-export function mapToProduct<
-  T extends {
-    id: Product['id'];
-    media_type?: Product['type'];
-    title?: Product['name'];
-    name?: Product['name'];
-    poster_path?: Product['image'];
-    overview?: Product['description'];
-  },
->(item: T, type?: Product['type']): Product {
+export function mapToProduct<T extends RawTMDB>(item: T, type?: Product['type']): Product {
   return {
     id: item.id,
     type: item.media_type ?? type ?? null,

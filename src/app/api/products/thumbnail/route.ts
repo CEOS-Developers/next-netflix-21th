@@ -1,5 +1,6 @@
 import { tmdb } from '@app/api/_clients';
 import { ok, err, mapToProduct } from '@app/api/_utils';
+import type { RawTMDB } from '@models/raw-tmdb';
 
 export async function GET() {
   try {
@@ -10,8 +11,8 @@ export async function GET() {
 
     console.log(movieRes);
 
-    const movieRaw = movieRes.data.results.map((item: any) => ({ ...item, media_type: 'movie' }));
-    const tvRaw = tvRes.data.results.map((item: any) => ({ ...item, media_type: 'tv' }));
+    const movieRaw = movieRes.data.results.map((item: RawTMDB) => ({ ...item, media_type: 'movie' }));
+    const tvRaw = tvRes.data.results.map((item: RawTMDB) => ({ ...item, media_type: 'tv' }));
 
     const filtered = [...movieRaw, ...tvRaw];
 
