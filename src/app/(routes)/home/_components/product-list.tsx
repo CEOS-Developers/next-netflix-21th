@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import type { Product } from '@models/product';
 
 interface ProductListProps {
@@ -25,12 +26,13 @@ export default function ProductList({ title, items, option }: ProductListProps) 
           return (
             item.name &&
             item.image && (
-              <div
-                key={item.id}
+              <Link
+                key={`${item.type}-${item.id}`}
+                href={`/${item.type}/${item.id}`}
                 className={`relative ${heightClass} ${widthClass} flex-shrink-0 transition-transform duration-200 hover:scale-105`}
               >
                 <Image src={item.image} alt={item.name} fill className={`${roundedClass} object-cover`} />
-              </div>
+              </Link>
             )
           );
         })}
