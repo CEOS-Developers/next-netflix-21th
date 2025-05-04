@@ -50,7 +50,17 @@ const eslintConfig = [
 			'import/order': [
 				'error',
 				{
-					groups: ['builtin', 'external', 'internal', 'index', 'type', 'parent', 'sibling'],
+					groups: [['builtin', 'external', 'internal'], ['parent', 'sibling', 'index'], 'unknown'],
+					pathGroups: [
+						{ pattern: 'next*', group: 'builtin', position: 'before' },
+						{ pattern: 'next*/**', group: 'builtin', position: 'before' },
+						{ pattern: 'react*', group: 'builtin', position: 'before' },
+						{ pattern: 'react*/**', group: 'builtin', position: 'before' },
+						{ pattern: '@/**', group: 'internal', position: 'after' },
+						{ pattern: '../**', group: 'internal', position: 'after' },
+						{ pattern: './**', group: 'internal', position: 'after' },
+					],
+					pathGroupsExcludedImportTypes: [],
 					alphabetize: {
 						order: 'asc',
 						caseInsensitive: true,
