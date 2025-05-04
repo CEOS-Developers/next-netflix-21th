@@ -1,15 +1,27 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import localFont from "next/font/local";
+import "@/styles/globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const netflixSans = localFont({
+  src: [
+    {
+      path: "../public/fonts/NetflixSans-Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/NetflixSans-Medium.woff2",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/NetflixSans-Bold.woff2",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-netflix-sans",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -24,11 +36,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
+      <body className={`${netflixSans.variable} antialiased`}>{children}</body>
     </html>
   );
 }

@@ -1,6 +1,8 @@
 @import "tailwindcss";
 
 @theme {
+  --font-netflix-sans: var(--font-netflix-sans);
+
   --color-gray-100: #c4c4c4;
   --color-gray-200: #8c8787;
   --color-gray-300: #424242;
@@ -20,35 +22,35 @@
 
 @layer utilities {
   .header1-medium {
-    @apply text-24 font-medium leading-normal;
+    @apply font-netflix-sans text-24 font-medium leading-normal;
   }
 
   .headline1-bold {
-    @apply text-24 font-bold leading-normal;
+    @apply font-netflix-sans text-24 font-bold leading-normal;
   }
 
   .headline2-bold {
-    @apply text-20 font-bold leading-normal;
+    @apply font-netflix-sans text-20 font-bold leading-normal;
   }
 
   .body1-regular {
-    @apply text-16 font-normal leading-normal;
+    @apply font-netflix-sans text-16 font-normal leading-normal;
   }
 
   .body2-regular {
-    @apply text-14 font-normal leading-normal;
+    @apply font-netflix-sans text-14 font-normal leading-normal;
   }
 
   .body2-medium {
-    @apply text-14 font-medium leading-normal;
+    @apply font-netflix-sans text-14 font-medium leading-normal;
   }
 
   .body3-regular {
-    @apply text-12 font-normal leading-normal;
+    @apply font-netflix-sans text-12 font-normal leading-normal;
   }
 
   .caption-regular {
-    @apply text-10 font-normal leading-normal;
+    @apply font-netflix-sans text-10 font-normal leading-normal;
   }
 }
 
