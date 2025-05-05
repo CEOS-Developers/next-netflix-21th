@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import BottomNavBar from "@/components/layout/BottomNavBar";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -25,8 +26,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
-        <div className="w-[375px] h-screen mx-auto bg-black ">{children}</div>
+      <body className="flex justify-center bg-black text-white">
+        <div className="w-[375px] h-screen relative">
+          {children}
+          <BottomNavBar />
+        </div>
       </body>
     </html>
   );
