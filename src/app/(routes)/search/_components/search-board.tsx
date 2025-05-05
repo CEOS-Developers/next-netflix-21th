@@ -7,6 +7,7 @@ import useGetSearchMoviesDefault from '../_query/infinite-query-default';
 // import useGetSearchMovies from '../_query/infinite-query-search';
 
 import SearchList from './search-list';
+import SearchIcon from '@public/icons/search/search.svg';
 
 export default function SearchBoard() {
   const [keyword, setKeyword] = useState('');
@@ -27,14 +28,19 @@ export default function SearchBoard() {
 
   return (
     <div>
-      <input
-        value={keyword}
-        onChange={(e) => setKeyword(e.target.value)}
-        placeholder="search movies..."
-        className="mb-4 w-full border p-2"
-      />
+      <div className="bg-background-02 mt-11 mb-3 flex h-13 w-full items-center">
+        <div className="ml-4">
+          <SearchIcon />
+        </div>
+        <input
+          value={keyword}
+          onChange={(e) => setKeyword(e.target.value)}
+          placeholder="search for a show, movie, genre, e.t.c."
+          className="m-4 w-full"
+        />
+      </div>
       {/* 따로 컴포넌트로 빼든 하자 불러온 데이터 인자로 받아서 이거 함수 그대로 쓰면 대니까는*/}
-      <div className="overflow-y-auto border border-gray-300 p-4">
+      <div className="h-[631px] overflow-y-auto border border-gray-300 p-4">
         <SearchList data={data} />
 
         <div ref={ref}>isLoading...</div>
