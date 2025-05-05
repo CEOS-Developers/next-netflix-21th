@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   robots: "index, follow",
   authors: [{ name: "Sujin" }, { name: "Chaeyoung" }],
   icons: {
-    icon: "/favicon.ico",
+    icon: "/icons/favicon.svg",
   },
   openGraph: {
     title: "Netflix Clone",
