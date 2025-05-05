@@ -22,7 +22,7 @@ const Header = () => {
           {navItems.map(({ label, path }) => (
             <li
               key={label}
-              className="cursor-pointer"
+              className="cursor-pointer hover:text-gray-200"
               onClick={() => router.push(path)}
             >
               {label}

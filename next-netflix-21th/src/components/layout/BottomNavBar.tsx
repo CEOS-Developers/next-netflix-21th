@@ -1,38 +1,12 @@
 "use client";
 
 import { usePathname, useRouter } from "next/navigation";
-import HomeIcon from "@/public/icons/bottomNavBar/HomeIcon.svg";
-import SearchIcon from "@/public/icons/bottomNavBar/SearchIcon.svg";
-import ComingSoonIcon from "@/public/icons/bottomNavBar/ComingSoonIcon.svg";
-import DownloadIcon from "@/public/icons/bottomNavBar/DownloadIcon.svg";
-import MoreIcon from "@/public/icons/bottomNavBar/MoreIcon.svg";
+import { navItems } from "@/constants/navItems";
 
 const BottomNavBar = () => {
   const router = useRouter();
   const pathname = usePathname();
-
-  const navItems = [
-    { label: "Home", icon: HomeIcon, path: "/home", spacing: "mr-[50px]" },
-    {
-      label: "Search",
-      icon: SearchIcon,
-      path: "/search",
-      spacing: "mr-[35px]",
-    },
-    {
-      label: "Coming Soon",
-      icon: ComingSoonIcon,
-      path: "/coming-soon",
-      spacing: "mr-[28px]",
-    },
-    {
-      label: "Downloads",
-      icon: DownloadIcon,
-      path: "/downloads",
-      spacing: "mr-[42px]",
-    },
-    { label: "More", icon: MoreIcon, path: "/more", spacing: "" }, // 마지막 버튼은 spacing 없음
-  ];
+  if (pathname === "/") return null;
 
   return (
     <nav className="fixed bottom-0 w-[375px] h-12 bg-[#121212] flex items-center pl-[26px] pr-[29px]">
@@ -43,7 +17,7 @@ const BottomNavBar = () => {
           <button
             key={label}
             onClick={() => router.push(path)}
-            className={`flex flex-col items-center justify-between shrink-0 gap-[1px] ${spacing} ${
+            className={`cursor-pointer flex flex-col items-center justify-between shrink-0 gap-[1px] hover:text-white ${spacing} ${
               isActive ? "text-white" : "text-[#8C8787]"
             }`}
           >
