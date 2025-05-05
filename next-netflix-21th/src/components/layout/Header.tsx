@@ -1,6 +1,6 @@
 "use client";
 
-import Logo from "@/public/icons/logo.svg";
+import Logo from "@/public/icons/header/logo.svg";
 import { useRouter } from "next/navigation";
 
 const Header = () => {
