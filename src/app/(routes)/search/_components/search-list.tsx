@@ -1,54 +1,37 @@
-'use client'; 
+import { InfiniteData } from '@tanstack/react-query';
 
-import { useEffect, useState } from 'react';
-import { useInView } from 'react-intersection-observer';
+interface Movie {
+  id: number;
+  name: string;
+  image: string;
+  type: string;
+  // 여기에 필요한 필드 추가 (예: poster_path 등)
+}
 
-import useGetSearchMoviesDefault from '../_query/infinite-query-default';
-import useGetSearchMovies from '../_query/infinite-query-search';
+interface SearchListProps {
+  data: InfiniteData<Movie[]> | undefined;
+}
 
-export default function SearchList() {
-  const [keyword, setKeyword] = useState('');
-  const isSearching = keyword.trim() !== '';
-
-    // infiniteQuery
-	  const {
-        data,
-        isLoading,
-        error,
-        fetchNextPage,
-        hasNextPage,
-        isFetchingNextPage,
-      } = useGetSearchMoviesDefault();
-
-    // intersectionObservation
-    const {ref, inView} = useInView();
-
-    useEffect(() => {
-      console.log(inView)
-      if (inView && hasNextPage && !isFetchingNextPage) {
-        fetchNextPage();
-    }}, [inView])
-
-    return (
-      <div>
-      <input
-        value={keyword}
-        onChange={(e) => setKeyword(e.target.value)}
-        placeholder='search movies...'
-        className='border p-2 mb-4 w-full'
-      />
-      <div className='overflow-y-auto border border-gray-300 p-4'>
-        {data?.pages.map((page, pageIndex) => (
-          <ul key={pageIndex}>
-            {page.map((movie: any) => (
-              <li key={movie.id}>
-                <img src={movie.image} alt={movie.name}/>
-                {movie.name} ({movie.type})
-              </li>
-            ))}
-          </ul>
-        ))}
-        <div ref={ref}>isLoading...</div>
-      </div>
-      </div>);
+export default function SearchList({ data }: SearchListProps) {
+  return (
+    <div>
+      {data?.pages.map((page, pageIndex) => (
+        <ul key={pageIndex}>
+          {page.map((movie: Movie) => (
+            <li key={movie.id}>
+              <img src={movie.image} alt={movie.name} />
+              {movie.name} ({movie.type})
+              {/* 클릭시 상세 페이지로 이동 (link 걸든 div에 걸든 아므튼) 
+                    <Link
+                key={`${item.type}-${item.id}`}
+                href={`/${item.type}/${item.id}`}
+                className={`relative ${heightClass} ${widthClass} flex-shrink-0 transition-transform duration-200 hover:scale-105`}
+              >*/}
+              <button></button>
+            </li>
+          ))}
+        </ul>
+      ))}
+    </div>
+  );
 }

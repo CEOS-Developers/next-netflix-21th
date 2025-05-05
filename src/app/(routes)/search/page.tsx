@@ -1,11 +1,11 @@
 import ReactQueryProvider from './_query/providers';
-import SearchList from './_components/search-list';
+import SearchBoard from './_components/search-board';
 
 export default function Search() {
   return (
-    <div className='h-screen flex flex-col'>
+    <div className="flex h-screen flex-col">
       <ReactQueryProvider>
-        <SearchList />
+        <SearchBoard />
       </ReactQueryProvider>
     </div>
   );
