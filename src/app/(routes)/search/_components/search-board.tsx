@@ -8,6 +8,7 @@ import useGetSearchMoviesDefault from '../_query/infinite-query-default';
 
 import SearchList from './search-list';
 import SearchIcon from '@public/icons/search/search.svg';
+import DeleteIcon from '@public/icons/search/delete.svg';
 
 export default function SearchBoard() {
   const [keyword, setKeyword] = useState('');
@@ -28,7 +29,7 @@ export default function SearchBoard() {
 
   return (
     <div>
-      <div className="bg-background-02 mt-11 mb-3 flex h-13 w-full items-center">
+      <div className="bg-background-02 mt-11 flex h-13 w-full items-center">
         <div className="ml-4">
           <SearchIcon />
         </div>
@@ -38,11 +39,14 @@ export default function SearchBoard() {
           placeholder="search for a show, movie, genre, e.t.c."
           className="m-4 w-full"
         />
+        <div className="mr-4">
+          <DeleteIcon />
+        </div>
       </div>
+      <div className="text-headline-01 ml-2 pt-4 pb-4">Top Searches</div>
       {/* 따로 컴포넌트로 빼든 하자 불러온 데이터 인자로 받아서 이거 함수 그대로 쓰면 대니까는*/}
-      <div className="h-[631px] overflow-y-auto border border-gray-300 p-4">
+      <div className="hide-scrollbar h-[631px] overflow-y-auto">
         <SearchList data={data} />
-
         <div ref={ref}>isLoading...</div>
       </div>
     </div>
