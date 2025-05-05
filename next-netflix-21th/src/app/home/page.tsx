@@ -1,6 +1,6 @@
-import TrendingAllDay from "@/components/home/Header";
+import HeroSlider from "@/components/home/HeroSlider";
 
 const Home = () => {
-  return <div><TrendingAllDay /></div>;
+  return <div><HeroSlider /></div>;
 };
 export default Home;
