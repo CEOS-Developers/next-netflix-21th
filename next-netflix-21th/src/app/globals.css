@@ -8,8 +8,6 @@
 * {
   scroll-behavior: smooth;
   box-sizing: border-box;
-  padding: 0;
-  margin: 0;
 }
 
 html {
@@ -17,9 +15,6 @@ html {
 }
 
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100%;
   height: 100%;
   font-family: var(--font-family);
