@@ -10,7 +10,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules"; // Import Autoplay module
 import "swiper/css";
 
-export default function HeroSlider() {
+const HeroSlider= () =>{
   const [trendingData, setTrendingData] = useState<TrendingItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -69,3 +69,4 @@ export default function HeroSlider() {
     </Swiper>
   );
 }
+export default HeroSlider;
