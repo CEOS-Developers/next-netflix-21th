@@ -29,7 +29,6 @@ const Landing = () => {
         >
           <Logo
             width={300}
-            height="auto"
             className="cursor-pointer transform hover:scale-110 transition-transform duration-300 ease-in-out"
           />
         </div>
