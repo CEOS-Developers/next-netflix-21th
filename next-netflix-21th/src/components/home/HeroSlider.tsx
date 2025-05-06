@@ -5,7 +5,7 @@ import { IMAGE_BASE_URL } from "@/constants/tmdb";
 import { getTrendingAllDay } from "@/apis/tmdb";
 import { TrendingItem } from "@/types/tmdb";
 import Image from "next/image";
-import Top10Icon from "@/assets/top10_icon.svg";
+import Top10Icon from "@/public/icons/home/Top10Icon.svg";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules"; // Import Autoplay module
 import "swiper/css";
@@ -60,8 +60,8 @@ export default function HeroSlider() {
               />
             </div>
             <div className="flex items-center gap-2 mt-2">
-              {/* <Top10Icon className="w-16 h-16 " /> */}
-              <div>#{index + 1} in Korea Today</div>
+              <Top10Icon className="w-16 h-16 " />
+              <span>#{index + 1} in Korea Today</span>
             </div>
           </SwiperSlide>
         );
