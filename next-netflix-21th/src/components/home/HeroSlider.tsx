@@ -60,8 +60,8 @@ export default function HeroSlider() {
               />
             </div>
             <div className="flex items-center gap-2 mt-2">
-              {/* <Top10Icon className="w-10 h-10 md:w-16 md:h-16" aria-hidden="true" /> */}
-              <span>#{index + 1} in Korea Today</span>
+              {/* <Top10Icon className="w-16 h-16 " /> */}
+              <div>#{index + 1} in Korea Today</div>
             </div>
           </SwiperSlide>
         );
