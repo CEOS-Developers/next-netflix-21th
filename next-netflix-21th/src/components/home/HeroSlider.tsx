@@ -44,7 +44,7 @@ const HeroSlider= () =>{
       }}
       modules={[Autoplay]}
     >
-      {trendingData.slice(0, 10).map((item, index) => {
+      {trendingData.slice(0, 20).map((item, index) => {
         const imageUrl = `${IMAGE_BASE_URL}original${item.poster_path}`;
         const title = "title" in item ? item.title : item.name;
 
@@ -56,7 +56,6 @@ const HeroSlider= () =>{
                 alt={title}
                 fill
                 priority={index < 3}
-                quality={75}
               />
             </div>
             <div className="flex items-center gap-2 mt-2">
