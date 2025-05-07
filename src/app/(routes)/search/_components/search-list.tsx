@@ -25,8 +25,10 @@ export default function SearchList({ data }: SearchListProps) {
               key={movie.id}
               className="bg-background-02 mb-1 flex w-full items-center justify-between rounded-sm transition-transform duration-200 hover:scale-102"
             >
-              <img src={movie.image} alt={movie.name} className="h-[76px] w-[100px]" />
-              <div className="ml-6 overflow-hidden">{movie.name}</div>
+              <div className="flex items-center">
+                <img src={movie.image} alt={movie.name} className="h-[76px] w-[100px]" />
+                <div className="ml-6 w-[200px] overflow-hidden">{movie.name}</div>
+              </div>
               <div className="mr-3">
                 <Link key={`${movie.type}-${movie.id}`} href={`/${movie.type}/${movie.id}`}>
                   <PlayIcon />
