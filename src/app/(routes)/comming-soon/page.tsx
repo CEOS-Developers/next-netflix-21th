@@ -1,7 +1,5 @@
-import dynamic from 'next/dynamic';
-
-const LazyComponent = dynamic(() => import('@components/not-implemented'), { ssr: false });
+import LazyNotImplemented from '@components/not-implemented';
 
 export default function CommingSoon() {
-  return <LazyComponent />;
+  return <LazyNotImplemented />;
 }

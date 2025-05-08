@@ -1,1 +1,1 @@
-export { default } from './not-implemented';
+export { default } from './lazy-not-implemented';
