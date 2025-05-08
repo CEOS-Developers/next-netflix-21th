@@ -1,8 +1,9 @@
+import { NextResponse } from 'next/server';
 import { tmdb } from '@app/api/_clients';
 import { ok, err, mapToProduct } from '@app/api/_utils';
 import type { RawTMDB } from '@models/raw-tmdb';
 
-export async function GET() {
+export async function GET(): Promise<NextResponse> {
   try {
     const [movieRes, tvRes] = await Promise.all([
       tmdb.get('/movie/popular', { params: { pages: 1 } }),
