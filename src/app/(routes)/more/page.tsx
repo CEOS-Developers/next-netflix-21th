@@ -1,5 +1,7 @@
-import NotImplemented from '@components/not-implemented';
+import React from 'react';
 
 export default function More() {
-  return <NotImplemented />;
+  const LazyComponent = React.lazy(() => import('@components/not-implemented'));
+
+  return <LazyComponent />;
 }
