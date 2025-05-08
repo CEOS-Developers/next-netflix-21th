@@ -56,6 +56,7 @@ const HeroSlider= () =>{
                 alt={title}
                 fill
                 priority={index < 3}
+                sizes="(max-width: 375px) 100vw"
               />
             </div>
             <div className="flex items-center gap-2 mt-2">
