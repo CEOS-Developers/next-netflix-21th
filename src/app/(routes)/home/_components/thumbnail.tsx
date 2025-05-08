@@ -7,28 +7,46 @@ import InformationIcon from '@public/icons/home/infomation.svg';
 import PlayIcon from '@public/icons/home/play.svg';
 import PlusIcon from '@public/icons/home/plus.svg';
 import type { Product } from '@models/product';
+import { useProductStore } from '@store/product';
 
-export default function ThumbNail() {
-  const [item, setItem] = useState<Product | null>(null);
-  const [index, setIndex] = useState<number>(0);
+interface ThumbNailProps {
+  path: string;
+}
+
+interface ThumbnailData {
+  product: Product;
+  index: number;
+}
+
+export default function ThumbNail({ path }: ThumbNailProps) {
+  const { setProduct } = useProductStore();
+  const [isLoading, setIsLoading] = useState(true);
+  const [thumbnailData, setThumbnailData] = useState<ThumbnailData | null>(null);
 
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products/thumbnail`)
+    fetch(path)
       .then((res) => res.json())
-      .then(({ product: item, index }) => {
-        setItem(item);
-        setIndex(index);
+      .then((data: ThumbnailData) => {
+        setProduct(data.product);
+        setThumbnailData(data);
+        setIsLoading(false);
       })
       .catch(console.error);
-  }, []);
+  }, [path, setProduct]);
 
-  if (!item) return null;
+  if (isLoading || !thumbnailData) return null;
+
+  const { product: item, index } = thumbnailData;
 
   return (
     <section className="overflow-x-hidden">
       <div className="relative left-[-24.52px] h-[415px] w-[424.05px]">
         <Link key={`thumbnail-${item.type}-${item.id}`} href={`/${item.type}/${item.id}`}>
-          {item.image && item.name && <Image src={item.image} alt={item.name} fill className="object-cover" priority />}
+          {item.image && item.name && (
+            <div className="relative h-full w-full">
+              <Image src={item.image} alt={item.name} fill sizes="424.05px" className="object-cover" priority />
+            </div>
+          )}
           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.45)_0%,rgba(0,0,0,0)_87.26%,#000_100%)]" />
         </Link>
         <div className="absolute bottom-0 flex w-full items-center justify-center gap-[5px]">

@@ -2,8 +2,9 @@
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import type { Product } from '@models/product';
 import PlayIcon from '@public/icons/home/play.svg';
+import type { Product } from '@models/product';
+import { useProductStore } from '@store/product';
 
 interface ClientDetailProps {
   productType: Product['type'];
@@ -11,21 +12,34 @@ interface ClientDetailProps {
 }
 
 export default function ClientDetail({ productType, productId }: ClientDetailProps) {
-  const [item, setItem] = useState<Product | null>(null);
+  const { getProduct, setProduct } = useProductStore();
+  const [isLoading, setIsLoading] = useState(true);
+
+  const item = getProduct(productType, productId);
 
   useEffect(() => {
+    if (item) {
+      setIsLoading(false);
+      return;
+    }
+
     fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/${productType}/${productId}`)
       .then((res) => res.json())
-      .then(setItem)
+      .then((product) => {
+        setProduct(product);
+        setIsLoading(false);
+      })
       .catch(console.error);
-  }, [productType, productId]);
+  }, [productType, productId, item, setProduct]);
 
-  if (!item) return null;
+  if (isLoading || !item) return null;
 
   return (
     <section className="hide-scrollbar h-full overflow-x-hidden overflow-y-auto pb-[85px]">
       <div className="relative left-[-24.52px] h-[415px] w-[424.05px]">
-        {item.image && item.name && <Image src={item.image} alt={item.name} fill className="object-cover" priority />}
+        {item.image && item.name && (
+          <Image src={item.image} alt={item.name} fill sizes="424.05px" className="object-cover" priority />
+        )}
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.45)_0%,rgba(0,0,0,0)_87.26%,#000_100%)]" />
       </div>
       <div className="bg-background-03 hover:bg-background-03-hr mt-[13px] mb-8 ml-9 flex h-[45px] w-[303px] items-center justify-between rounded-[5.63px] pt-2 pr-[111px] pb-[7px] pl-[120px]">
