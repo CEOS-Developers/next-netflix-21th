@@ -73,6 +73,10 @@ export default function SearchBoard() {
     }
   }, [inView, hasMore]);
 
+  const onDeleteButtonCliked = () => {
+    setKeyword('');
+  };
+
   return (
     <div>
       <div className="bg-background-02 mt-11 flex h-13 w-full items-center">
@@ -85,7 +89,7 @@ export default function SearchBoard() {
           placeholder="search for a show, movie, genre, e.t.c."
           className="m-4 w-full"
         />
-        <div className="mr-4">
+        <div className="mr-4" onClick={onDeleteButtonCliked}>
           <DeleteIcon />
         </div>
       </div>
