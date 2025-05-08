@@ -61,10 +61,9 @@ const HeroSlider = () => {
                   fill
                   sizes="375px"
                   priority={index < 3}
-                  quality={75}
                   className="object-cover"
                 />
-                <div className="absolute bottom-0 left-0 w-full h-1/4 z-10 bg-gradient-to-t from-[#00000073] to-transparent" />
+                <div className="absolute bottom-0 left-0 w-full h-1/4 z-10 bg-gradient-to-t from-black to-transparent" />
               </div>
             </SwiperSlide>
           );
