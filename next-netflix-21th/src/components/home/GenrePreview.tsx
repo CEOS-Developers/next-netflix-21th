@@ -11,7 +11,6 @@ const GenrePreview = () => {
 
   useEffect(() => {
     getMoviesByGenre("28,35").then(res => { //28:액션, 35: 코미디
-      console.log(res.data.results); 
       setMovies(res.data.results);
     });
   }, []);
