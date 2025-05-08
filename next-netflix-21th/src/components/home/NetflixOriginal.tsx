@@ -4,11 +4,14 @@ import { Movie, TV } from "@/types/tmdb";
 import { getMoviesByCompany, getTVByNetwork } from "@/apis/tmdb";
 import { IMAGE_BASE_URL } from "@/constants/tmdb";
 import Image from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 
 const NETFLIX_ID = 213;
 
 const NetflixOriginal = () => {
   const [randomItems, setRandomItems] = useState<(Movie | TV)[]>([]);
+
   useEffect(() => {
     Promise.all([
       getMoviesByCompany(NETFLIX_ID),
@@ -30,34 +33,38 @@ const NetflixOriginal = () => {
     <div>
       <div className="text-[20.92px] text-white">
         Netflix Originals
-        <div className="overflow-x-auto whitespace-nowrap px-4 mt-4">
-          <div className="flex gap-4">
-            {randomItems.map(item => {
-              const imageUrl = `${IMAGE_BASE_URL}original${item.poster_path}`;
-              const title = "title" in item ? item.title : item.name;
+        <Swiper
+          spaceBetween={10} // 슬라이드 간 간격
+          slidesPerView={"auto"} // 여러 개의 슬라이드가 보이게
+          grabCursor={true}
+          scrollbar={{ draggable: false }}
+          loop={true}
+          className="gap-8"
+        >
+          {randomItems.map(item => {
+            const imageUrl = `${IMAGE_BASE_URL}original${item.poster_path}`;
+            const title = "title" in item ? item.title : item.name;
 
-              return (
-                <div key={item.id} className="flex-shrink-0">
+            return (
+              <SwiperSlide key={item.id} style={{ width: "120px" }}>
+                <div className="relative w-[120px] h-[160px]">
                   {item.poster_path ? (
-                    <div className="relative w-[120px] h-[160px] rounded overflow-hidden">
-                      <Image
-                        src={imageUrl}
-                        alt={title} // 영화와 TV의 이름을 다르게 처리
-                        fill
-                        sizes="120px"
-                        className="object-cover rounded"
-                      />
-                    </div>
+                    <Image
+                      src={imageUrl}
+                      alt={title} // 영화와 TV의 이름을 다르게 처리
+                      fill
+                      sizes="120px"
+                    />
                   ) : (
-                    <div className="w-[120px] h-[160px] bg-gray-700 flex items-center justify-center text-sm text-white">
+                    <div className="text-white">
                       이미지 없음
                     </div>
                   )}
                 </div>
-              );
-            })}
-          </div>
-        </div>
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
       </div>
     </div>
   );
