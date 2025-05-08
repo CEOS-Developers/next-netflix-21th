@@ -1,4 +1,4 @@
-import type { NextRequest } from 'next/server';
+import type { NextRequest, NextResponse } from 'next/server';
 import { tmdb } from '@app/api/_clients';
 import { ok, err, mapToProduct } from '@app/api/_utils';
 import type { Product } from '@models/product';
@@ -6,10 +6,10 @@ import type { Product } from '@models/product';
 export async function GET(
   _: NextRequest,
   { params }: { params: Promise<{ productType: Product['type']; productId: Product['id'] }> },
-) {
-  const { productType, productId } = await params;
-
+): Promise<NextResponse> {
   try {
+    const { productType, productId } = await params;
+
     const { data } = await tmdb.get(`/${productType}/${productId}`);
 
     const product = mapToProduct(data, productType);

@@ -1,20 +1,21 @@
+import type { NextResponse } from 'next/server';
 import { tmdb } from '@app/api/_clients';
 import { ok, err, mapToProductList } from '@app/api/_utils';
 import type { RawTMDB } from '@models/raw-tmdb';
 
-export async function GET() {
+export async function GET(): Promise<NextResponse> {
   try {
     const [movieRes, tvRes] = await Promise.all([
       tmdb.get('/discover/movie', {
         params: {
           sort_by: 'release_date.desc',
-          pages: 1,
+          page: 1,
         },
       }),
       tmdb.get('/discover/tv', {
         params: {
           sort_by: 'first_air_date.desc',
-          pages: 1,
+          page: 1,
         },
       }),
     ]);

@@ -1,5 +1,5 @@
-import NotImplemented from '@components/not-implemented';
+import LazyNotImplemented from '@components/not-implemented';
 
 export default function More() {
-  return <NotImplemented />;
+  return <LazyNotImplemented />;
 }

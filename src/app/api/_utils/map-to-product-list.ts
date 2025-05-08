@@ -12,7 +12,7 @@ export function mapToProductList<
 >(items: T[], type?: Product['type']): Product[] {
   return items.map((item) => ({
     id: item.id,
-    type: item.media_type ?? type ?? null,
+    type: item.media_type || type || null,
     name: item.title || item.name || null,
     image: item.poster_path ? `https://image.tmdb.org/t/p/w500${item.poster_path}` : null,
     description: item.overview || null,
