@@ -9,7 +9,6 @@ import LandingLottie from "@/public/lotties/LandingLottie.json";
 // react-lottie-player를 동적으로 불러오기 (SSR 비활성화)
 const Lottie = dynamic(() => import("react-lottie-player"), { ssr: false });
 
-
 const Landing = () => {
   const router = useRouter();
   const [started, setStarted] = useState(false);
