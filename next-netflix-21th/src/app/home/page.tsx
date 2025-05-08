@@ -10,7 +10,7 @@ const Home = () => {
     <div className="relative w-full pb-16">
       <Header />
       <HeroSlider />
-      {/* <Preview /> */}
+      <Preview />
       <GenrePreview />
       <NetflixOriginal />
       <KoreaMovie/>

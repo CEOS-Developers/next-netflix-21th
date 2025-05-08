@@ -34,7 +34,7 @@ export const getMoviesByCompany = (companyId: number) =>
 
 //Preview
 export const getMoviePopular = () => {
-  axiosInstance.get("/movie/popular", {
+  return axiosInstance.get("/movie/popular", {
     params: { language: "ko-KR" },
   });
 };
