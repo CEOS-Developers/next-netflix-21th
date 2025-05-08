@@ -7,7 +7,7 @@ export async function GET(): Promise<NextResponse> {
     const { data } = await tmdb.get('/discover/tv', {
       params: {
         with_networks: 213,
-        pages: 1,
+        page: 1,
       },
     });
 

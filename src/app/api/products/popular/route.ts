@@ -6,8 +6,8 @@ import type { RawTMDB } from '@models/raw-tmdb';
 export async function GET(): Promise<NextResponse> {
   try {
     const [movieRes, tvRes] = await Promise.all([
-      tmdb.get('/movie/popular', { params: { pages: 1 } }),
-      tmdb.get('/tv/popular', { params: { pages: 1 } }),
+      tmdb.get('/movie/popular', { params: { page: 1 } }),
+      tmdb.get('/tv/popular', { params: { page: 1 } }),
     ]);
 
     const movieRaw = movieRes.data.results.map((item: RawTMDB) => ({ ...item, media_type: 'movie' }));

@@ -9,13 +9,13 @@ export async function GET(): Promise<NextResponse> {
       tmdb.get('/discover/movie', {
         params: {
           sort_by: 'release_date.desc',
-          pages: 1,
+          page: 1,
         },
       }),
       tmdb.get('/discover/tv', {
         params: {
           sort_by: 'first_air_date.desc',
-          pages: 1,
+          page: 1,
         },
       }),
     ]);

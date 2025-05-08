@@ -8,7 +8,7 @@ export async function GET(): Promise<NextResponse> {
       params: {
         with_original_language: 'ko',
         region: 'KR',
-        pages: 1,
+        page: 1,
       },
     });
 
