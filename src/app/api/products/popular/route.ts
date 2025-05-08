@@ -10,8 +10,6 @@ export async function GET(): Promise<NextResponse> {
       tmdb.get('/tv/popular', { params: { pages: 1 } }),
     ]);
 
-    console.log(movieRes);
-
     const movieRaw = movieRes.data.results.map((item: RawTMDB) => ({ ...item, media_type: 'movie' }));
     const tvRaw = tvRes.data.results.map((item: RawTMDB) => ({ ...item, media_type: 'tv' }));
 
