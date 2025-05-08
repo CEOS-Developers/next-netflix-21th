@@ -23,7 +23,7 @@ export default function SearchBoard() {
   const [hasMore, setHasMore] = useState(true);
   // loading
   const [isLoading, setIsLoading] = useState(false);
-
+  // searching
   const [searchKeyword, setSearchKeyword] = useState(false);
   const [keyword, setKeyword] = useState('');
   const trimmedKeyword = keyword.trim();
@@ -79,6 +79,9 @@ export default function SearchBoard() {
 
   const onDeleteButtonClicked = () => {
     setKeyword('');
+    setPage(1);
+    setHasMore(true);
+    setSearchKeyword(true);
   };
 
   return (
