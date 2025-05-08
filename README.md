@@ -8,7 +8,7 @@
 ## Pages
 
     src/app
-    ├── (public)
+    └── (public)
         └── page.tsx            # Landing page
         (routes)
         ├── [productType]/
@@ -22,23 +22,23 @@
         │   └── page.tsx        # Not implemented ...
         ├── downloads/
         │   └── page.tsx        # Not implemented ...
-        ├── more/
-        │   └── page.tsx        # Not implemented ...
+        └── more/
+            └── page.tsx        # Not implemented ...
 
 ## API (GET)
 
-| Types   | URL                                 | Description                    |
-| ------- | ----------------------------------- | ------------------------------ |
-| Search  | /api/search/?q={query}&page={index} | Search w/ query and page index |
-| Product | /api/\[productType\]/\[productId\]  | Product Detail                 |
-| Product | /api/products/new-releases          | New Releases                   |
-| Product | /api/products/popular               | Previews                       |
-| Product | /api/products/thumbnail             | Thumbnail                      |
-| Product | /api/products/trending-top10        | Top 10 in Worldwide Today      |
-| Movie   | /api/movies/korean                  | Korean Movies                  |
-| TV-Show | /api/tv-shows/mystery               | TV Mysteries                   |
-| TV-Show | /api/tv-shows/netflix-originals     | Netflix Originals              |
-| TV-Show | /api/tv-shows/korean                | KR TV Shows                    |
+| Category | URL                                 | Description                    |
+| -------- | ----------------------------------- | ------------------------------ |
+| Search   | /api/search/?q={query}&page={index} | Search w/ query and page index |
+| Product  | /api/\[productType\]/\[productId\]  | Product Detail                 |
+| Product  | /api/products/new-releases          | New Releases                   |
+| Product  | /api/products/popular               | Previews                       |
+| Product  | /api/products/thumbnail             | Thumbnail                      |
+| Product  | /api/products/trending-top10        | Top 10 in Worldwide Today      |
+| Movie    | /api/movies/korean                  | Korean Movies                  |
+| TV-Show  | /api/tv-shows/korean                | KR TV Shows                    |
+| TV-Show  | /api/tv-shows/mystery               | TV Mysteries                   |
+| TV-Show  | /api/tv-shows/netflix-originals     | Netflix Originals              |
 
 ## Usage
 
