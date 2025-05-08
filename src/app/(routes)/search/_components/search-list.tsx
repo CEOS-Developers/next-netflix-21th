@@ -1,4 +1,3 @@
-import { InfiniteData } from '@tanstack/react-query';
 import Link from 'next/link';
 
 import PlayIcon from '@public/icons/search/play-circle.svg';
@@ -12,31 +11,27 @@ interface Movie {
 }
 
 interface SearchListProps {
-  data: InfiniteData<Movie[]> | undefined;
+  data: Movie[];
 }
 
 export default function SearchList({ data }: SearchListProps) {
   return (
     <div>
-      {data?.pages.map((page, pageIndex) => (
-        <ul key={pageIndex}>
-          {page.map((movie: Movie) => (
-            <li
-              key={movie.id}
-              className="bg-background-02 mb-1 flex w-full items-center justify-between rounded-sm transition-transform duration-200 hover:scale-102"
-            >
-              <div className="flex items-center">
-                <img src={movie.image} alt={movie.name} className="h-[76px] w-[100px]" />
-                <div className="ml-6 w-[200px] overflow-hidden">{movie.name}</div>
-              </div>
-              <div className="mr-3">
-                <Link key={`${movie.type}-${movie.id}`} href={`/${movie.type}/${movie.id}`}>
-                  <PlayIcon />
-                </Link>
-              </div>
-            </li>
-          ))}
-        </ul>
+      {data.map((movie: Movie) => (
+        <li
+          key={movie.id}
+          className="bg-background-02 mb-1 flex w-full items-center justify-between rounded-sm transition-transform duration-200 hover:scale-102"
+        >
+          <div className="flex items-center">
+            <img src={movie.image} alt={movie.name} className="h-[76px] w-[100px]" />
+            <div className="ml-6 w-[200px] overflow-hidden">{movie.name}</div>
+          </div>
+          <div className="mr-3">
+            <Link key={`${movie.type}-${movie.id}`} href={`/${movie.type}/${movie.id}`}>
+              <PlayIcon />
+            </Link>
+          </div>
+        </li>
       ))}
     </div>
   );
