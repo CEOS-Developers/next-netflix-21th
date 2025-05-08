@@ -19,8 +19,8 @@ const GenrePreview = () => {
   }, []);
 
   return (
-    <div className="text-[20.92px]">
-      Movie Action & Comedy
+    <div className="text-[20.92px] p-4">
+      <div className="mb-4">Movie Action & Comedy</div>
       <Swiper
         spaceBetween={10}
         slidesPerView={"auto"}

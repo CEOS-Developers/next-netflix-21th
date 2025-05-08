@@ -25,8 +25,8 @@ const Preview = () => {
   }, []);
 
   return (
-    <div className="text-[20.92px]">
-      Popular Movie
+    <div className="text-[20.92px] p-4">
+      <div className="mb-4">Popular Movie</div>
       <Swiper
         spaceBetween={10}
         slidesPerView={"auto"}

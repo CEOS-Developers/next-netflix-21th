@@ -25,8 +25,8 @@ const KoreaMovie = () => {
   }, []);
 
   return (
-    <div className="text-[20.92px]">
-      Korea Movie
+    <div className="text-[20.92px] p-4">
+      <div className="mb-4">Korea Movie</div>
       <Swiper
         spaceBetween={10}
         slidesPerView={"auto"}

@@ -37,7 +37,7 @@ const HeroSlider = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-[415px]">
+    <div className="relative w-full h-[415px] ">
       <Swiper
         spaceBetween={10}
         slidesPerView={1}

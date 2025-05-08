@@ -31,8 +31,8 @@ const NetflixOriginal = () => {
 
   return (
     <div>
-      <div className="text-[20.92px] text-white">
-        Netflix Originals
+      <div className="text-[20.92px] text-white p-4">
+        <div className="mb-4">Netflix Originals</div>
         <Swiper
           spaceBetween={10} // 슬라이드 간 간격
           slidesPerView={"auto"} // 여러 개의 슬라이드가 보이게
@@ -56,9 +56,7 @@ const NetflixOriginal = () => {
                       sizes="120px"
                     />
                   ) : (
-                    <div className="text-white">
-                      이미지 없음
-                    </div>
+                    <div className="text-white">이미지 없음</div>
                   )}
                 </div>
               </SwiperSlide>
