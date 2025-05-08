@@ -5,17 +5,11 @@ import type { RawTMDB } from '@models/raw-tmdb';
 
 export async function GET(): Promise<NextResponse> {
   try {
-    const [movieRes, tvRes] = await Promise.all([
-      tmdb.get('/movie/popular', { params: { pages: 1 } }),
-      tmdb.get('/tv/popular', { params: { pages: 1 } }),
-    ]);
+    const { data } = await tmdb.get('/trending/all/day', { params: { pages: 1 } });
 
-    console.log(movieRes);
-
-    const movieRaw = movieRes.data.results.map((item: RawTMDB) => ({ ...item, media_type: 'movie' }));
-    const tvRaw = tvRes.data.results.map((item: RawTMDB) => ({ ...item, media_type: 'tv' }));
-
-    const filtered = [...movieRaw, ...tvRaw];
+    const filtered = data.results
+      .filter((item: RawTMDB) => item.media_type === 'movie' || item.media_type === 'tv')
+      .slice(0, 10);
 
     const randomIndex = Math.floor(Math.random() * filtered.length);
 
