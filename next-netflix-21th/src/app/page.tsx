@@ -2,9 +2,12 @@
 
 import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import dynamic from "next/dynamic";
 import Logo from "@/public/icons/header/logo.svg";
-import Lottie from "react-lottie-player";
 import LandingLottie from "@/public/lotties/LandingLottie.json";
+
+// react-lottie-player를 동적으로 불러오기 (SSR 비활성화)
+const Lottie = dynamic(() => import("react-lottie-player"), { ssr: false });
 
 const Landing = () => {
   const router = useRouter();
