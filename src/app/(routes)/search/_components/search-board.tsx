@@ -24,6 +24,7 @@ export default function SearchBoard() {
   // loading
   const [isLoading, setIsLoading] = useState(false);
 
+  const [searchKeyword, setSearchKeyword] = useState(false);
   const [keyword, setKeyword] = useState('');
   const trimmedKeyword = keyword.trim();
 
@@ -36,60 +37,64 @@ export default function SearchBoard() {
       const url =
         trimmedKeyword.length > 0 ? `/api/search?q=${trimmedKeyword}&page=${page}` : `/api/search?page=${page}`;
       const res = await fetch(url);
-      const data: Movie[] = await res.json(); // 배열 반환
-      console.log(data);
+      const data: Movie[] = await res.json();
 
       if (data.length === 0) {
         setHasMore(false);
       } else {
-        setMovies((prev) => [...prev, ...data]);
+        setMovies((prev) => (page === 1 ? data : [...prev, ...data]));
       }
       setIsLoading(false);
+      setSearchKeyword(false);
     };
 
     fetchMovies();
-  }, [page, keyword]);
+  }, [page, searchKeyword]);
 
   useEffect(() => {
-    setMovies([]);
-    setPage(1);
-    setHasMore(true);
-
-    const fetchInitial = async () => {
-      setIsLoading(true);
-      const url = trimmedKeyword.length > 0 ? `/api/search?q=${trimmedKeyword}&page=1` : `/api/search?page=1`;
-      const res = await fetch(url);
-      const data: Movie[] = await res.json();
-      setMovies(data);
-      setIsLoading(false);
-    };
-
-    fetchInitial();
-  }, [keyword]);
+    if (trimmedKeyword === '') {
+      setPage(1);
+      setHasMore(true);
+    }
+  }, [trimmedKeyword]);
 
   useEffect(() => {
-    if (inView && hasMore) {
+    console.log(inView);
+    if (inView && hasMore && !isLoading) {
       setPage((prev) => prev + 1);
     }
   }, [inView, hasMore]);
 
-  const onDeleteButtonCliked = () => {
+  const handleSearch = () => {
+    setPage(1);
+    setHasMore(true);
+    setSearchKeyword(true);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
+  };
+
+  const onDeleteButtonClicked = () => {
     setKeyword('');
   };
 
   return (
     <div>
       <div className="bg-background-02 mt-11 flex h-13 w-full items-center">
-        <div className="ml-4">
+        <div className="ml-4" onClick={handleSearch}>
           <SearchIcon />
         </div>
         <input
           value={keyword}
           onChange={(e) => setKeyword(e.target.value)}
+          onKeyDown={handleKeyDown}
           placeholder="search for a show, movie, genre, e.t.c."
           className="m-4 w-full placeholder-[color:var(--color-background-03)]"
         />
-        <div className="mr-4" onClick={onDeleteButtonCliked}>
+        <div className="mr-4" onClick={onDeleteButtonClicked}>
           <DeleteIcon />
         </div>
       </div>
@@ -100,7 +105,7 @@ export default function SearchBoard() {
         <div className="hide-scrollbar h-[631px] overflow-y-auto">
           <SearchList data={movies} />
           <div ref={ref}>
-            {isLoading && page > 1 && <SearchListSkeleton />} {/* 추가 로딩용 */}
+            {hasMore && <SearchListSkeleton />} {/* 추가 로딩용 */}
           </div>
         </div>
       )}
