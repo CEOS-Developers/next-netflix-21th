@@ -87,7 +87,7 @@ export default function SearchBoard() {
           value={keyword}
           onChange={(e) => setKeyword(e.target.value)}
           placeholder="search for a show, movie, genre, e.t.c."
-          className="m-4 w-full"
+          className="m-4 w-full placeholder-[color:var(--color-background-03)]"
         />
         <div className="mr-4" onClick={onDeleteButtonCliked}>
           <DeleteIcon />

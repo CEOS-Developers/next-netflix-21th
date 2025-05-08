@@ -17,14 +17,14 @@ interface SearchListProps {
 export default function SearchList({ data }: SearchListProps) {
   return (
     <div>
-      {data.map((movie: Movie) => (
+      {data.map((movie: Movie, index: number) => (
         <li
-          key={movie.id}
+          key={movie.id + index}
           className="bg-background-02 mb-1 flex w-full items-center justify-between rounded-sm transition-transform duration-200 hover:scale-102"
         >
           <div className="flex items-center">
             <img src={movie.image} alt={movie.name} className="h-[76px] w-[100px]" />
-            <div className="ml-6 w-[200px] overflow-hidden">{movie.name}</div>
+            <div className="text-body-02 ml-6 w-[200px] overflow-hidden">{movie.name}</div>
           </div>
           <div className="mr-3">
             <Link key={`${movie.type}-${movie.id}`} href={`/${movie.type}/${movie.id}`}>
