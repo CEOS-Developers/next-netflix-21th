@@ -41,7 +41,7 @@ export const getMoviePopular = () => {
 
 //Korea Movie
 export const getKoreaMovie = () => {
-  axiosInstance.get("/discover/movie", {
+  return axiosInstance.get("/discover/movie", {
     params: { with_original_language: "ko", language: "ko-KR" },
   });
 };
