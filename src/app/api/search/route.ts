@@ -7,13 +7,13 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
   try {
     const searchParams = request.nextUrl.searchParams;
     const query = searchParams.get('q');
-    const page = searchParams.get('page') || '1';
+    const page = parseInt(searchParams.get('page') || '1', 10);
 
     // Initial product list, 40 items (= 2 pages)
     if (!query) {
       const [movieRes, tvRes] = await Promise.all([
-        tmdb.get('/movie/popular', { params: { pages: 1 } }),
-        tmdb.get('/tv/popular', { params: { pages: 1 } }),
+        tmdb.get('/movie/popular', { params: { page } }),
+        tmdb.get('/tv/popular', { params: { page } }),
       ]);
 
       const movieRaw = movieRes.data.results.map((item: RawTMDB) => ({ ...item, media_type: 'movie' }));
