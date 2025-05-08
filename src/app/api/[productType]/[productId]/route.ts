@@ -5,10 +5,10 @@ import type { Product } from '@models/product';
 
 export async function GET(
   _: NextRequest,
-  { params }: { params: { productType: Product['type']; productId: Product['id'] } },
+  { params }: { params: Promise<{ productType: Product['type']; productId: Product['id'] }> },
 ): Promise<NextResponse> {
   try {
-    const { productType, productId } = params;
+    const { productType, productId } = await params;
 
     const { data } = await tmdb.get(`/${productType}/${productId}`);
 
