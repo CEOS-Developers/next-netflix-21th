@@ -54,6 +54,7 @@ export default function SearchBoard() {
     if (trimmedKeyword === '') {
       setPage(1);
       setHasMore(true);
+      setSearchKeyword(true);
     }
   }, [trimmedKeyword]);
 
