@@ -44,7 +44,7 @@ const NotFound = () => {
         </p>
         <button
           onClick={() => router.push("/home")}
-          className="bg-white text-black caption4 px-[13.5px] py-[4.5px] rounded hover:bg-gray-100 transition cursor-pointer"
+          className="bg-white text-black caption1 px-[13.5px] py-[4.5px] rounded hover:bg-gray-100 transition cursor-pointer"
         >
           Netflix Home
         </button>
