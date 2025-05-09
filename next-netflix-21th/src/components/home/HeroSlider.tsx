@@ -11,12 +11,14 @@ import { TrendingItem } from "@/types/tmdb";
 import { IMAGE_BASE_URL } from "@/constants/tmdb";
 
 import Top10Icon from "@/public/icons/home/Top10Icon.svg";
-import BannerOption from "../layout/BannerOption";
+import BannerOption from "@/components/layout/BannerOption";
+import SkeletonCard from "@/components/skeleton/BannerSkeleton";
 
 const HeroSlider = () => {
   const [trendingData, setTrendingData] = useState<TrendingItem[]>([]);
   const [activeIndex, setActiveIndex] = useState(0);
   const swiperRef = useRef<SwiperClass | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchTrending = async () => {
@@ -24,7 +26,9 @@ const HeroSlider = () => {
         const response = await getTrendingAllDay();
         setTrendingData(response.data.results.slice(0, 10));
       } catch (error) {
-        console.error("트랜딩 데이터 가져오기 실패", error);
+        console.error("데이터를 불러오는 중 오류 발생:", error);
+      } finally {
+        setLoading(false);
       }
     };
     fetchTrending();
@@ -39,6 +43,9 @@ const HeroSlider = () => {
     return () => clearInterval(interval);
   }, []);
 
+  if (loading) {
+    return <SkeletonCard/>;
+  }
   return (
     <div className="relative w-full h-[415px] ">
       <Swiper
@@ -80,7 +87,7 @@ const HeroSlider = () => {
         </span>
       </div>
       <div>
-        <BannerOption/>
+        <BannerOption />
       </div>
     </div>
   );

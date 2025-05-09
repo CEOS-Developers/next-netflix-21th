@@ -3,12 +3,14 @@
 import { useEffect, useState } from "react";
 import { getMoviesByCompany, getTVByNetwork } from "@/apis/tmdb";
 import { Movie, TV } from "@/types/tmdb";
-import MovieSwiper from "./MovieSwiper";
+import MovieSwiper from "@/components/home/MovieSwiper";
+import SkeletonCard from "@/components/skeleton/SkeletonCard";
 
 const NETFLIX_ID = 213;
 
 const NetflixOriginal = () => {
   const [items, setItems] = useState<(Movie | TV)[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchNetflixOriginals = async () => {
@@ -24,11 +26,24 @@ const NetflixOriginal = () => {
         setItems(shuffledResults);
       } catch (error) {
         console.error("넷플릭스 오리지널 데이터 로딩 실패:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchNetflixOriginals();
   }, []);
+
+  if (loading) {
+    return (
+      <div>
+        <div className="headline3 text-white mb-[14px] ml-4">
+          Netflix Originals
+        </div>
+        <SkeletonCard itemWidth="154px" itemHeight="251px" />
+      </div>
+    );
+  }
 
   return (
     <MovieSwiper

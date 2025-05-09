@@ -8,7 +8,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
 import { IMAGE_BASE_URL } from "@/constants/tmdb";
-import SectionTitle from "./SectionTitle";
+import SectionTitle from "@/components/home/SectionTitle";
 
 interface BaseItem {
   id: number;

@@ -3,10 +3,12 @@
 import React, { useEffect, useState } from "react";
 import { getKoreaMovie } from "@/apis/tmdb";
 import { Movie } from "@/types/tmdb";
-import MovieSwiper from "./MovieSwiper";
+import MovieSwiper from "@/components/home/MovieSwiper";
+import SkeletonCard from "@/components/skeleton/SkeletonCard";
 
 const KoreaMovie = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -14,12 +16,21 @@ const KoreaMovie = () => {
         const response = await getKoreaMovie();
         setMovies(response.data.results);
       } catch (error) {
-        console.error("영화 데이터를 불러오는 중 오류 발생:", error);
+        console.error("데이터를 불러오는 중 오류 발생:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchMovies();
   }, []);
+
+  if (loading) {
+    <div>
+      <div className="headline3 text-white mb-[14px] ml-4">Korea Movie</div>
+      <SkeletonCard itemWidth="103px" itemHeight="161px" />
+    </div>;
+  }
 
   return (
     <MovieSwiper
