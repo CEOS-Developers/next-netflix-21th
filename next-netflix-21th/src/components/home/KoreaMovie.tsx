@@ -1,12 +1,15 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Movie } from "@/types/tmdb";
-import { getKoreaMovie } from "@/apis/tmdb";
-import { IMAGE_BASE_URL } from "@/constants/tmdb";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+
+import { getKoreaMovie } from "@/apis/tmdb";
+import { Movie } from "@/types/tmdb";
+import { IMAGE_BASE_URL } from "@/constants/tmdb";
+
+import SectionTitle from "./SectionTitle";
 
 const KoreaMovie = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -25,29 +28,24 @@ const KoreaMovie = () => {
   }, []);
 
   return (
-    <div className="text-[20.92px] p-4">
-      <div className="mb-4">Korea Movie</div>
+    <div className="text-[20.92px] px-3">
+      <SectionTitle>Korea Movie</SectionTitle>
       <Swiper
-        spaceBetween={10}
+        spaceBetween={8}
         slidesPerView={"auto"}
         grabCursor={true}
         scrollbar={{ draggable: false }}
-        loop={true}
+        loop={false}
         className="gap-8" // gap-8을 Swiper에 추가
       >
         {movies.map(movie => {
           const imageUrl = `${IMAGE_BASE_URL}original${movie.poster_path}`;
 
           return (
-            <SwiperSlide key={movie.id} style={{ width: "120px" }}>
+            <SwiperSlide key={movie.id} style={{ width: "103px" }}>
               {movie.poster_path ? (
-                <div className="relative w-[120px] h-[160px]">
-                  <Image
-                    src={imageUrl}
-                    alt={movie.title}
-                    fill
-                    sizes="120px"
-                  />
+                <div className="relative w-[103px] h-[161px] rounded-[2px] overflow-hidden cursor-pointer">
+                  <Image src={imageUrl} alt={movie.title} fill sizes="103px" />
                 </div>
               ) : (
                 <div className="text-white">이미지 없음</div>

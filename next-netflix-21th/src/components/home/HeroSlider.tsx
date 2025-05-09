@@ -1,14 +1,16 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { IMAGE_BASE_URL } from "@/constants/tmdb";
-import { getTrendingAllDay } from "@/apis/tmdb";
-import { TrendingItem } from "@/types/tmdb";
 import Image from "next/image";
-import Top10Icon from "@/public/icons/home/Top10Icon.svg";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Swiper as SwiperClass } from "swiper/types";
 import "swiper/css";
+
+import { getTrendingAllDay } from "@/apis/tmdb";
+import { TrendingItem } from "@/types/tmdb";
+import { IMAGE_BASE_URL } from "@/constants/tmdb";
+
+import Top10Icon from "@/public/icons/home/Top10Icon.svg";
 
 const HeroSlider = () => {
   const [trendingData, setTrendingData] = useState<TrendingItem[]>([]);
@@ -39,7 +41,7 @@ const HeroSlider = () => {
   return (
     <div className="relative w-full h-[415px] ">
       <Swiper
-        spaceBetween={10}
+        spaceBetween={8}
         slidesPerView={1}
         loop={trendingData.length > 2}
         onSlideChange={swiper => setActiveIndex(swiper.realIndex)}

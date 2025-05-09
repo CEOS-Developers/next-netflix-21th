@@ -7,13 +7,15 @@ import KoreaMovie from "@/components/home/KoreaMovie";
 
 const Home = () => {
   return (
-    <div className="relative w-full pb-16">
+    <div className="relative w-full pb-20">
       <Header />
       <HeroSlider />
-      <Preview />
-      <GenrePreview />
-      <NetflixOriginal />
-      <KoreaMovie/>
+      <div className="flex flex-col gap-[22px]">
+        <Preview />
+        <GenrePreview />
+        <NetflixOriginal />
+        <KoreaMovie />
+      </div>
     </div>
   );
 };

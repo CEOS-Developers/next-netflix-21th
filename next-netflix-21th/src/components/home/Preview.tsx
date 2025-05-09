@@ -1,12 +1,15 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Movie } from "@/types/tmdb";
-import { getMoviePopular } from "@/apis/tmdb";
-import { IMAGE_BASE_URL } from "@/constants/tmdb";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+
+import { getMoviePopular } from "@/apis/tmdb";
+import { Movie } from "@/types/tmdb";
+import { IMAGE_BASE_URL } from "@/constants/tmdb";
+
+import SectionTitle from "./SectionTitle";
 
 const Preview = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -15,7 +18,6 @@ const Preview = () => {
     const fetchMovies = async () => {
       try {
         const response = await getMoviePopular();
-        console.log(response.data);
         setMovies(response.data.results);
       } catch (error) {
         console.error("영화 데이터를 불러오는 중 오류 발생:", error);
@@ -25,27 +27,27 @@ const Preview = () => {
   }, []);
 
   return (
-    <div className="text-[20.92px] p-4">
-      <div className="mb-4">Popular Movie</div>
+    <div className="w-full max-w-[375px] text-[20.92px] mt-[43px] px-3">
+      <SectionTitle>Previews</SectionTitle>
       <Swiper
-        spaceBetween={10}
+        spaceBetween={8}
         slidesPerView={"auto"}
         grabCursor={true}
         scrollbar={{ draggable: false }}
-        loop={true}
+        loop={false}
       >
         {movies.map(movie => {
           const imageUrl = `${IMAGE_BASE_URL}original${movie.poster_path}`;
           return (
-            <SwiperSlide key={movie.id} style={{ width: "100px" }}>
+            <SwiperSlide key={movie.id} style={{ width: "102px" }}>
               {movie.poster_path ? (
-                <div className="relative w-[100px] h-[100px] rounded-full overflow-hidden">
+                <div className="relative w-[102px] h-[102px] rounded-full overflow-hidden">
                   <Image
                     src={imageUrl}
                     alt={movie.title}
                     fill
-                    sizes="100px"
-                    className="object-cover"
+                    sizes="102px"
+                    className="object-cover cursor-pointer"
                   />
                 </div>
               ) : (

@@ -1,11 +1,15 @@
 "use client";
+
 import { useEffect, useState } from "react";
-import { Movie, TV } from "@/types/tmdb";
-import { getMoviesByCompany, getTVByNetwork } from "@/apis/tmdb";
-import { IMAGE_BASE_URL } from "@/constants/tmdb";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+
+import { getMoviesByCompany, getTVByNetwork } from "@/apis/tmdb";
+import { Movie, TV } from "@/types/tmdb";
+import { IMAGE_BASE_URL } from "@/constants/tmdb";
+
+import SectionTitle from "./SectionTitle";
 
 const NETFLIX_ID = 213;
 
@@ -13,32 +17,35 @@ const NetflixOriginal = () => {
   const [randomItems, setRandomItems] = useState<(Movie | TV)[]>([]);
 
   useEffect(() => {
-    Promise.all([
-      getMoviesByCompany(NETFLIX_ID),
-      getTVByNetwork(NETFLIX_ID),
-    ]).then(([movieRes, tvRes]) => {
-      const movieResults = movieRes.data.results;
-      const tvResults = tvRes.data.results;
+    const fetchNetflixOriginals = async () => {
+      try {
+        const movieRes = await getMoviesByCompany(NETFLIX_ID);
+        const tvRes = await getTVByNetwork(NETFLIX_ID);
 
-      const combinedResults = [...movieResults, ...tvResults];
+        const movieResults = movieRes.data.results;
+        const tvResults = tvRes.data.results;
 
-      // 배열을 랜덤하게 섞음
-      const shuffledResults = combinedResults.sort(() => Math.random() - 0.5);
-      // 랜덤하게 섞은 배열을 상태에 저장
-      setRandomItems(shuffledResults);
-    });
+        const combinedResults = [...movieResults, ...tvResults];
+        const shuffledResults = combinedResults.sort(() => Math.random() - 0.5);
+        setRandomItems(shuffledResults);
+      } catch (error) {
+        console.error("넷플릭스 오리지널 데이터 로딩 실패:", error);
+      }
+    };
+
+    fetchNetflixOriginals();
   }, []);
 
   return (
     <div>
-      <div className="text-[20.92px] text-white p-4">
-        <div className="mb-4">Netflix Originals</div>
+      <div className="text-[20.92px] text-white px-3">
+        <SectionTitle>Netflix Originals</SectionTitle>
         <Swiper
-          spaceBetween={10} // 슬라이드 간 간격
-          slidesPerView={"auto"} // 여러 개의 슬라이드가 보이게
+          spaceBetween={8}
+          slidesPerView={"auto"}
           grabCursor={true}
           scrollbar={{ draggable: false }}
-          loop={true}
+          loop={false}
           className="gap-8"
         >
           {randomItems.map(item => {
@@ -46,15 +53,10 @@ const NetflixOriginal = () => {
             const title = "title" in item ? item.title : item.name;
 
             return (
-              <SwiperSlide key={item.id} style={{ width: "120px" }}>
-                <div className="relative w-[120px] h-[160px]">
+              <SwiperSlide key={item.id} style={{ width: "154px" }}>
+                <div className="relative w-[154px] h-[251px] rounded-[2px] overflow-hidden cursor-pointer">
                   {item.poster_path ? (
-                    <Image
-                      src={imageUrl}
-                      alt={title} // 영화와 TV의 이름을 다르게 처리
-                      fill
-                      sizes="120px"
-                    />
+                    <Image src={imageUrl} alt={title} fill sizes="154px" />
                   ) : (
                     <div className="text-white">이미지 없음</div>
                   )}
