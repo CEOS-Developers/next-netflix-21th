@@ -10,7 +10,7 @@ const Home = () => {
     <div className="relative w-full pb-20">
       <Header />
       <HeroSlider />
-      <div className="flex flex-col gap-[22px] pt-[40px]">
+      <div className="flex flex-col gap-[22px] pt-[90px]">
         <Preview />
         <GenrePreview />
         <NetflixOriginal />
