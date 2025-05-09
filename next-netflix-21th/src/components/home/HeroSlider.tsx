@@ -11,6 +11,7 @@ import { TrendingItem } from "@/types/tmdb";
 import { IMAGE_BASE_URL } from "@/constants/tmdb";
 
 import Top10Icon from "@/public/icons/home/Top10Icon.svg";
+import BannerOption from "../layout/BannerOption";
 
 const HeroSlider = () => {
   const [trendingData, setTrendingData] = useState<TrendingItem[]>([]);
@@ -77,6 +78,9 @@ const HeroSlider = () => {
         <span className="subhead3 text-white h-5">
           #{activeIndex + 1} in Korea Today
         </span>
+      </div>
+      <div>
+        <BannerOption/>
       </div>
     </div>
   );
