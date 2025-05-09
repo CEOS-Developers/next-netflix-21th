@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Netflix Clone",
     description: "CEOS 21th NETFLIX Clone Coding by SuyoungSwim",
-    // url: '배포 주소 추가',
+    url: 'https://next-netflix-21th-suyoungswim.vercel.app',
     siteName: "Netflix Clone",
     type: "website",
   },
