@@ -38,8 +38,8 @@ const NotFound = () => {
             textShadow: `0 1px 2px var(--color-overlay-200)`,
           }}
         >
-          Sorry, we can't find that page. <br />
-          You'll find lots to explore on the <br />
+          Sorry, we can&apos;t find that page. <br />
+          You&apos;ll find lots to explore on the <br />
           home page.
         </p>
         <button
