@@ -1,14 +1,16 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { IMAGE_BASE_URL } from "@/constants/tmdb";
-import { getTrendingAllDay } from "@/apis/tmdb";
-import { TrendingItem } from "@/types/tmdb";
 import Image from "next/image";
-import Top10Icon from "@/public/icons/home/Top10Icon.svg";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Swiper as SwiperClass } from "swiper/types";
 import "swiper/css";
+
+import { getTrendingAllDay } from "@/apis/tmdb";
+import { TrendingItem } from "@/types/tmdb";
+import { IMAGE_BASE_URL } from "@/constants/tmdb";
+
+import Top10Icon from "@/public/icons/home/Top10Icon.svg";
 
 const HeroSlider = () => {
   const [trendingData, setTrendingData] = useState<TrendingItem[]>([]);
@@ -37,9 +39,9 @@ const HeroSlider = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-[415px]">
+    <div className="relative w-full h-[415px] ">
       <Swiper
-        spaceBetween={10}
+        spaceBetween={8}
         slidesPerView={1}
         loop={trendingData.length > 2}
         onSlideChange={swiper => setActiveIndex(swiper.realIndex)}
@@ -72,7 +74,7 @@ const HeroSlider = () => {
 
       <div className="absolute bottom-[-2px] left-1/2 transform -translate-x-1/2 z-20 flex items-center justify-center gap-[5px]">
         <Top10Icon className="w-[15px] h-[15px]" />
-        <span className="text-white text-[13.72px] font-bold h-5">
+        <span className="subhead3 text-white h-5">
           #{activeIndex + 1} in Korea Today
         </span>
       </div>

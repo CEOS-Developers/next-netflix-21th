@@ -16,22 +16,27 @@ const NotFound = () => {
         src={bgImage}
         alt="404 background"
         fill
+        sizes="w-full"
         style={{ objectFit: "cover" }}
         quality={100}
         priority
       />
 
       {/* 컨텐츠 */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 bg-black/20">
+      <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 bg-overlay-100">
         <h1
-          className="text-3xl font-semibold mb-[6.58px]"
-          style={{ textShadow: "0 1px 2px rgba(0, 0, 0, 0.57)" }}
+          className="headline1 mb-[6.58px]"
+          style={{
+            textShadow: `0 1px 2px var(--color-overlay-200)`,
+          }}
         >
           Lost your way?
         </h1>
         <p
-          className="text-xs mb-[12.375px] text-white"
-          style={{ textShadow: "0 1px 2px rgba(0, 0, 0, 0.57)" }}
+          className="body4 mb-[12.375px] text-white"
+          style={{
+            textShadow: `0 1px 2px var(--color-overlay-200)`,
+          }}
         >
           Sorry, we can't find that page. <br />
           You'll find lots to explore on the <br />
@@ -39,13 +44,13 @@ const NotFound = () => {
         </p>
         <button
           onClick={() => router.push("/home")}
-          className="bg-white text-black text-[9px] font-medium px-[13.5px] py-[4.5px] rounded hover:bg-gray-200 transition"
+          className="bg-white text-black caption4 px-[13.5px] py-[4.5px] rounded hover:bg-gray-100 transition cursor-pointer"
         >
           Netflix Home
         </button>
-        <p className="flex mt-50 text-sm text-white font-extralight gap-3">
+        <p className="flex mt-50 caption2 text-white gap-3">
           <span className="text-red-500">|</span>
-          Error Code <span className="font-medium text-white">NSES-404</span>
+          Error Code <span className="caption1 text-white">NSES-404</span>
         </p>
       </div>
     </div>

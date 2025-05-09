@@ -12,12 +12,14 @@ export interface Movie extends BaseMedia {
   title: string;
   release_date?: string;
   original_title?: string;
+  overview?:  string;
 }
 
 export interface TV extends BaseMedia {
   name: string;
   first_air_date?: string;
   original_name?: string;
+  overview?: string;
 }
 
 export type TrendingItem = Movie | TV;

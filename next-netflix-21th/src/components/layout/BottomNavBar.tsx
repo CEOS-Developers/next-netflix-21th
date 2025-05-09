@@ -9,7 +9,7 @@ const BottomNavBar = () => {
   if (pathname === "/") return null;
 
   return (
-    <nav className="fixed bottom-0 w-[375px] h-12 bg-[#121212] flex items-center pl-[26px] pr-[29px]">
+    <nav className="fixed bottom-0 w-[375px] h-12 bg-[#121212] flex items-center pl-[26px] pr-[29px] z-99">
       {navItems.map(({ label, icon: Icon, path, spacing }) => {
         const isActive = pathname === path;
 
@@ -18,13 +18,13 @@ const BottomNavBar = () => {
             key={label}
             onClick={() => router.push(path)}
             className={`cursor-pointer flex flex-col items-center justify-between shrink-0 gap-[1px] hover:text-white ${spacing} ${
-              isActive ? "text-white" : "text-[#8C8787]"
+              isActive ? "text-white" : "text-gray-200"
             }`}
           >
             <div className="flex h-6 w-6 items-center justify-center">
               <Icon />
             </div>
-            <span className="text-[8.2px] min-h-[6px]">{label}</span>
+            <span className="caption5 min-h-[6px]">{label}</span>
           </button>
         );
       })}
