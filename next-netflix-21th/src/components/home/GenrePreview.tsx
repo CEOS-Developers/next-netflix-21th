@@ -22,7 +22,7 @@ const GenrePreview = () => {
   }, []);
 
   return (
-    <div className="text-[20.92px] px-3">
+    <div className="text-[20.92px]">
       <SectionTitle>Movie Action & Comedy</SectionTitle>
       <Swiper
         spaceBetween={8}
@@ -30,7 +30,7 @@ const GenrePreview = () => {
         grabCursor={true}
         scrollbar={{ draggable: false }}
         loop={false}
-        className="gap-8" // gap-8을 Swiper에 추가
+        className="!px-3"
       >
         {movies.map(movie => {
           const imageUrl = `${IMAGE_BASE_URL}original${movie.poster_path}`;

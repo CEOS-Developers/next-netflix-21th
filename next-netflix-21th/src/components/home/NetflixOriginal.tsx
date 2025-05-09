@@ -38,7 +38,7 @@ const NetflixOriginal = () => {
 
   return (
     <div>
-      <div className="text-[20.92px] text-white px-3">
+      <div className="text-[20.92px] text-white">
         <SectionTitle>Netflix Originals</SectionTitle>
         <Swiper
           spaceBetween={8}
@@ -46,7 +46,7 @@ const NetflixOriginal = () => {
           grabCursor={true}
           scrollbar={{ draggable: false }}
           loop={false}
-          className="gap-8"
+          className="!px-3"
         >
           {randomItems.map(item => {
             const imageUrl = `${IMAGE_BASE_URL}original${item.poster_path}`;

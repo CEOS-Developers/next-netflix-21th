@@ -27,7 +27,7 @@ const Preview = () => {
   }, []);
 
   return (
-    <div className="w-full max-w-[375px] text-[20.92px] mt-[43px] px-3">
+    <div className="w-full max-w-[375px] text-[20.92px] mt-[43px]">
       <SectionTitle>Previews</SectionTitle>
       <Swiper
         spaceBetween={8}
@@ -35,6 +35,7 @@ const Preview = () => {
         grabCursor={true}
         scrollbar={{ draggable: false }}
         loop={false}
+        className="!px-3"
       >
         {movies.map(movie => {
           const imageUrl = `${IMAGE_BASE_URL}original${movie.poster_path}`;
