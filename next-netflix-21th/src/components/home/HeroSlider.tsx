@@ -74,7 +74,7 @@ const HeroSlider = () => {
 
       <div className="absolute bottom-[-2px] left-1/2 transform -translate-x-1/2 z-20 flex items-center justify-center gap-[5px]">
         <Top10Icon className="w-[15px] h-[15px]" />
-        <span className="subhead2 text-white h-5">
+        <span className="subhead3 text-white h-5">
           #{activeIndex + 1} in Korea Today
         </span>
       </div>

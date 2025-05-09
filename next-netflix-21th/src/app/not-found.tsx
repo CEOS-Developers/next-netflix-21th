@@ -44,13 +44,13 @@ const NotFound = () => {
         </p>
         <button
           onClick={() => router.push("/home")}
-          className="bg-white text-black caption2 px-[13.5px] py-[4.5px] rounded hover:bg-gray-100 transition cursor-pointer"
+          className="bg-white text-black caption4 px-[13.5px] py-[4.5px] rounded hover:bg-gray-100 transition cursor-pointer"
         >
           Netflix Home
         </button>
-        <p className="flex mt-50 caption5 text-white gap-3">
+        <p className="flex mt-50 caption2 text-white gap-3">
           <span className="text-red-500">|</span>
-          Error Code <span className="caption4 text-white">NSES-404</span>
+          Error Code <span className="caption1 text-white">NSES-404</span>
         </p>
       </div>
     </div>

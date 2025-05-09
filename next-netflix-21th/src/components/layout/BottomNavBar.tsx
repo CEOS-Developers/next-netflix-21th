@@ -24,7 +24,7 @@ const BottomNavBar = () => {
             <div className="flex h-6 w-6 items-center justify-center">
               <Icon />
             </div>
-            <span className="caption3 min-h-[6px]">{label}</span>
+            <span className="caption5 min-h-[6px]">{label}</span>
           </button>
         );
       })}

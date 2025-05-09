@@ -48,7 +48,7 @@ const KoreaMovie = () => {
                   <Image src={imageUrl} alt={movie.title} fill sizes="103px" />
                 </div>
               ) : (
-                <div className="caption4 text-white">이미지 없음</div>
+                <div className="caption1 text-white">이미지 없음</div>
               )}
             </SwiperSlide>
           );

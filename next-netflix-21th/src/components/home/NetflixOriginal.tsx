@@ -57,7 +57,7 @@ const NetflixOriginal = () => {
                 {item.poster_path ? (
                   <Image src={imageUrl} alt={title} fill sizes="154px" />
                 ) : (
-                  <div className="caption4 text-white">이미지 없음</div>
+                  <div className="caption1 text-white">이미지 없음</div>
                 )}
               </div>
             </SwiperSlide>

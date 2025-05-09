@@ -52,7 +52,7 @@ const Preview = () => {
                   />
                 </div>
               ) : (
-                <div className="caption4 text-white">이미지 없음</div>
+                <div className="caption1 text-white">이미지 없음</div>
               )}
             </SwiperSlide>
           );
