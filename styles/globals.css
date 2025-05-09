@@ -1,63 +1,62 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
-  --font-netflix-sans: var(--font-netflix-sans);
+	--font-netflix-sans: var(--font-netflix-sans);
 
-  --color-gray-100: #c4c4c4;
-  --color-gray-200: #8c8787;
-  --color-gray-300: #424242;
+	--color-gray-100: #c4c4c4;
+	--color-gray-200: #8c8787;
+	--color-gray-300: #424242;
 
-  /* font sizes */
-  --text-10: 10px;
-  --text-12: 12px;
-  --text-13: 13px;
-  --text-14: 14px;
-  --text-15: 15px;
-  --text-16: 16px;
-  --text-18: 18px;
-  --text-20: 20px;
-  --text-24: 24px;
-  --text-28: 28px;
+	/* font sizes */
+	--text-10: 10px;
+	--text-12: 12px;
+	--text-13: 13px;
+	--text-14: 14px;
+	--text-15: 15px;
+	--text-16: 16px;
+	--text-18: 18px;
+	--text-20: 20px;
+	--text-24: 24px;
+	--text-28: 28px;
 }
 
 @layer utilities {
-  .header1-medium {
-    @apply font-netflix-sans text-24 font-medium leading-normal;
-  }
+	.header1-medium {
+		@apply font-netflix-sans text-24 font-medium leading-normal;
+	}
 
-  .headline1-bold {
-    @apply font-netflix-sans text-24 font-bold leading-normal;
-  }
+	.headline1-bold {
+		@apply font-netflix-sans text-24 font-bold leading-normal;
+	}
 
-  .headline2-bold {
-    @apply font-netflix-sans text-20 font-bold leading-normal;
-  }
+	.headline2-bold {
+		@apply font-netflix-sans text-20 font-bold leading-normal;
+	}
 
-  .body1-regular {
-    @apply font-netflix-sans text-16 font-normal leading-normal;
-  }
+	.body1-regular {
+		@apply font-netflix-sans text-16 font-normal leading-normal;
+	}
 
-  .body2-regular {
-    @apply font-netflix-sans text-14 font-normal leading-normal;
-  }
+	.body2-regular {
+		@apply font-netflix-sans text-14 font-normal leading-normal;
+	}
 
-  .body2-medium {
-    @apply font-netflix-sans text-14 font-medium leading-normal;
-  }
+	.body2-medium {
+		@apply font-netflix-sans text-14 font-medium leading-normal;
+	}
 
-  .body3-regular {
-    @apply font-netflix-sans text-12 font-normal leading-normal;
-  }
+	.body3-regular {
+		@apply font-netflix-sans text-12 font-normal leading-normal;
+	}
 
-  .caption-regular {
-    @apply font-netflix-sans text-10 font-normal leading-normal;
-  }
+	.caption-regular {
+		@apply font-netflix-sans text-10 font-normal leading-normal;
+	}
 }
 
 @layer base {
-  :root {
-    /* bg-linear-(--movie-bg-gradient) 와 같이 사용 */
-    --movie-bg-gradient: 180deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0) 87.26%,
-      #000 100%;
-  }
+	:root {
+		/* bg-linear-(--movie-bg-gradient) 와 같이 사용 */
+		--movie-bg-gradient: 180deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0) 87.26%, #000 100%;
+	}
 }
