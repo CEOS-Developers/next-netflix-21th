@@ -1,15 +1,9 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import Image from "next/image";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-
 import { getMoviesByGenre } from "@/apis/tmdb";
 import { Movie } from "@/types/tmdb";
-import { IMAGE_BASE_URL } from "@/constants/tmdb";
-
-import SectionTitle from "./SectionTitle";
+import MovieSwiper from "./MovieSwiper";
 
 const GenrePreview = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -22,33 +16,12 @@ const GenrePreview = () => {
   }, []);
 
   return (
-    <div className="w-full max-w-[375px]">
-      <SectionTitle>Movie Action & Comedy</SectionTitle>
-      <Swiper
-        spaceBetween={8}
-        slidesPerView={"auto"}
-        grabCursor={true}
-        scrollbar={{ draggable: false }}
-        loop={false}
-        className="!px-3"
-      >
-        {movies.map(movie => {
-          const imageUrl = `${IMAGE_BASE_URL}original${movie.poster_path}`;
-
-          return (
-            <SwiperSlide key={movie.id} style={{ width: "103px" }}>
-              {movie.poster_path ? (
-                <div className="relative w-[103px] h-[161px] rounded-[2px] overflow-hidden cursor-pointer">
-                  <Image src={imageUrl} alt={movie.title} fill sizes="103px" />
-                </div>
-              ) : (
-                <div className="caption1 text-white">이미지 없음</div>
-              )}
-            </SwiperSlide>
-          );
-        })}
-      </Swiper>
-    </div>
+    <MovieSwiper
+      title="Movie Action & Comedy"
+      items={movies}
+      itemWidth="103px"
+      itemHeight="161px"
+    />
   );
 };
 
