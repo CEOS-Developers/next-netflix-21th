@@ -1,7 +1,7 @@
 @import url("https://fonts.cdnfonts.com/css/sf-pro-display");
 @import "tailwindcss";
 
-@theme {
+:root {
   --font-sans: "SF Pro Display", sans-serif;
 
   --color-gray-100: #c4c4c4;
