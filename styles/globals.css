@@ -21,26 +21,28 @@
 	--text-20: 20px;
 	--text-24: 24px;
 	--text-28: 28px;
+
+	--mobile-width: 375px;
 }
 
 @layer utilities {
-	.header1-medium {
+	.header1 {
 		@apply font-netflix-sans text-24 font-medium leading-normal;
 	}
 
-	.headline1-bold {
+	.headline1 {
 		@apply font-netflix-sans text-24 font-bold leading-normal;
 	}
 
-	.headline2-bold {
+	.headline2 {
 		@apply font-netflix-sans text-20 font-bold leading-normal;
 	}
 
-	.body1-regular {
+	.body1 {
 		@apply font-netflix-sans text-16 font-normal leading-normal;
 	}
 
-	.body2-regular {
+	.body2 {
 		@apply font-netflix-sans text-14 font-normal leading-normal;
 	}
 
@@ -48,11 +50,11 @@
 		@apply font-netflix-sans text-14 font-medium leading-normal;
 	}
 
-	.body3-regular {
+	.body3 {
 		@apply font-netflix-sans text-12 font-normal leading-normal;
 	}
 
-	.caption-regular {
+	.caption {
 		@apply font-netflix-sans text-10 font-normal leading-normal;
 	}
 }
@@ -66,5 +68,9 @@
 	body {
 		@apply bg-black;
 		@apply text-white;
+		@apply font-netflix-sans;
+
+		width: var(--mobile-width);
+		min-height: 100vh;
 	}
 }
