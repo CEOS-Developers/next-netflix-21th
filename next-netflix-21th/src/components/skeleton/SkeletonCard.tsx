@@ -1,5 +1,3 @@
-// components/skeleton/SkeletonCard.tsx
-
 interface SkeletonCardProps {
   itemWidth: string;
   itemHeight: string;
@@ -12,12 +10,12 @@ const SkeletonCard = ({
   shape = "rectangle",
 }: SkeletonCardProps) => {
   return (
-    <div className="flex space-x-2 px-4 overflow-x-hidden">
+    <div className="flex space-x-2 px-3 overflow-x-hidden">
       {Array.from({ length: 6 }).map((_, index) => (
         <div
           key={index}
           className={`animate-pulse bg-gray-300 ${
-            shape === "circle" ? "rounded-full" : "rounded-md"
+            shape === "circle" ? "rounded-full" : "rounded-[2px]"
           }`}
           style={{
             width: itemWidth,

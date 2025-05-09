@@ -1,5 +1,3 @@
-// components/home/MovieSwiper.tsx
-
 "use client";
 
 import React from "react";
