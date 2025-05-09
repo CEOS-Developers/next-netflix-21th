@@ -1,27 +1,85 @@
 @import url("https://fonts.cdnfonts.com/css/sf-pro-display");
 @import "tailwindcss";
 
-:root {
-  --font-family: "SF Pro Display", sans-serif;
+@theme {
+  --font-sans: "SF Pro Display", sans-serif;
+
+  --color-gray-100: #c4c4c4;
+  --color-gray-200: #8c8787;
+  --color-gray-300: #424242;
+  --color-gray-400: #121212;
+
+  --color-overlay-100: rgba(0, 0, 0, 0.2);
+  --color-overlay-200: rgba(0, 0, 0, 0.57);
 }
 
-* {
-  scroll-behavior: smooth;
-  box-sizing: border-box;
+@layer base {
+  body {
+    font-family: var(--font-sans);
+  }
 }
 
-html {
-  font-size: 16px;
-}
+@layer utilities {
+  @layer utilities {
+    /* Headline */
 
-body {
-  width: 100%;
-  height: 100%;
-  font-family: var(--font-family);
-  color: white;
-}
+    .headline1 {
+      @apply font-sans text-[30px] font-semibold leading-[150%] tracking-[-0.015em];
+    }
 
-a {
-  text-decoration: none;
-  color: inherit;
+    .headline2 {
+      @apply font-sans text-[20.921px] font-bold leading-[100%] tracking-[-0.057px];
+    }
+
+    .headline3 {
+      @apply font-sans text-[20.462px] font-semibold leading-[150%] tracking-[-0.01em];
+    }
+
+    /* Subhead */
+    .subhead1 {
+      @apply font-sans text-[17.197px] font-normal leading-[150%] tracking-[0.01em];
+    }
+
+    .subhead2 {
+      @apply font-sans text-[13.723px] font-bold leading-[150%] tracking-[-0.041px];
+    }
+
+    /* Body */
+    .body1 {
+      @apply font-sans text-[15.213px] font-normal leading-[150%] tracking-[0.01em];
+    }
+
+    .body2 {
+      @apply font-sans text-[14.722px] font-normal leading-[150%] tracking-[0.005em];
+    }
+
+    .body3 {
+      @apply font-sans text-[13.642px] font-normal leading-[150%] tracking-[-0.01em];
+    }
+
+    .body4 {
+      @apply font-sans text-[12px] font-normal leading-[160%] tracking-[0];
+    }
+
+    /* Caption */
+    .caption1 {
+      @apply font-sans text-[11.141px] font-normal leading-[150%] tracking-[-0.005em];
+    }
+
+    .caption2 {
+      @apply font-sans text-[9px] font-medium leading-[100%] tracking-[0.01em];
+    }
+
+    .caption3 {
+      @apply font-sans text-[8.2px] font-medium leading-[150%] tracking-[0.01em];
+    }
+
+    .caption4 {
+      @apply font-sans text-[14px] font-medium leading-[150%];
+    }
+
+    .caption5 {
+      @apply font-sans text-[14px] font-extralight leading-[150%];
+    }
+  }
 }

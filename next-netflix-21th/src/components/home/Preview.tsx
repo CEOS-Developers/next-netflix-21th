@@ -27,7 +27,7 @@ const Preview = () => {
   }, []);
 
   return (
-    <div className="w-full max-w-[375px] text-[20.92px] mt-[43px]">
+    <div className="w-full max-w-[375px] mt-[43px]">
       <SectionTitle>Previews</SectionTitle>
       <Swiper
         spaceBetween={8}
@@ -52,7 +52,7 @@ const Preview = () => {
                   />
                 </div>
               ) : (
-                <div className="text-white">이미지 없음</div>
+                <div className="caption4 text-white">이미지 없음</div>
               )}
             </SwiperSlide>
           );

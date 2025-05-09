@@ -28,7 +28,7 @@ const KoreaMovie = () => {
   }, []);
 
   return (
-    <div className="text-[20.92px]">
+    <div className="w-full max-w-[375px]">
       <SectionTitle>Korea Movie</SectionTitle>
       <Swiper
         spaceBetween={8}
@@ -48,7 +48,7 @@ const KoreaMovie = () => {
                   <Image src={imageUrl} alt={movie.title} fill sizes="103px" />
                 </div>
               ) : (
-                <div className="text-white">이미지 없음</div>
+                <div className="caption4 text-white">이미지 없음</div>
               )}
             </SwiperSlide>
           );

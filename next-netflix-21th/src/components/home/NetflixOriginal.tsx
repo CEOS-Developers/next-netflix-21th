@@ -37,35 +37,33 @@ const NetflixOriginal = () => {
   }, []);
 
   return (
-    <div>
-      <div className="text-[20.92px] text-white">
-        <SectionTitle>Netflix Originals</SectionTitle>
-        <Swiper
-          spaceBetween={8}
-          slidesPerView={"auto"}
-          grabCursor={true}
-          scrollbar={{ draggable: false }}
-          loop={false}
-          className="!px-3"
-        >
-          {randomItems.map(item => {
-            const imageUrl = `${IMAGE_BASE_URL}original${item.poster_path}`;
-            const title = "title" in item ? item.title : item.name;
+    <div className="w-full max-w-[375px]">
+      <SectionTitle>Netflix Originals</SectionTitle>
+      <Swiper
+        spaceBetween={8}
+        slidesPerView={"auto"}
+        grabCursor={true}
+        scrollbar={{ draggable: false }}
+        loop={false}
+        className="!px-3"
+      >
+        {randomItems.map(item => {
+          const imageUrl = `${IMAGE_BASE_URL}original${item.poster_path}`;
+          const title = "title" in item ? item.title : item.name;
 
-            return (
-              <SwiperSlide key={item.id} style={{ width: "154px" }}>
-                <div className="relative w-[154px] h-[251px] rounded-[2px] overflow-hidden cursor-pointer">
-                  {item.poster_path ? (
-                    <Image src={imageUrl} alt={title} fill sizes="154px" />
-                  ) : (
-                    <div className="text-white">이미지 없음</div>
-                  )}
-                </div>
-              </SwiperSlide>
-            );
-          })}
-        </Swiper>
-      </div>
+          return (
+            <SwiperSlide key={item.id} style={{ width: "154px" }}>
+              <div className="relative w-[154px] h-[251px] rounded-[2px] overflow-hidden cursor-pointer">
+                {item.poster_path ? (
+                  <Image src={imageUrl} alt={title} fill sizes="154px" />
+                ) : (
+                  <div className="caption4 text-white">이미지 없음</div>
+                )}
+              </div>
+            </SwiperSlide>
+          );
+        })}
+      </Swiper>
     </div>
   );
 };
