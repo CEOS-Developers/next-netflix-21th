@@ -3,17 +3,15 @@
 import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 
+import SearchInput from './search-input';
 import SearchList from './search-list';
 import SearchListSkeleton from './search-list-skeleton';
-import SearchIcon from '@public/icons/search/search.svg';
-import DeleteIcon from '@public/icons/search/delete.svg';
 
 interface Movie {
   id: number;
   name: string;
   image: string;
   type: string;
-  // 여기에 필요한 필드 추가 (예: poster_path 등)
 }
 
 export default function SearchBoard() {
@@ -21,6 +19,7 @@ export default function SearchBoard() {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
+
   // loading
   const [isLoading, setIsLoading] = useState(false);
   // searching
@@ -86,21 +85,13 @@ export default function SearchBoard() {
 
   return (
     <div>
-      <div className="bg-background-02 mt-11 flex h-13 w-full items-center">
-        <div className="ml-4" onClick={handleSearch}>
-          <SearchIcon />
-        </div>
-        <input
-          value={keyword}
-          onChange={(e) => setKeyword(e.target.value)}
-          onKeyDown={handleKeyDown}
-          placeholder="search for a show, movie, genre, e.t.c."
-          className="m-4 w-full placeholder-[color:var(--color-background-03)]"
-        />
-        <div className="mr-4" onClick={onDeleteButtonClicked}>
-          <DeleteIcon />
-        </div>
-      </div>
+      <SearchInput
+        keyword={keyword}
+        handleSearch={handleSearch}
+        onDeleteButtonClicked={onDeleteButtonClicked}
+        setKeyword={setKeyword}
+        handleKeyDown={handleKeyDown}
+      />
       <div className="text-headline-01 ml-2 pt-4 pb-4">Top Searches</div>
       {isLoading && page === 1 ? (
         <SearchListSkeleton />

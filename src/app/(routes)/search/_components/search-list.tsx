@@ -7,7 +7,6 @@ interface Movie {
   name: string;
   image: string;
   type: string;
-  // 여기에 필요한 필드 추가 (예: poster_path 등)
 }
 
 interface SearchListProps {
