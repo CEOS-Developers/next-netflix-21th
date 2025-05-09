@@ -1,7 +1,10 @@
 import type { Metadata } from 'next';
 
 import localFont from 'next/font/local';
+
 import '@/styles/globals.css';
+
+import TabBar from './components/TabBar';
 
 const netflixSans = localFont({
 	src: [
@@ -37,7 +40,10 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={`${netflixSans.variable} antialiased`}>{children}</body>
+			<body className={`${netflixSans.variable} antialiased`}>
+				{children}
+				<TabBar />
+			</body>
 		</html>
 	);
 }
