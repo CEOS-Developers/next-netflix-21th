@@ -4,16 +4,18 @@ import RightArrow from "@/public/icons/home/rightArrow.svg";
 const BannerOption = () => {
   return (
     <div className="flex justify-between items-center w-[375px] h-[87px] pt-[16px] pb-[16px] pr-[48px] pl-[48px]">
-      <button className="flex-col justify-center items-center">
-        <MyListIcon className="mx-auto"/>
+      <button className="flex-col justify-center items-center hover:text-[#8C8787]">
+        <MyListIcon className="mx-auto stroke-current" />
         <p>My List</p>
       </button>
-      <button className="w-[124px] h-[55px] bg-[#C4C4C4] rounded-[4px] flex justify-center items-center pt-[12px] pb-[12px] pr-[20px] pl-[20px] gap-2">
-        <RightArrow />
+      
+      <button className="w-[124px] h-[55px] bg-[#C4C4C4] rounded-[4px] flex justify-center items-center pt-[12px] pb-[12px] pr-[20px] pl-[20px] gap-2 hover:bg-[#8C8787]">
+        <RightArrow/>
         <p className="text-[24px] font-semibold text-black">Play</p>
       </button>
-      <button className="flex-col justify-center items-center">
-        <InfoIcon className="mx-auto" />
+
+      <button className="flex-col justify-center items-center hover:text-[#8C8787]">
+        <InfoIcon className="mx-auto stroke-current" />
         <p>Info</p>
       </button>
     </div>
