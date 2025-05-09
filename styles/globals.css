@@ -3,6 +3,9 @@
 @theme {
 	--font-netflix-sans: var(--font-netflix-sans);
 
+	--color-black: #000000;
+	--color-white: #ffffff;
+	--color-black-sub: #262626;
 	--color-gray-100: #c4c4c4;
 	--color-gray-200: #8c8787;
 	--color-gray-300: #424242;
@@ -58,5 +61,10 @@
 	:root {
 		/* bg-linear-(--movie-bg-gradient) 와 같이 사용 */
 		--movie-bg-gradient: 180deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0) 87.26%, #000 100%;
+	}
+
+	body {
+		@apply bg-black;
+		@apply text-white;
 	}
 }
