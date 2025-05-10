@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 
 import clsx from 'clsx';
 import Image from 'next/image';
+import useDisableScroll from '@/utils/useDisableScroll';
 
 export default function Splash() {
 	const [isLogoFadingOut, setIsLogoFadingOut] = useState(false);
@@ -12,11 +13,13 @@ export default function Splash() {
 	useEffect(() => {
 		setTimeout(() => {
 			setIsLogoFadingOut(true);
-		}, 300);
+		}, 900);
 		setTimeout(() => {
 			setIsSplashVisible(false);
-		}, 800);
+		}, 1500);
 	}, []);
+
+	useDisableScroll(isSplashVisible);
 
 	return isSplashVisible ? (
 		<>
