@@ -60,3 +60,7 @@
 		--movie-bg-gradient: 180deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0) 87.26%, #000 100%;
 	}
 }
+
+.no-scrollbar {
+	scrollbar-width: none;
+}
