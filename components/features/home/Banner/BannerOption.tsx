@@ -1,4 +1,4 @@
-import { InfoIcon, PlusIcon } from '../../../../icons/Banner';
+import { InfoIcon, PlusIcon } from '@/icons/Banner';
 
 const BannerOption = ({ option }: { option: 'plus' | 'info' }) => {
 	return (

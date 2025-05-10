@@ -1,10 +1,9 @@
 'use client';
 
-import Image from 'next/image';
-
 import { useEffect, useState } from 'react';
 
 import clsx from 'clsx';
+import Image from 'next/image';
 
 export default function Splash() {
 	const [isLogoFadingOut, setIsLogoFadingOut] = useState(false);
