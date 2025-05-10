@@ -18,7 +18,7 @@ export interface Movie {
 	vote_count: number;
 }
 
-export async function fetchMoviesApi(endpoint: string): Promise<TMDBResponse | null> {
+export async function getMoviesApi(endpoint: string): Promise<TMDBResponse | null> {
 	const res = await fetch(process.env.NEXT_PUBLIC_TMDB_V3_BASE_URL + endpoint, {
 		headers: { Authorization: `Bearer ${process.env.NEXT_PUBLIC_TMDB_V3_API_KEY}` },
 	});

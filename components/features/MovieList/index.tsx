@@ -1,10 +1,11 @@
+import { getMoviesApi } from '@/services/getMoviesApi';
+
 import { categoryEndpointMap } from '@/lib/constants/categoryEndpointMap';
-import { fetchMoviesApi } from '@/lib/utils/fetchMoviesApi';
 
 import CategorizedMovieList from './CategorizedMovieList';
 
 export default async function MovieList() {
-	const responses = await Promise.all(categoryEndpointMap.map((item) => fetchMoviesApi(item.endpoint)));
+	const responses = await Promise.all(categoryEndpointMap.map((item) => getMoviesApi(item.endpoint)));
 
 	return (
 		<div className="flex flex-col gap-5 pb-21">
