@@ -1,5 +1,4 @@
-// app/movie/[id]/page.tsx
-"use client";
+export const dynamic = "force-dynamic";
 
 import DetailView from "@/components/DetailView";
 
