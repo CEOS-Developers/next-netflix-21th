@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import { getMoviesApi } from '@/services/getMoviesApi';
+import { getMoviesApi } from '@/services/tmdb';
 
 export default async function PreviewList() {
 	const response = await getMoviesApi('/movie/now_playing');

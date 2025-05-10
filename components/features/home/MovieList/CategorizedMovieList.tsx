@@ -1,8 +1,7 @@
+import clsx from 'clsx';
 import Image from 'next/image';
 
-import clsx from 'clsx';
-
-import { Movie } from '@/services/getMoviesApi';
+import { Movie } from '@/types/movie.types';
 
 export default function CategorizedMovieList({ category, movies }: { category: string; movies: Movie[] | null }) {
 	const isOriginal = category === 'Netflix Originals';

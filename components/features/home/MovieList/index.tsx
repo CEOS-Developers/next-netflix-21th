@@ -1,6 +1,5 @@
-import { getMoviesApi } from '@/services/getMoviesApi';
-
 import { categoryEndpointMap } from '@/constants/categoryEndpointMap';
+import { getMoviesApi } from '@/services/tmdb';
 
 import CategorizedMovieList from './CategorizedMovieList';
 import PreviewList from './PreviewList';

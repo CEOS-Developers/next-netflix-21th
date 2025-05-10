@@ -1,5 +1,5 @@
-// import { tmdbAPI } from '@/lib/axios';
 import { fetcher } from '@/lib/fetcher';
+import { TMDBResponse } from '@/types/movie.types';
 
 export const getTrendingMovies = async () => {
 	try {
@@ -12,3 +12,14 @@ export const getTrendingMovies = async () => {
 		console.error(error);
 	}
 };
+
+// 홈 화면 배너 하단 영화 큐레이션
+export async function getMoviesApi(endpoint: string): Promise<TMDBResponse | null> {
+	try {
+		const movieData = await fetcher(endpoint);
+		return movieData;
+	} catch (error) {
+		console.error('Error fetching movie data:', error);
+		return null;
+	}
+}
