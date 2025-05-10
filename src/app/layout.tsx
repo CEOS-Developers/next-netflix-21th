@@ -29,7 +29,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#1E1E1E] `}>
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#1E1E1E] `}
+      >
         <div className={`${layout} flex flex-col justify-between`}>
           <div className="flex-1 overflow-hidden">{children}</div>
           <MainNavigation />
