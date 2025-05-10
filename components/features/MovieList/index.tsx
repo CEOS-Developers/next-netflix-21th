@@ -1,10 +1,20 @@
+import { categoryEndpointMap } from '@/lib/constants/categoryEndpointMap';
+import { fetchMoviesApi } from '@/lib/utils/fetchMoviesApi';
+
 import CategorizedMovieList from './CategorizedMovieList';
 
-export default function MovieList() {
+export default async function MovieList() {
+	const responses = await Promise.all(categoryEndpointMap.map((item) => fetchMoviesApi(item.endpoint)));
+
 	return (
 		<div className="flex flex-col gap-5">
-			{(['sm', 'sm', 'sm', 'lg', 'sm', 'sm', 'sm'] as ('sm' | 'lg')[]).map((movie, i) => (
-				<CategorizedMovieList key={i} size={movie} />
+			{responses.map((response, i) => (
+				<CategorizedMovieList
+					key={i}
+					category={categoryEndpointMap[i].category}
+					size={'sm'}
+					movies={response?.results ?? null}
+				/>
 			))}
 		</div>
 	);
