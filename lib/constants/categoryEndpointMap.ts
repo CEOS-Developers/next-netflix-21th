@@ -1,11 +1,11 @@
 export const categoryEndpointMap = [
 	{
-		category: 'Now Playing',
-		endpoint: '/movie/now_playing',
+		category: "Today's Trend Movie",
+		endpoint: '/trending/movie/day?language=en-US',
 	},
 	{
-		category: 'Popular',
-		endpoint: '/movie/popular',
+		category: 'Now Playing',
+		endpoint: '/movie/now_playing',
 	},
 	{
 		category: 'Top Rated',
@@ -16,11 +16,11 @@ export const categoryEndpointMap = [
 		endpoint: '/movie/upcoming',
 	},
 	{
-		category: "Today's Trend Movie",
-		endpoint: '/trending/movie/day?language=en-US',
-	},
-	{
 		category: "Todays's Trand TV",
 		endpoint: '/trending/tv/day?language=en-US',
+	},
+	{
+		category: 'Popular',
+		endpoint: '/movie/popular',
 	},
 ];
