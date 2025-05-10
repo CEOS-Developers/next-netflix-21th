@@ -3,6 +3,9 @@
 @theme {
 	--font-netflix-sans: var(--font-netflix-sans);
 
+	--color-black: #000000;
+	--color-white: #ffffff;
+	--color-black-sub: #262626;
 	--color-gray-100: #c4c4c4;
 	--color-gray-200: #8c8787;
 	--color-gray-300: #424242;
@@ -18,39 +21,55 @@
 	--text-20: 20px;
 	--text-24: 24px;
 	--text-28: 28px;
+
+	--mobile-width: 375px;
 }
 
 @layer utilities {
-	.header1-medium {
-		@apply font-netflix-sans text-24 font-medium leading-[1.9375rem];
+	.header1 {
+		@apply font-netflix-sans text-24 font-medium leading-normal;
 	}
 
-	.headline1-bold {
-		@apply font-netflix-sans text-24 font-bold leading-[1.8125rem];
+	.headline1 {
+		@apply font-netflix-sans text-24 font-bold leading-normal;
 	}
 
-	.headline2-bold {
-		@apply font-netflix-sans text-20 font-bold leading-6;
+	.headline2 {
+		@apply font-netflix-sans text-20 font-bold leading-normal;
 	}
 
-	.body1-regular {
-		@apply font-netflix-sans text-16 font-normal leading-5;
+	.headline2-medium {
+		@apply font-netflix-sans text-20 font-medium leading-normal;
 	}
 
-	.body2-regular {
-		@apply font-netflix-sans text-14 font-normal leading-[1.125rem];
+	.body1 {
+		@apply font-netflix-sans text-16 font-normal leading-normal;
+	}
+
+	.body2 {
+		@apply font-netflix-sans text-14 font-normal leading-normal;
 	}
 
 	.body2-medium {
-		@apply font-netflix-sans text-14 font-medium leading-[1.125rem];
+		@apply font-netflix-sans text-14 font-medium leading-normal;
 	}
 
-	.body3-regular {
-		@apply font-netflix-sans text-12 font-normal leading-[0.9375rem];
+	.body3 {
+		@apply font-netflix-sans text-12 font-normal leading-normal;
 	}
 
-	.caption-regular {
-		@apply font-netflix-sans text-10 font-normal leading-[0.8125rem];
+	.caption {
+		@apply font-netflix-sans text-10 font-normal leading-normal;
+	}
+
+	.poster-backdrop {
+		width: 100%;
+		height: 100%;
+
+		background:
+			linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%),
+			linear-gradient(180deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0) 87.26%, #000 100%),
+			lightgray 50% / cover no-repeat;
 	}
 }
 
@@ -58,6 +77,22 @@
 	:root {
 		/* bg-linear-(--movie-bg-gradient) 와 같이 사용 */
 		--movie-bg-gradient: 180deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0) 87.26%, #000 100%;
+	}
+
+	body {
+		@apply bg-black;
+		@apply text-white;
+		@apply font-netflix-sans;
+
+		/* min-width: var(--mobile-width); */
+		min-height: 100vh;
+	}
+
+	button,
+	a {
+		@apply outline-none;
+		@apply cursor-pointer;
+		@apply border-none;
 	}
 }
 
