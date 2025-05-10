@@ -1,8 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
+
 import { getMoviesByCompany, getTVByNetwork } from "@/apis/tmdb";
 import { Movie, TV } from "@/types/tmdb";
+
 import MovieSwiper from "@/components/home/MovieSwiper";
 import SkeletonCard from "@/components/skeleton/SkeletonCard";
 
@@ -36,12 +38,11 @@ const NetflixOriginal = () => {
 
   if (loading) {
     return (
-      <div>
-        <div className="headline3 text-white mb-[14px] ml-4">
-          Netflix Originals
-        </div>
-        <SkeletonCard itemWidth="154px" itemHeight="251px" />
-      </div>
+      <SkeletonCard
+        title="Netflix Originals"
+        itemWidth="154px"
+        itemHeight="251px"
+      />
     );
   }
 

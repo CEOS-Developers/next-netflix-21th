@@ -1,8 +1,10 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+
 import { getKoreaMovie } from "@/apis/tmdb";
 import { Movie } from "@/types/tmdb";
+
 import MovieSwiper from "@/components/home/MovieSwiper";
 import SkeletonCard from "@/components/skeleton/SkeletonCard";
 
@@ -26,10 +28,7 @@ const KoreaMovie = () => {
   }, []);
 
   if (loading) {
-    <div>
-      <div className="headline3 text-white mb-[14px] ml-4">Korea Movie</div>
-      <SkeletonCard itemWidth="103px" itemHeight="161px" />
-    </div>;
+    <SkeletonCard title="Korea Movie" itemWidth="103px" itemHeight="161px" />;
   }
 
   return (

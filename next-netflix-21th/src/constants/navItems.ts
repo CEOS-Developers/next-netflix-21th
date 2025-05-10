@@ -4,7 +4,8 @@ import ComingSoonIcon from "@/public/icons/bottomNavBar/ComingSoonIcon.svg";
 import DownloadIcon from "@/public/icons/bottomNavBar/DownloadIcon.svg";
 import MoreIcon from "@/public/icons/bottomNavBar/MoreIcon.svg";
 
-export const navItems = [
+// 하단 바 내비게이션
+export const bottomNavItems = [
   { label: "Home", icon: HomeIcon, path: "/home", spacing: "mr-[50px]" },
   { label: "Search", icon: SearchIcon, path: "/search", spacing: "mr-[35px]" },
   {
@@ -20,4 +21,11 @@ export const navItems = [
     spacing: "mr-[42px]",
   },
   { label: "More", icon: MoreIcon, path: "/more", spacing: "" },
+];
+
+// 헤더 메뉴
+export const headerNavItems = [
+  { label: "TV Shows", path: "/tv" },
+  { label: "Movies", path: "/movies" },
+  { label: "My List", path: "/my" },
 ];

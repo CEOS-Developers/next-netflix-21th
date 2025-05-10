@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname, useRouter } from "next/navigation";
-import { navItems } from "@/constants/navItems";
+import { bottomNavItems } from "@/constants/navItems";
 
 const BottomNavBar = () => {
   const router = useRouter();
@@ -10,7 +10,7 @@ const BottomNavBar = () => {
 
   return (
     <nav className="fixed bottom-0 w-[375px] h-12 bg-gray-400 flex items-center pl-[26px] pr-[29px] z-99">
-      {navItems.map(({ label, icon: Icon, path, spacing }) => {
+      {bottomNavItems.map(({ label, icon: Icon, path, spacing }) => {
         const isActive = pathname === path;
 
         return (

@@ -7,7 +7,7 @@ import KoreaMovie from "@/components/home/KoreaMovie";
 
 const Home = () => {
   return (
-    <div className="relative w-full pb-20">
+    <main className="relative w-full pb-20">
       <Header />
       <HeroSlider />
       <div className="flex flex-col gap-[22px] pt-[101px]">
@@ -16,7 +16,7 @@ const Home = () => {
         <NetflixOriginal />
         <KoreaMovie />
       </div>
-    </div>
+    </main>
   );
 };
 export default Home;

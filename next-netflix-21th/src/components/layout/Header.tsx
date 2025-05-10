@@ -2,14 +2,10 @@
 
 import Logo from "@/public/icons/header/logo.svg";
 import { useRouter } from "next/navigation";
+import { headerNavItems } from "@/constants/navItems";
 
 const Header = () => {
   const router = useRouter();
-  const navItems = [
-    { label: "TV shows", path: "/tv" },
-    { label: "Movies", path: "/movies" },
-    { label: "My List", path: "/my" },
-  ];
 
   return (
     <div className="fixed top-6 w-[375px] h-[57px] z-10 pl-4 pr-[21px]">
@@ -19,7 +15,7 @@ const Header = () => {
           onClick={() => router.push("/home")}
         />
         <ul className="flex flex-1 gap-[25.32px] justify-between text-[17px]">
-          {navItems.map(({ label, path }) => (
+          {headerNavItems.map(({ label, path }) => (
             <li
               key={label}
               className="subhead2 cursor-pointer hover:text-gray-100"

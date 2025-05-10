@@ -1,8 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
+
 import { getMoviePopular } from "@/apis/tmdb";
 import { Movie } from "@/types/tmdb";
+
 import MovieSwiper from "@/components/home/MovieSwiper";
 import SkeletonCard from "@/components/skeleton/SkeletonCard";
 
@@ -23,16 +25,18 @@ const Preview = () => {
     };
     fetchMovies();
   }, []);
-  
+
   if (loading) {
     return (
-      <div>
-        <div className="headline3 text-white mb-[14px] ml-4">Preview</div>
-        <SkeletonCard itemWidth="102px" itemHeight="102px" shape="circle" />
-      </div>
+      <SkeletonCard
+        title="Previews"
+        itemWidth="102px"
+        itemHeight="102px"
+        shape="circle"
+      />
     );
   }
-  
+
   return (
     <MovieSwiper
       title="Previews"

@@ -58,6 +58,7 @@ const MovieSwiper = ({
                     fill
                     sizes={itemWidth}
                     className="object-cover pointer-events-none"
+                    priority
                   />
                 </div>
               ) : (

@@ -2,8 +2,9 @@
 
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import bgImage from "@/public/images/404_bg.jpg";
+
 import Header from "@/components/layout/Header";
+import bgImage from "@/public/images/404_bg.jpg";
 
 const NotFound = () => {
   const router = useRouter();

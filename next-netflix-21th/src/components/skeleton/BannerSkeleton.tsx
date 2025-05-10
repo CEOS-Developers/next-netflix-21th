@@ -1,8 +1,6 @@
 const BannerSkeleton = () => {
   return (
-    <div>
-      <div className="w-[375px] h-[415px] bg-gray-300 animate-pulse flex flex-col justify-end p-6"></div>
-    </div>
+    <div className="w-[375px] h-[415px] bg-gray-300 animate-pulse flex flex-col justify-end p-6" />
   );
 };
 

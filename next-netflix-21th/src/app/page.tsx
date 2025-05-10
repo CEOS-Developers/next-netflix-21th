@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
+
 import Logo from "@/public/icons/header/logo.svg";
 import LandingLottie from "@/public/lotties/LandingLottie.json";
 

@@ -1,8 +1,10 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+
 import { getMoviesByGenre } from "@/apis/tmdb";
 import { Movie } from "@/types/tmdb";
+
 import MovieSwiper from "@/components/home/MovieSwiper";
 import SkeletonCard from "@/components/skeleton/SkeletonCard";
 
@@ -27,12 +29,11 @@ const GenrePreview = () => {
 
   if (loading) {
     return (
-      <div>
-        <div className="headline3 text-white mb-[14px] ml-4">
-          Movie Action & Comedy
-        </div>
-        <SkeletonCard itemWidth="103px" itemHeight="161px" />
-      </div>
+      <SkeletonCard
+        title="Movie Action & Comedy"
+        itemWidth="103px"
+        itemHeight="161px"
+      />
     );
   }
 

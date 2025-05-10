@@ -12,7 +12,7 @@ import { IMAGE_BASE_URL } from "@/constants/tmdb";
 
 import Top10Icon from "@/public/icons/home/Top10Icon.svg";
 import BannerOption from "@/components/layout/BannerOption";
-import SkeletonCard from "@/components/skeleton/BannerSkeleton";
+import BannerSkeleton from "@/components/skeleton/BannerSkeleton";
 
 const HeroSlider = () => {
   const [trendingData, setTrendingData] = useState<TrendingItem[]>([]);
@@ -44,7 +44,7 @@ const HeroSlider = () => {
   }, []);
 
   if (loading) {
-    return <SkeletonCard/>;
+    return <BannerSkeleton />;
   }
   return (
     <div className="relative w-full h-[415px] ">
@@ -86,9 +86,8 @@ const HeroSlider = () => {
           #{activeIndex + 1} in Korea Today
         </span>
       </div>
-      <div>
-        <BannerOption />
-      </div>
+
+      <BannerOption />
     </div>
   );
 };
