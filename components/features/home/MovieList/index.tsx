@@ -1,6 +1,6 @@
 import { getMoviesApi } from '@/services/getMoviesApi';
 
-import { categoryEndpointMap } from '@/lib/constants/categoryEndpointMap';
+import { categoryEndpointMap } from '@/constants/categoryEndpointMap';
 
 import CategorizedMovieList from './CategorizedMovieList';
 import PreviewList from './PreviewList';

@@ -1,4 +1,4 @@
-import { NetflixHomeLogo } from '../icons/GNB';
+import { NetflixHomeLogo } from '@/icons/GNB';
 
 const HomeLNB = () => {
 	return (

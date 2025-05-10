@@ -1,3 +1,5 @@
+import { fetcher } from '@/lib/fetcher';
+
 export interface TMDBResponse {
 	page: number;
 	results: Movie[];
@@ -19,15 +21,11 @@ export interface Movie {
 }
 
 export async function getMoviesApi(endpoint: string): Promise<TMDBResponse | null> {
-	const res = await fetch(process.env.NEXT_PUBLIC_TMDB_V3_BASE_URL + endpoint, {
-		headers: { Authorization: `Bearer ${process.env.NEXT_PUBLIC_TMDB_V3_API_KEY}` },
-	});
-
-	if (!res.ok) {
-		console.error(`${endpoint} API 호출 실패: `, await res.json());
+	try {
+		const movieData = await fetcher(endpoint);
+		return movieData;
+	} catch (error) {
+		console.error('Error fetching movie data:', error);
 		return null;
 	}
-
-	const data = await res.json();
-	return data;
 }

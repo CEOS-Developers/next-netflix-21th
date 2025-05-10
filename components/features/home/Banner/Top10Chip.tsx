@@ -1,4 +1,4 @@
-import { Top10Icon } from '../icons/Banner';
+import { Top10Icon } from '@/icons/Banner';
 
 const Top10Chip = () => {
 	return (

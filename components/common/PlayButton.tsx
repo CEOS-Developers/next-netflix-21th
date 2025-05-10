@@ -1,4 +1,4 @@
-import { PlayIcon } from '../icons/Play';
+import { PlayIcon } from '@/icons/Play';
 
 const PlayButton = () => {
 	return (

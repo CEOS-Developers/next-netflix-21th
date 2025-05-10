@@ -1,13 +1,13 @@
 import Image from 'next/image';
 
-import MovieList from '@/components/features/home/MovieList';
-import Splash from '@/components/features/home/Splash';
+import { getTrendingMovies } from '@/services/tmdb';
 
-import { getTrendingMovies } from './api/tmdb';
-import BannerOption from './components/BannerOption';
-import HomeLNB from './components/HomeLNB';
-import PlayButton from './components/PlayButton';
-import Top10Chip from './components/Top10Chip';
+import PlayButton from '@/components/common/PlayButton';
+import BannerOption from '@/components/features/home/Banner/BannerOption';
+import Top10Chip from '@/components/features/home/Banner/Top10Chip';
+import HomeLNB from '@/components/features/home/HomeLNB';
+import MovieList from '@/components/features/home/MovieList';
+import Splash from '@/components/layouts/Splash';
 
 export default async function Home() {
 	const data = await getTrendingMovies(); // 서버에서 fetch

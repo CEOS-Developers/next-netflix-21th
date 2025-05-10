@@ -4,7 +4,7 @@ import localFont from 'next/font/local';
 
 import '@/styles/globals.css';
 
-import TabBar from './components/TabBar';
+import TabBar from '../components/layouts/TabBar';
 
 const netflixSans = localFont({
 	src: [

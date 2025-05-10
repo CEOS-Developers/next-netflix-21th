@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { TAB_BAR_OPTIONS } from '../constants/GNB';
+import { TAB_BAR_OPTIONS } from '../../constants/GNB';
 
 const TabBar = () => {
 	return (

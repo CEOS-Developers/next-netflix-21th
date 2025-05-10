@@ -1,4 +1,4 @@
-import * as I from '@/app/icons/GNB';
+import * as I from '@/icons/GNB';
 
 export const TAB_BAR_OPTIONS = [
 	{

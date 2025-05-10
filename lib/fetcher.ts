@@ -19,7 +19,7 @@ export const fetcher = async (endpoint: string, params?: Record<string, string>,
 
 	if (!res.ok) {
 		const errorData = await res.json();
-		throw new Error(errorData.message || 'Fetch error');
+		throw new Error(errorData.message || `${endpoint} API 호출 실패`);
 	}
 
 	//  응답 데이터를 JSON 형식으로 parse
