@@ -23,16 +23,16 @@ const Preview = () => {
     };
     fetchMovies();
   }, []);
+  
   if (loading) {
-    if (loading) {
-      return (
-        <div>
-          <div className="headline3 text-white mb-[14px] ml-4">Preview</div>
-          <SkeletonCard itemWidth="102px" itemHeight="102px" shape="circle" />
-        </div>
-      );
-    }
+    return (
+      <div>
+        <div className="headline3 text-white mb-[14px] ml-4">Preview</div>
+        <SkeletonCard itemWidth="102px" itemHeight="102px" shape="circle" />
+      </div>
+    );
   }
+  
   return (
     <MovieSwiper
       title="Previews"
