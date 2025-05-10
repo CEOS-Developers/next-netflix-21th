@@ -61,6 +61,16 @@
 	.caption {
 		@apply font-netflix-sans text-10 font-normal leading-normal;
 	}
+
+	.poster-backdrop {
+		width: 100%;
+		height: 100%;
+
+		background:
+			linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%),
+			linear-gradient(180deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0) 87.26%, #000 100%),
+			lightgray 50% / cover no-repeat;
+	}
 }
 
 @layer base {
