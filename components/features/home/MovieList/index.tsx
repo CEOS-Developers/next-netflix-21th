@@ -1,4 +1,5 @@
 import { getMoviesApi } from '@/services/tmdb';
+
 import { categoryEndpointMap } from '@/constants/categoryEndpointMap';
 
 import CategorizedMovieList from './CategorizedMovieList';
