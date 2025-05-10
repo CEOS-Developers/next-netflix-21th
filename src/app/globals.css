@@ -1,0 +1,16 @@
+@import "tailwindcss";
+@import "../styles/typography.css";
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+.bg-gradient-overlay {
+  background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.45) 0%,
+      rgba(0, 0, 0, 0) 87.26%,
+      #000000 100%
+    ),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+}
