@@ -95,3 +95,7 @@
 		@apply border-none;
 	}
 }
+
+.no-scrollbar {
+	scrollbar-width: none;
+}
