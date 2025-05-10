@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import MovieList from '@/components/features/MovieList';
+import MovieList from '@/components/features/home/MovieList';
 
 import { getTrendingMovies } from './api/tmdb';
 import BannerOption from './components/BannerOption';
