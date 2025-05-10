@@ -2,6 +2,7 @@ import Image from "next/image";
 import { fetchMovies } from "@/lib/tmdb";
 import HorizontalScroll from "./horizontal-scroll";
 import RectanglePoster from "./rectangle-poster";
+import Link from "next/link";
 
 const RectangleViewer = async ({
   title,
@@ -28,13 +29,15 @@ const RectangleViewer = async ({
             poster_path: string;
           }) => (
             <RectanglePoster key={id}>
-              <Image
-                className="object-cover w-[103px] h-[161px]"
-                src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
-                alt={original_title || "movie"}
-                width={103}
-                height={161}
-              />
+              <Link href={`/movie/${id}`}>
+                <Image
+                  className="object-cover w-[103px] h-[161px]"
+                  src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
+                  alt={original_title || "movie"}
+                  width={103}
+                  height={161}
+                />
+              </Link>
             </RectanglePoster>
           )
         )}

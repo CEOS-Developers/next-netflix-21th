@@ -1,25 +1,33 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 const HorizontalScroll = ({ children }: { children: React.ReactNode }) => {
   const horizontalRef = useRef<HTMLDivElement>(null);
 
-  const handleContainerWheel = (e: React.WheelEvent) => {
-    if (horizontalRef.current) {
-      // 세로 휠을 가로 스크롤로 바꾸기
+  useEffect(() => {
+    const el = horizontalRef.current;
+    if (!el) return;
+
+    const handleWheel = (e: WheelEvent) => {
       if (e.deltaY !== 0) {
         e.preventDefault();
-        horizontalRef.current.scrollLeft += e.deltaY;
+        el.scrollLeft += e.deltaY;
       }
-    }
-  };
+    };
+
+    el.addEventListener("wheel", handleWheel, { passive: false });
+
+    return () => {
+      el.removeEventListener("wheel", handleWheel);
+    };
+  }, []);
 
   return (
     <div
       className="scrollbar-none flex gap-[7px] overflow-x-auto pl-3"
       ref={horizontalRef}
-      onWheel={handleContainerWheel}>
+    >
       {children}
     </div>
   );

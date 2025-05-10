@@ -3,6 +3,7 @@ import { API_URLS } from "@/lib/apiUrls";
 import { fetchMovies } from "@/lib/tmdb";
 import HorizontalScroll from "./horizontal-scroll";
 import SqaurePoster from "./square-poster";
+import Link from "next/link";
 
 const Previews = async () => {
   const { results } = await fetchMovies(API_URLS.koreaMovies);
@@ -22,13 +23,15 @@ const Previews = async () => {
             poster_path: string;
           }) => (
             <SqaurePoster key={id}>
-              <Image
-                className="object-cover w-[102px] h-[102px]"
-                src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
-                alt={title}
-                width={102}
-                height={102}
-              />
+              <Link href={`/movie/${id}`}>
+                <Image
+                  className="object-cover w-[102px] h-[102px]"
+                  src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
+                  alt={title}
+                  width={102}
+                  height={102}
+                />
+              </Link>
             </SqaurePoster>
           )
         )}
