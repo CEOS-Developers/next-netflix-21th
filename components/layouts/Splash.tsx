@@ -3,7 +3,9 @@
 import { useEffect, useState } from 'react';
 
 import clsx from 'clsx';
+
 import Image from 'next/image';
+
 import useDisableScroll from '@/utils/useDisableScroll';
 
 export default function Splash() {
