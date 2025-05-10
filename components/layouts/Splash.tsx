@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 import { useEffect, useState } from 'react';
 
@@ -12,20 +13,29 @@ export default function Splash() {
 	const [isLogoFadingOut, setIsLogoFadingOut] = useState(false);
 	const [isSplashVisible, setIsSplashVisible] = useState(true);
 
+	const router = useRouter();
+
 	useEffect(() => {
-		setTimeout(() => {
+		const fadeOutTimer = setTimeout(() => {
 			setIsLogoFadingOut(true);
 		}, 900);
-		setTimeout(() => {
+
+		const hideSplashTimer = setTimeout(() => {
 			setIsSplashVisible(false);
+			router.push('/home');
 		}, 1500);
-	}, []);
+
+		return () => {
+			clearTimeout(fadeOutTimer);
+			clearTimeout(hideSplashTimer);
+		};
+	}, [router]);
 
 	useDisableScroll(isSplashVisible);
 
-	return isSplashVisible ? (
-		<>
-			<div className="absolute top-0 left-0 w-full h-full z-50 bg-black flex justify-center items-center">
+	return (
+		isSplashVisible && (
+			<div className="fixed top-0 left-0 w-full h-full z-50 bg-black flex justify-center items-center">
 				<Image
 					className={clsx(
 						'starting:opacity-70 transition-opacity duration-500',
@@ -37,6 +47,6 @@ export default function Splash() {
 					height={56}
 				/>
 			</div>
-		</>
-	) : null;
+		)
+	);
 }
