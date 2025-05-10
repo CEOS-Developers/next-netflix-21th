@@ -38,6 +38,10 @@
 		@apply font-netflix-sans text-20 font-bold leading-normal;
 	}
 
+	.headline2-medium {
+		@apply font-netflix-sans text-20 font-medium leading-normal;
+	}
+
 	.body1 {
 		@apply font-netflix-sans text-16 font-normal leading-normal;
 	}
@@ -70,7 +74,14 @@
 		@apply text-white;
 		@apply font-netflix-sans;
 
-		width: var(--mobile-width);
+		/* min-width: var(--mobile-width); */
 		min-height: 100vh;
+	}
+
+	button,
+	a {
+		@apply outline-none;
+		@apply cursor-pointer;
+		@apply border-none;
 	}
 }
