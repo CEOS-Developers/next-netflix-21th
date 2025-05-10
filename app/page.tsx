@@ -1,6 +1,7 @@
 import Image from 'next/image';
 
 import MovieList from '@/components/features/home/MovieList';
+import Splash from '@/components/features/home/Splash';
 
 import { getTrendingMovies } from './api/tmdb';
 import BannerOption from './components/BannerOption';
@@ -15,6 +16,7 @@ export default async function Home() {
 	return (
 		<div>
 			<HomeLNB />
+			<Splash />
 			<section>
 				<div className="w-full h-fit relative">
 					{top10Movies.length > 0 && (
