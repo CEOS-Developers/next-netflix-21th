@@ -3,10 +3,11 @@
 import { useEffect, useState } from "react";
 
 import { getMoviesByCompany, getTVByNetwork } from "@/apis/tmdb";
-import { Movie, TV } from "@/types/tmdb";
 
 import MovieSwiper from "@/components/home/MovieSwiper";
 import SkeletonCard from "@/components/skeleton/SkeletonCard";
+
+import { Movie, TV } from "@/types/tmdb";
 
 const NETFLIX_ID = 213;
 

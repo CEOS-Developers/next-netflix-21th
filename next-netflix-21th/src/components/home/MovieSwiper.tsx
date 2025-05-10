@@ -1,12 +1,15 @@
 "use client";
 
-import React from "react";
 import Image from "next/image";
-import { Swiper, SwiperSlide } from "swiper/react";
+
+import React from "react";
+
 import "swiper/css";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+import SectionTitle from "@/components/home/SectionTitle";
 
 import { IMAGE_BASE_URL } from "@/constants/tmdb";
-import SectionTitle from "@/components/home/SectionTitle";
 
 interface BaseItem {
   id: number;

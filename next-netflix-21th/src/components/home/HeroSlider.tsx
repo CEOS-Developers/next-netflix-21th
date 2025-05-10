@@ -1,18 +1,23 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+
+import { useEffect, useRef, useState } from "react";
+
+import "swiper/css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Swiper as SwiperClass } from "swiper/types";
-import "swiper/css";
 
 import { getTrendingAllDay } from "@/apis/tmdb";
-import { TrendingItem } from "@/types/tmdb";
-import { IMAGE_BASE_URL } from "@/constants/tmdb";
 
-import Top10Icon from "@/public/icons/home/Top10Icon.svg";
 import BannerOption from "@/components/layout/BannerOption";
 import BannerSkeleton from "@/components/skeleton/BannerSkeleton";
+
+import { IMAGE_BASE_URL } from "@/constants/tmdb";
+
+import { TrendingItem } from "@/types/tmdb";
+
+import Top10Icon from "@/public/icons/home/Top10Icon.svg";
 
 const HeroSlider = () => {
   const [trendingData, setTrendingData] = useState<TrendingItem[]>([]);

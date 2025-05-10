@@ -3,10 +3,11 @@
 import React, { useEffect, useState } from "react";
 
 import { getKoreaMovie } from "@/apis/tmdb";
-import { Movie } from "@/types/tmdb";
 
 import MovieSwiper from "@/components/home/MovieSwiper";
 import SkeletonCard from "@/components/skeleton/SkeletonCard";
+
+import { Movie } from "@/types/tmdb";
 
 const KoreaMovie = () => {
   const [movies, setMovies] = useState<Movie[]>([]);

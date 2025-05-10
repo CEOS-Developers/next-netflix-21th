@@ -12,7 +12,7 @@ export interface Movie extends BaseMedia {
   title: string;
   release_date?: string;
   original_title?: string;
-  overview?:  string;
+  overview?: string;
 }
 
 export interface TV extends BaseMedia {

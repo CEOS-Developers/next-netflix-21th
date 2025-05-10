@@ -1,6 +1,7 @@
 "use client";
 
 import { usePathname, useRouter } from "next/navigation";
+
 import { bottomNavItems } from "@/constants/navItems";
 
 const BottomNavBar = () => {

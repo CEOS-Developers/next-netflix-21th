@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+
 import BottomNavBar from "@/components/layout/BottomNavBar";
+
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -13,7 +15,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Netflix Clone",
     description: "CEOS 21th NETFLIX Clone Coding by SuyoungSwim",
-    url: 'https://next-netflix-21th-suyoungswim.vercel.app',
+    url: "https://next-netflix-21th-suyoungswim.vercel.app",
     siteName: "Netflix Clone",
     type: "website",
   },

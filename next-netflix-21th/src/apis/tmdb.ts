@@ -1,4 +1,5 @@
 import { axiosInstance } from "./axios";
+
 //HeroSlider
 export const getTrendingAllDay = () =>
   axiosInstance.get("/trending/all/day", {
