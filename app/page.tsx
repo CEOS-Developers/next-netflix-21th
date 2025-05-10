@@ -1,5 +1,7 @@
 import Image from 'next/image';
 
+import MovieList from '@/components/features/MovieList';
+
 import { getTrendingMovies } from './api/tmdb';
 import BannerOption from './components/BannerOption';
 import HomeLNB from './components/HomeLNB';
@@ -34,6 +36,7 @@ export default async function Home() {
 					<PlayButton />
 					<BannerOption option="info" />
 				</section>
+				<MovieList />
 			</section>
 		</div>
 	);
