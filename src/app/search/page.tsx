@@ -15,15 +15,10 @@ export default function Home() {
     const timeout = setTimeout(() => {
       const fetchData = async () => {
         const url = query
-          ? `https://api.themoviedb.org/3/search/movie?query=${query}`
-          : `https://api.themoviedb.org/3/movie/popular`;
+          ? `https://api.themoviedb.org/3/search/movie?query=${query}&api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=ko-KR`
+          : `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=ko-KR`;
 
-        const res = await fetch(url, {
-          headers: {
-            Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`,
-            Accept: "application/json",
-          },
-        });
+        const res = await fetch(url);
         const data = await res.json();
         setResults(data.results || []);
       };
