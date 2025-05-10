@@ -86,6 +86,8 @@
 
 		/* min-width: var(--mobile-width); */
 		min-height: 100vh;
+		max-width: 512px;
+		margin: auto;
 	}
 
 	button,
