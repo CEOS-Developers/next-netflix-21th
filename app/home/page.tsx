@@ -10,7 +10,7 @@ export default async function Home() {
 			<HomeLNB />
 			<section>
 				<Top10Banner />
-				<section className="w-full h-fit py-4 px-10 flex justify-between items-center">
+				<section className={'w-full h-fit py-4 px-12 flex justify-between items-center'}>
 					<BannerOption option="plus" />
 					<PlayButton />
 					<BannerOption option="info" />
