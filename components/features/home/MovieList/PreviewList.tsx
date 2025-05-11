@@ -19,6 +19,7 @@ export default async function PreviewList() {
 						height={100}
 						className="bg-gray-200 object-cover w-25 h-25 aspect-square rounded-full"
 						key={i}
+						priority={i < 3 ? true : false}
 					/>
 				))}
 			</div>

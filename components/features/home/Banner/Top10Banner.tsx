@@ -60,7 +60,7 @@ export default function Top10Banner() {
 					onSlideChange={(swiper) => setSwiperIndex(swiper.realIndex + 1)}
 					className="w-full h-full overflow-x-hidden"
 				>
-					{top10Movies.map((movie) => (
+					{top10Movies.map((movie, index) => (
 						<SwiperSlide key={movie.id} className="w-full h-full">
 							<li className="w-full h-full aspect-5/7 relative">
 								<div className="w-full h-full absolute top-0 left-0 z-5 opacity-20 poster-backdrop"></div>
@@ -69,7 +69,7 @@ export default function Top10Banner() {
 									alt={movie.title}
 									fill
 									sizes="(max-width: 512px) 100vw"
-									priority
+									priority={index === 0}
 								/>
 							</li>
 						</SwiperSlide>

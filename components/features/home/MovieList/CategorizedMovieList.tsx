@@ -15,13 +15,15 @@ export default function CategorizedMovieList({ category, movies }: { category: s
 			<div className="relative w-full h-fit overflow-x-scroll no-scrollbar flex gap-2 pr-4">
 				{movies.map((movie, i) => (
 					<Image
+						key={i}
 						unoptimized
 						src={'https://image.tmdb.org/t/p/w500' + movie.poster_path}
 						alt={`${movie.title} poster`}
 						width={isOriginal ? 180 : 120}
 						height={isOriginal ? 240 : 160}
 						className={clsx('bg-gray-200 object-cover', isOriginal ? 'rounded-[0.125rem]' : 'rounded-[0.0625rem]')}
-						key={i}
+						style={{ aspectRatio: '3/4' }}
+						priority={i < 3 ? true : false}
 					/>
 				))}
 			</div>
