@@ -23,7 +23,6 @@ export default function SearchBoard() {
   // loading
   const [isLoading, setIsLoading] = useState(false);
   // searching
-  const [searchKeyword, setSearchKeyword] = useState(false);
   const [keyword, setKeyword] = useState('');
   const trimmedKeyword = keyword.trim();
 
@@ -44,17 +43,15 @@ export default function SearchBoard() {
         setMovies((prev) => (page === 1 ? data : [...prev, ...data]));
       }
       setIsLoading(false);
-      setSearchKeyword(false);
     };
 
     fetchMovies();
-  }, [page, searchKeyword]);
+  }, [page, trimmedKeyword]);
 
   useEffect(() => {
     if (trimmedKeyword === '') {
       setPage(1);
       setHasMore(true);
-      setSearchKeyword(true);
     }
   }, [trimmedKeyword]);
 
@@ -68,7 +65,6 @@ export default function SearchBoard() {
   const handleSearch = () => {
     setPage(1);
     setHasMore(true);
-    setSearchKeyword(true);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -81,7 +77,6 @@ export default function SearchBoard() {
     setKeyword('');
     setPage(1);
     setHasMore(true);
-    setSearchKeyword(true);
   };
 
   return (
