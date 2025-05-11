@@ -7,6 +7,8 @@ export const getTrendingMovies = async () => {
 			language: 'en-US',
 		});
 
+		console.log(data);
+
 		return data;
 	} catch (error) {
 		console.error(error);

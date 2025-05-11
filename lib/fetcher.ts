@@ -9,6 +9,7 @@ export const fetcher = async (endpoint: string, params?: Record<string, string>,
 	}
 
 	const res = await fetch(url.toString(), {
+		next: { revalidate: 3600 }, // 1hour cache
 		headers: {
 			'Content-Type': 'application/json',
 			Authorization: `Bearer ${process.env.NEXT_PUBLIC_TMDB_V3_API_KEY}`,
