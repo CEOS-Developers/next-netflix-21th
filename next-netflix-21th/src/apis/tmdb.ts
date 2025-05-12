@@ -25,13 +25,21 @@ export const getTVByNetwork = (networkId: number) =>
     },
   });
 
-export const getMoviesByCompany = (companyId: number) =>
-  axiosInstance.get("/discover/movie", {
-    params: {
-      with_companies: companyId,
-      language: "ko-KR",
-    },
-  });
+export const getMoviesByCompany = async (companyId: number) => {
+  try {
+    const res =  await axiosInstance.get("/discover/movie", {
+      params: {
+        with_companies: companyId,
+        language: "ko-KR",
+      },
+    });
+    return res.data;
+  } catch(err) {
+    //비동기 타입 처리 해야함....
+  }
+
+}
+  
 
 //Preview
 export const getMoviePopular = () => {
@@ -46,3 +54,15 @@ export const getKoreaMovie = () => {
     params: { with_original_language: "ko", language: "ko-KR" },
   });
 };
+
+export const getTV = () => {
+  return axiosInstance.get("search/tv",{
+    params: { language: "ko-KR", include_adult: "false"},
+  })
+}
+
+export const getMovie = () => {
+  return axiosInstance.get("search/movie",{
+    params: { language: "ko-KR", include_adult: "false"},
+  })
+}
