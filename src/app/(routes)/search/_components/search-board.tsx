@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useTransition } from 'react';
 import { useInView } from 'react-intersection-observer';
 
 import SearchInput from './search-input';
@@ -25,6 +25,9 @@ export default function SearchBoard() {
   // searching
   const [keyword, setKeyword] = useState('');
   const trimmedKeyword = keyword.trim();
+
+  // concurrent rendering
+  const [isPending, startTransition] = useTransition();
 
   // intersectionObservation
   const { ref, inView } = useInView();
@@ -69,9 +72,11 @@ export default function SearchBoard() {
   };
 
   const handleSearch = (searchText = '') => {
-    setKeyword(searchText);
-    setPage(1);
-    setHasMore(true);
+    startTransition(() => {
+      setKeyword(searchText);
+      setPage(1);
+      setHasMore(true);
+    });
   };
 
   return (
@@ -83,7 +88,7 @@ export default function SearchBoard() {
         handleKeyDown={handleKeyDown}
       />
       <div className="text-headline-01 ml-2 pt-4 pb-4">Top Searches</div>
-      {isLoading && page === 1 ? (
+      {(isPending || isLoading) && page === 1 ? (
         <SearchListSkeleton />
       ) : (
         <div className="hide-scrollbar h-[631px] overflow-y-auto">
