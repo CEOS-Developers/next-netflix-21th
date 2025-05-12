@@ -2,21 +2,31 @@ import Image from "next/image";
 
 import { IMAGE_BASE_URL } from "@/constants/tmdb";
 
+import { TrendingItem } from "@/types/tmdb";
+
 import PlayIcon from "@/public/icons/search/PlayIcon.svg";
 
 interface SearchCardItemProps {
-  title: string;
-  imageUrl: string | null;
+  media: TrendingItem;
   priority?: boolean;
 }
 
-const SearchCardItem = ({ title, imageUrl, priority }: SearchCardItemProps) => {
+const SearchCardItem = ({ media, priority }: SearchCardItemProps) => {
+  const displayTitle =
+    "title" in media
+      ? media.title?.trim() || "NO TITLE"
+      : media.name?.trim() || "NO TITLE";
+
+  const posterUrl = media.poster_path
+    ? `${IMAGE_BASE_URL}w500${media.poster_path}`
+    : null;
+
   return (
     <div className="flex h-[76px] w-full cursor-pointer">
-      {imageUrl ? (
+      {posterUrl ? (
         <Image
-          src={`${IMAGE_BASE_URL}w500${imageUrl}`}
-          alt={title}
+          src={posterUrl}
+          alt={displayTitle}
           width={146}
           height={76}
           priority={priority}
@@ -27,11 +37,12 @@ const SearchCardItem = ({ title, imageUrl, priority }: SearchCardItemProps) => {
           NO IMAGE
         </div>
       )}
+
       <div className="flex w-[229px] items-center justify-between bg-gray-300 py-[23px] pr-4 pl-[19px] hover:bg-gray-400">
-        <span className="text-body2 max-w-[158px] truncate text-ellipsis text-white">
-          {title}
+        <span className="text-body2 max-w-[158px] truncate text-white">
+          {displayTitle}
         </span>
-        <PlayIcon className="h-7 w-7 cursor-pointer" />
+        <PlayIcon className="h-7 w-7" />
       </div>
     </div>
   );

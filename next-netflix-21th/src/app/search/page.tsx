@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 
 import { useInfiniteScroll } from "@/hooks/useInfiniteScroll";
 import { useSearch } from "@/hooks/useSearch";
@@ -24,12 +24,12 @@ const Search = () => {
 
   const loaderRef = useRef<HTMLDivElement | null>(null);
 
-  const handleIntersect = useCallback(() => {
+  const handleIntersect = () => {
     if (hasMore && !isLoading) {
       setPage(prev => prev + 1);
       fetchNext();
     }
-  }, [hasMore, isLoading, fetchNext]);
+  };
 
   useInfiniteScroll(
     loaderRef as React.RefObject<HTMLElement>,
@@ -41,16 +41,7 @@ const Search = () => {
   const renderedItems = useMemo(
     () =>
       items.map((item, index) => (
-        <SearchCardItem
-          key={item.id}
-          title={
-            "title" in item
-              ? item.title?.trim() || "NO TITLE"
-              : item.name?.trim() || "NO TITLE"
-          }
-          imageUrl={item.poster_path}
-          priority={index < 10}
-        />
+        <SearchCardItem key={item.id} media={item} priority={index < 10} />
       )),
     [items],
   );
