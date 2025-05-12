@@ -12,16 +12,11 @@ import SectionTitle from "@/components/home/SectionTitle";
 
 import { IMAGE_BASE_URL } from "@/constants/tmdb";
 
-interface BaseItem {
-  id: number;
-  poster_path: string | null;
-  title?: string;
-  name?: string;
-}
+import { TrendingItem } from "@/types/tmdb";
 
 interface MovieSwiperProps {
   title: string;
-  items: BaseItem[];
+  items: TrendingItem[];
   itemWidth?: string;
   itemHeight?: string;
   shape?: "rectangle" | "circle";
@@ -45,9 +40,12 @@ const MovieSwiper = ({
         loop={false}
         className="!px-3"
       >
-        {items.map(item => {
+        {items.map((item, index) => {
           const imageUrl = `${IMAGE_BASE_URL}original${item.poster_path}`;
-          const displayTitle = item.title || item.name || "제목 없음";
+          const displayTitle =
+            "title" in item
+              ? item.title || "NO TITLE"
+              : item.name || "NO TITLE";
 
           return (
             <SwiperSlide key={item.id} style={{ width: itemWidth }}>
@@ -65,7 +63,7 @@ const MovieSwiper = ({
                     fill
                     sizes={itemWidth}
                     className="pointer-events-none object-cover"
-                    priority
+                    priority={index < 3}
                   />
                 </div>
               ) : (

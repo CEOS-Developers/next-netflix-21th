@@ -34,11 +34,10 @@ export const getMoviesByCompany = (companyId: number) =>
   });
 
 //Preview
-export const getMoviePopular = () => {
-  return axiosInstance.get("/movie/popular", {
-    params: { language: "ko-KR" },
+export const getMoviePopular = (page = 1) =>
+  axiosInstance.get("/movie/popular", {
+    params: { language: "ko-KR", page },
   });
-};
 
 //Korea Movie
 export const getKoreaMovie = () => {
@@ -46,3 +45,9 @@ export const getKoreaMovie = () => {
     params: { with_original_language: "ko", language: "ko-KR" },
   });
 };
+
+//search
+export const searchMulti = (query: string, page = 1) =>
+  axiosInstance.get("/search/multi", {
+    params: { query, language: "ko-KR", page },
+  });

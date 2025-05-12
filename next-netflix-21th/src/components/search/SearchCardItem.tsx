@@ -13,7 +13,7 @@ interface SearchCardItemProps {
 const SearchCardItem = ({ title, imageUrl, priority }: SearchCardItemProps) => {
   return (
     <div className="flex h-[76px] w-full cursor-pointer">
-      {imageUrl && (
+      {imageUrl ? (
         <Image
           src={`${IMAGE_BASE_URL}w500${imageUrl}`}
           alt={title}
@@ -22,12 +22,16 @@ const SearchCardItem = ({ title, imageUrl, priority }: SearchCardItemProps) => {
           priority={priority}
           className="h-full w-[146px] shrink-0 object-cover"
         />
+      ) : (
+        <div className="text-caption2 flex h-full w-[146px] shrink-0 items-center justify-center bg-gray-400/70 text-white">
+          NO IMAGE
+        </div>
       )}
       <div className="flex w-[229px] items-center justify-between bg-gray-300 py-[23px] pr-4 pl-[19px] hover:bg-gray-400">
         <span className="text-body2 max-w-[158px] truncate text-ellipsis text-white">
           {title}
         </span>
-        <PlayIcon className="h-7 w-7" />
+        <PlayIcon className="h-7 w-7 cursor-pointer" />
       </div>
     </div>
   );

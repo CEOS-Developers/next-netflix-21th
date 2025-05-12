@@ -1,25 +1,37 @@
-import { useState } from "react";
+import { useRef } from "react";
+
+import { useDebounce } from "src/hooks/useDebounce";
 
 import CloseIcon from "@/public/icons/search/CloseIcon.svg";
 import SearchInputIcon from "@/public/icons/search/SearchInputIcon.svg";
 
 interface SearchBarProps {
+  value: string;
+  onChange: (value: string) => void;
   onSearch: (query: string) => void;
+  onClear: () => void;
 }
 
-const SearchBar = ({ onSearch }: SearchBarProps) => {
-  const [input, setInput] = useState("");
+const SearchBar = ({ value, onChange, onSearch, onClear }: SearchBarProps) => {
+  const prevInputRef = useRef("");
+
+  useDebounce(
+    () => {
+      const trimmed = value.trim();
+      if (trimmed !== prevInputRef.current) {
+        prevInputRef.current = trimmed;
+        onSearch(trimmed);
+      }
+    },
+    [value],
+    300,
+  );
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (input.trim()) {
-      onSearch(input.trim());
-    }
-  };
-
-  const handleClear = () => {
-    setInput("");
-    onSearch(""); // 검색어 초기화 시 부모도 초기화
+    const trimmed = value.trim();
+    prevInputRef.current = trimmed;
+    onSearch(trimmed);
   };
 
   return (
@@ -28,13 +40,13 @@ const SearchBar = ({ onSearch }: SearchBarProps) => {
       <form onSubmit={handleSubmit} className="flex w-full items-center">
         <input
           type="text"
-          value={input}
-          onChange={e => setInput(e.target.value)}
+          value={value}
+          onChange={e => onChange(e.target.value)}
           placeholder="Search for a show, movie, genre, etc."
           className="text-body1 mr-6 h-[31px] w-[270px] bg-transparent px-[14px] text-white placeholder-gray-100 outline-none"
         />
-        {input && (
-          <button type="button" onClick={handleClear}>
+        {value && (
+          <button type="button" onClick={onClear} className="cursor-pointer">
             <CloseIcon className="h-[15px] w-[15px]" />
           </button>
         )}

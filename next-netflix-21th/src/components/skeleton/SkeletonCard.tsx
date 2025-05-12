@@ -1,6 +1,6 @@
 import clsx from "clsx";
 
-import SectionTitle from "../home/SectionTitle";
+import SectionTitle from "@/components/home/SectionTitle";
 
 interface SkeletonCardProps {
   title: string;
