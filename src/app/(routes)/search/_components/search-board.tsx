@@ -3,20 +3,14 @@
 import { useEffect, useState, useTransition } from 'react';
 import { useInView } from 'react-intersection-observer';
 
+import type { Product } from '@models/product';
 import SearchInput from './search-input';
 import SearchList from './search-list';
 import SearchListSkeleton from './search-list-skeleton';
 
-interface Movie {
-  id: number;
-  name: string;
-  image: string;
-  type: string;
-}
-
 export default function SearchBoard() {
   // 무한 스크롤 상태 관리
-  const [movies, setMovies] = useState<Movie[]>([]);
+  const [movies, setMovies] = useState<Product[]>([]);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
 
@@ -38,7 +32,7 @@ export default function SearchBoard() {
       const url =
         trimmedKeyword.length > 0 ? `/api/search?q=${trimmedKeyword}&page=${page}` : `/api/search?page=${page}`;
       const res = await fetch(url);
-      const data: Movie[] = await res.json();
+      const data: Product[] = await res.json();
 
       if (data.length === 0) {
         setHasMore(false);
