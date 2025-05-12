@@ -52,7 +52,7 @@ const HeroSlider = () => {
     return <BannerSkeleton />;
   }
   return (
-    <div className="relative w-full h-[415px] ">
+    <div className="relative h-[415px] w-full">
       <Swiper
         spaceBetween={8}
         slidesPerView={1}
@@ -61,7 +61,7 @@ const HeroSlider = () => {
         onBeforeInit={swiper => {
           swiperRef.current = swiper;
         }}
-        className="w-full h-full"
+        className="h-full w-full"
       >
         {trendingData.map((item, index) => {
           const imageUrl = `${IMAGE_BASE_URL}original${item.poster_path}`;
@@ -69,7 +69,7 @@ const HeroSlider = () => {
 
           return (
             <SwiperSlide key={item.id}>
-              <div className="relative w-full h-full overflow-hidden">
+              <div className="relative h-full w-full overflow-hidden">
                 <Image
                   src={imageUrl}
                   alt={title}
@@ -78,16 +78,16 @@ const HeroSlider = () => {
                   priority={index < 3}
                   className="object-cover"
                 />
-                <div className="absolute bottom-0 left-0 w-full h-1/4 z-10 bg-gradient-to-t from-black to-transparent" />
+                <div className="absolute bottom-0 left-0 z-10 h-1/4 w-full bg-gradient-to-t from-black to-transparent" />
               </div>
             </SwiperSlide>
           );
         })}
       </Swiper>
 
-      <div className="absolute bottom-[-2px] left-1/2 transform -translate-x-1/2 z-20 flex items-center justify-center gap-[5px]">
-        <Top10Icon className="w-[15px] h-[15px]" />
-        <span className="subhead3 text-white h-5">
+      <div className="absolute bottom-[-2px] left-1/2 z-20 flex -translate-x-1/2 transform items-center justify-center gap-[5px]">
+        <Top10Icon className="h-[15px] w-[15px]" />
+        <span className="text-subhead3 h-5 text-white">
           #{activeIndex + 1} in Korea Today
         </span>
       </div>

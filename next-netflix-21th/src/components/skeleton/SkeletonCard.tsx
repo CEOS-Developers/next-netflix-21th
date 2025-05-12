@@ -1,5 +1,6 @@
-import SectionTitle from "../home/SectionTitle";
 import clsx from "clsx";
+
+import SectionTitle from "../home/SectionTitle";
 
 interface SkeletonCardProps {
   title: string;
@@ -17,12 +18,13 @@ const SkeletonCard = ({
   return (
     <div className="w-full max-w-[375px]">
       <SectionTitle>{title}</SectionTitle>
-      <div className="flex gap-2 px-3 overflow-x-auto scrollbar-hide">
+      <div className="scrollbar-hide flex gap-2 overflow-x-auto px-3">
         {Array.from({ length: 6 }).map((_, index) => (
           <div
             key={index}
-            className={clsx("animate-pulse bg-gray-300",
-              shape === "circle" ? "rounded-full" : "rounded-[2px]"
+            className={clsx(
+              "animate-pulse bg-gray-300",
+              shape === "circle" ? "rounded-full" : "rounded-[2px]",
             )}
             style={{
               width: itemWidth,

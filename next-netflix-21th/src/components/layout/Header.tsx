@@ -10,13 +10,13 @@ const Header = () => {
   const router = useRouter();
 
   return (
-    <div className="fixed top-6 w-[375px] h-[57px] z-10 pl-4 pr-[21px]">
-      <div className="flex items-center gap-[25.32px] w-full">
+    <div className="fixed top-6 z-10 h-[57px] w-[375px] pr-[21px] pl-4">
+      <div className="flex w-full items-center gap-[25.32px]">
         <Logo
-          className="w-[56.67px] h-[57px] cursor-pointer"
+          className="h-[57px] w-[56.67px] cursor-pointer"
           onClick={() => router.push("/home")}
         />
-        <ul className="flex flex-1 gap-[25.32px] justify-between text-[17px]">
+        <ul className="flex flex-1 justify-between gap-[25.32px] text-[17px]">
           {headerNavItems.map(({ label, path }) => (
             <li
               key={label}

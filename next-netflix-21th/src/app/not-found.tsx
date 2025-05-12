@@ -11,7 +11,7 @@ const NotFound = () => {
   const router = useRouter();
 
   return (
-    <div className="relative w-full h-screen text-white overflow-hidden">
+    <div className="relative h-screen w-full overflow-hidden text-white">
       {/* 배경 이미지 */}
       <Header />
       <Image
@@ -25,9 +25,9 @@ const NotFound = () => {
       />
 
       {/* 컨텐츠 */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 bg-overlay-100">
+      <div className="bg-overlay-100 absolute inset-0 flex flex-col items-center justify-center px-4 text-center">
         <h1
-          className="headline1 mb-[6.58px]"
+          className="text-headline1 mb-[6.58px]"
           style={{
             textShadow: `0 1px 2px var(--color-overlay-200)`,
           }}
@@ -35,7 +35,7 @@ const NotFound = () => {
           Lost your way?
         </h1>
         <p
-          className="body4 mb-[12.375px] text-white"
+          className="text-body4 mb-[12.375px] text-white"
           style={{
             textShadow: `0 1px 2px var(--color-overlay-200)`,
           }}
@@ -46,13 +46,13 @@ const NotFound = () => {
         </p>
         <button
           onClick={() => router.push("/home")}
-          className="bg-white text-black caption1 px-[13.5px] py-[4.5px] rounded hover:bg-gray-100 transition cursor-pointer"
+          className="text-caption1 cursor-pointer rounded bg-white px-[13.5px] py-[4.5px] text-black transition hover:bg-gray-100"
         >
           Netflix Home
         </button>
-        <p className="flex mt-50 caption2 text-white gap-3">
+        <p className="text-caption2 mt-50 flex gap-3 text-white">
           <span className="text-red-500">|</span>
-          Error Code <span className="caption1 text-white">NSES-404</span>
+          Error Code <span className="text-caption1 text-white">NSES-404</span>
         </p>
       </div>
     </div>

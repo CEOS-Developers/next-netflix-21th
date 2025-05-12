@@ -9,20 +9,20 @@ const IconButton = ({
   icon: React.ElementType;
   label: string;
 }) => (
-  <button className="flex flex-col justify-center items-center hover:text-gray-200 cursor-pointer">
+  <button className="flex cursor-pointer flex-col items-center justify-center hover:text-gray-200">
     <Icon className="mx-auto stroke-current" />
-    <p className="body3">{label}</p>
+    <p className="text-body3">{label}</p>
   </button>
 );
 
 const BannerOption = () => {
   return (
-    <div className="flex justify-between items-center w-[375px] h-[87px] pt-[16px] pb-[16px] px-[48px]">
+    <div className="flex h-[87px] w-[375px] items-center justify-between px-[48px] pt-[16px] pb-[16px]">
       <IconButton icon={MyListIcon} label="My List" />
 
-      <button className="w-[110px] h-[45px] bg-gray-100 rounded-[4px] flex justify-center items-center py-[12px] px-[20px] gap-[15px] hover:bg-gray-200 cursor-pointer">
+      <button className="flex h-[45px] w-[110px] cursor-pointer items-center justify-center gap-[15px] rounded-[4px] bg-gray-100 px-[20px] py-[12px] hover:bg-gray-200">
         <RightArrow />
-        <p className="subhead1 text-black">Play</p>
+        <p className="text-subhead1 text-black">Play</p>
       </button>
 
       <IconButton icon={InfoIcon} label="Info" />
