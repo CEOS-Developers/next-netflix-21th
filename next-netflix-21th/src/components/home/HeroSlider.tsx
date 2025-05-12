@@ -10,7 +10,7 @@ import { Swiper as SwiperClass } from "swiper/types";
 
 import { getTrendingAllDay } from "@/apis/tmdb";
 
-import BannerOption from "@/components/layout/BannerOption";
+import BannerOption from "@/components/home/BannerOption";
 import BannerSkeleton from "@/components/skeleton/BannerSkeleton";
 
 import { IMAGE_BASE_URL } from "@/constants/tmdb";

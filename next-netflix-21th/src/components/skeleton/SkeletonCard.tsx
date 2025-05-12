@@ -1,4 +1,5 @@
 import SectionTitle from "../home/SectionTitle";
+import clsx from "clsx";
 
 interface SkeletonCardProps {
   title: string;
@@ -20,9 +21,9 @@ const SkeletonCard = ({
         {Array.from({ length: 6 }).map((_, index) => (
           <div
             key={index}
-            className={`animate-pulse bg-gray-300 ${
+            className={clsx("animate-pulse bg-gray-300",
               shape === "circle" ? "rounded-full" : "rounded-[2px]"
-            }`}
+            )}
             style={{
               width: itemWidth,
               height: itemHeight,

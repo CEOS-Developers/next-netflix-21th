@@ -3,6 +3,7 @@
 import Image from "next/image";
 
 import React from "react";
+import clsx from 'clsx';
 
 import "swiper/css";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -52,7 +53,10 @@ const MovieSwiper = ({
             <SwiperSlide key={item.id} style={{ width: itemWidth }}>
               {item.poster_path ? (
                 <div
-                  className={`relative overflow-hidden cursor-pointer ${shape === "circle" ? "rounded-full" : "rounded-[2px]"}`}
+                className={clsx(
+                  "relative overflow-hidden cursor-pointer",
+                  shape === "circle" ? "rounded-full" : "rounded-[2px]"
+                )}
                   style={{ width: itemWidth, height: itemHeight }}
                 >
                   <Image
