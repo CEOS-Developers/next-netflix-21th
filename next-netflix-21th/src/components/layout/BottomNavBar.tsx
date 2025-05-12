@@ -10,7 +10,7 @@ const BottomNavBar = () => {
   if (pathname === "/") return null;
 
   return (
-    <nav className="fixed bottom-0 z-99 flex h-12 w-[375px] items-center bg-gray-400 pr-[29px] pl-[26px]">
+    <nav className="fixed bottom-0 z-99 flex h-12 w-[375px] items-center bg-gray-500 pr-[29px] pl-[26px]">
       {bottomNavItems.map(({ label, icon: Icon, path, spacing }) => {
         const isActive = pathname === path;
 
