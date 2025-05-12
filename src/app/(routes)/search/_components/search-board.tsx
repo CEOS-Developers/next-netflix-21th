@@ -29,8 +29,7 @@ export default function SearchBoard() {
   useEffect(() => {
     const fetchMovies = async () => {
       setIsLoading(true);
-      const url =
-        trimmedKeyword.length > 0 ? `/api/search?q=${trimmedKeyword}&page=${page}` : `/api/search?page=${page}`;
+      const url = `/api/search?q=${trimmedKeyword}&page=${page}`;
       const res = await fetch(url);
       const data: Product[] = await res.json();
 
