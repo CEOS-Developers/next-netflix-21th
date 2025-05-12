@@ -46,7 +46,7 @@ export default function SearchBoard() {
     };
 
     fetchMovies();
-  }, [page, trimmedKeyword]);
+  }, [page, keyword]);
 
   useEffect(() => {
     if (trimmedKeyword === '') {
@@ -62,19 +62,14 @@ export default function SearchBoard() {
     }
   }, [inView, hasMore]);
 
-  const handleSearch = () => {
-    setPage(1);
-    setHasMore(true);
-  };
-
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      handleSearch();
+      handleSearch(keyword);
     }
   };
 
-  const onDeleteButtonClicked = () => {
-    setKeyword('');
+  const handleSearch = (searchText = '') => {
+    setKeyword(searchText);
     setPage(1);
     setHasMore(true);
   };
@@ -84,7 +79,6 @@ export default function SearchBoard() {
       <SearchInput
         keyword={keyword}
         handleSearch={handleSearch}
-        onDeleteButtonClicked={onDeleteButtonClicked}
         setKeyword={setKeyword}
         handleKeyDown={handleKeyDown}
       />

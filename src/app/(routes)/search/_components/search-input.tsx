@@ -3,24 +3,17 @@ import DeleteIcon from '@public/icons/search/delete.svg';
 
 interface Props {
   keyword: string;
-  handleSearch: () => void;
-  onDeleteButtonClicked: () => void;
+  handleSearch: (kwText: string) => void;
   setKeyword: (kw: string) => void;
   handleKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 
-export default function SearchInput({
-  keyword,
-  handleSearch,
-  onDeleteButtonClicked,
-  setKeyword,
-  handleKeyDown,
-}: Props) {
+export default function SearchInput({ keyword, handleSearch, setKeyword, handleKeyDown }: Props) {
   const hasInput = keyword === '' ? false : true;
 
   return (
     <div className="bg-background-02 mt-11 flex h-13 w-full items-center">
-      <div className="ml-4" onClick={handleSearch}>
+      <div className="ml-4" onClick={() => handleSearch(keyword)}>
         <SearchIcon className="text-background-03" />
       </div>
       <input
@@ -30,7 +23,7 @@ export default function SearchInput({
         placeholder="search for a show, movie, genre, e.t.c."
         className="m-4 w-full placeholder-[color:var(--color-background-03)] focus:outline-none"
       />
-      <div className="mr-4" onClick={onDeleteButtonClicked}>
+      <div className="mr-4" onClick={() => handleSearch('')}>
         <DeleteIcon className={`text-background-03 ${hasInput ? 'cursor-pointer' : ''}`} />
       </div>
     </div>
