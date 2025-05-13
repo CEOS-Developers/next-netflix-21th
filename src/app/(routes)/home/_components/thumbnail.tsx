@@ -9,7 +9,7 @@ import { useProductStore } from '@store/product';
 import Image from 'next/image';
 import Link from 'next/link';
 
-interface ThumbNailProps {
+interface ThumbnailProps {
   path: string;
 }
 
@@ -18,7 +18,7 @@ interface ThumbnailData {
   index: number;
 }
 
-export default function ThumbNail({ path }: ThumbNailProps) {
+export default function Thumbnail({ path }: ThumbnailProps) {
   const { setProduct } = useProductStore();
   const [isLoading, setIsLoading] = useState(true);
   const [thumbnailData, setThumbnailData] = useState<ThumbnailData | null>(null);
