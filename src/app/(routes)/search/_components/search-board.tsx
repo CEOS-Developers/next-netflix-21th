@@ -1,31 +1,27 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useTransition } from 'react';
 import { useInView } from 'react-intersection-observer';
 
+import type { Product } from '@models/product';
 import SearchInput from './search-input';
 import SearchList from './search-list';
 import SearchListSkeleton from './search-list-skeleton';
 
-interface Movie {
-  id: number;
-  name: string;
-  image: string;
-  type: string;
-}
-
 export default function SearchBoard() {
   // 무한 스크롤 상태 관리
-  const [movies, setMovies] = useState<Movie[]>([]);
+  const [movies, setMovies] = useState<Product[]>([]);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
 
   // loading
   const [isLoading, setIsLoading] = useState(false);
   // searching
-  const [searchKeyword, setSearchKeyword] = useState(false);
   const [keyword, setKeyword] = useState('');
   const trimmedKeyword = keyword.trim();
+
+  // concurrent rendering
+  const [isPending, startTransition] = useTransition();
 
   // intersectionObservation
   const { ref, inView } = useInView();
@@ -33,10 +29,9 @@ export default function SearchBoard() {
   useEffect(() => {
     const fetchMovies = async () => {
       setIsLoading(true);
-      const url =
-        trimmedKeyword.length > 0 ? `/api/search?q=${trimmedKeyword}&page=${page}` : `/api/search?page=${page}`;
+      const url = `/api/search?q=${trimmedKeyword}&page=${page}`;
       const res = await fetch(url);
-      const data: Movie[] = await res.json();
+      const data: Product[] = await res.json();
 
       if (data.length === 0) {
         setHasMore(false);
@@ -44,17 +39,15 @@ export default function SearchBoard() {
         setMovies((prev) => (page === 1 ? data : [...prev, ...data]));
       }
       setIsLoading(false);
-      setSearchKeyword(false);
     };
 
     fetchMovies();
-  }, [page, searchKeyword]);
+  }, [page, keyword]);
 
   useEffect(() => {
     if (trimmedKeyword === '') {
       setPage(1);
       setHasMore(true);
-      setSearchKeyword(true);
     }
   }, [trimmedKeyword]);
 
@@ -65,23 +58,18 @@ export default function SearchBoard() {
     }
   }, [inView, hasMore]);
 
-  const handleSearch = () => {
-    setPage(1);
-    setHasMore(true);
-    setSearchKeyword(true);
-  };
-
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      handleSearch();
+      handleSearch(keyword);
     }
   };
 
-  const onDeleteButtonClicked = () => {
-    setKeyword('');
-    setPage(1);
-    setHasMore(true);
-    setSearchKeyword(true);
+  const handleSearch = (searchText = '') => {
+    startTransition(() => {
+      setKeyword(searchText);
+      setPage(1);
+      setHasMore(true);
+    });
   };
 
   return (
@@ -89,12 +77,11 @@ export default function SearchBoard() {
       <SearchInput
         keyword={keyword}
         handleSearch={handleSearch}
-        onDeleteButtonClicked={onDeleteButtonClicked}
         setKeyword={setKeyword}
         handleKeyDown={handleKeyDown}
       />
       <div className="text-headline-01 ml-2 pt-4 pb-4">Top Searches</div>
-      {isLoading && page === 1 ? (
+      {(isPending || isLoading) && page === 1 ? (
         <SearchListSkeleton />
       ) : (
         <div className="hide-scrollbar h-[631px] overflow-y-auto">
