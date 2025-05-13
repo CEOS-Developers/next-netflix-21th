@@ -1,8 +1,8 @@
 'use client';
 
+import LogoAnimation from '@public/animations/netflix-logo.json';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/navigation';
-import LogoAnimation from '@public/animations/netflix-logo.json';
 
 const Lottie = dynamic(() => import('lottie-react'), { ssr: false });
 

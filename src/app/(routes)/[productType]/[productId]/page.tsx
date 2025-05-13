@@ -1,4 +1,5 @@
 import type { Product } from '@models/product';
+
 import ClientDetail from './_components/client-detail';
 
 type ProductDetailProps = Promise<{

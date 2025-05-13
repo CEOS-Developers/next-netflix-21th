@@ -1,5 +1,5 @@
-import { create } from 'zustand';
 import type { Product } from '@models/product';
+import { create } from 'zustand';
 
 interface ProductStore {
   products: Record<string, Product>;

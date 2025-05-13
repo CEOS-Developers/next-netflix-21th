@@ -1,10 +1,10 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Image from 'next/image';
-import PlayIcon from '@public/icons/home/play.svg';
 import type { Product } from '@models/product';
+import PlayIcon from '@public/icons/home/play.svg';
 import { useProductStore } from '@store/product';
+import Image from 'next/image';
 
 interface ClientDetailProps {
   productType: Product['type'];

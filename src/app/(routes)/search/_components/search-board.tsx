@@ -2,8 +2,8 @@
 
 import { useEffect, useState, useTransition } from 'react';
 import { useInView } from 'react-intersection-observer';
-
 import type { Product } from '@models/product';
+
 import SearchInput from './search-input';
 import SearchList from './search-list';
 import SearchListSkeleton from './search-list-skeleton';

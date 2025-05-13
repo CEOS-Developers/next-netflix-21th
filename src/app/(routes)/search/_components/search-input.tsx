@@ -1,5 +1,5 @@
-import SearchIcon from '@public/icons/search/search.svg';
 import DeleteIcon from '@public/icons/search/delete.svg';
+import SearchIcon from '@public/icons/search/search.svg';
 
 interface Props {
   keyword: string;

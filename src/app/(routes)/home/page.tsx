@@ -1,7 +1,7 @@
-import { sectionItems } from './_constants/section-items';
 import HomeHeader from './_components/home-header';
-import ThumbNail from './_components/thumbnail';
 import ProductList from './_components/product-list';
+import ThumbNail from './_components/thumbnail';
+import { sectionItems } from './_constants/section-items';
 
 export default function Home() {
   return (

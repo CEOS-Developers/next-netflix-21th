@@ -1,7 +1,7 @@
-import { NextRequest, NextResponse } from 'next/server';
 import { tmdb } from '@app/api/_clients';
-import { ok, err, mapToProductList } from '@app/api/_utils';
+import { err, mapToProductList, ok } from '@app/api/_utils';
 import type { RawTMDB } from '@models/raw-tmdb';
+import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(request: NextRequest): Promise<NextResponse> {
   try {

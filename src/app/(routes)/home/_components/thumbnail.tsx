@@ -1,13 +1,13 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
+import type { Product } from '@models/product';
 import InformationIcon from '@public/icons/home/infomation.svg';
 import PlayIcon from '@public/icons/home/play.svg';
 import PlusIcon from '@public/icons/home/plus.svg';
-import type { Product } from '@models/product';
 import { useProductStore } from '@store/product';
+import Image from 'next/image';
+import Link from 'next/link';
 
 interface ThumbNailProps {
   path: string;

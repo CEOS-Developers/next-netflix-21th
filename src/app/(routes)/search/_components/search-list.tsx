@@ -1,7 +1,6 @@
-import Link from 'next/link';
-
 import type { Product } from '@models/product';
 import PlayIcon from '@public/icons/search/play-circle.svg';
+import Link from 'next/link';
 
 interface SearchListProps {
   data: Product[];

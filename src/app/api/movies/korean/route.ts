@@ -1,6 +1,6 @@
-import type { NextResponse } from 'next/server';
 import { tmdb } from '@app/api/_clients';
-import { ok, err, mapToProductList } from '@app/api/_utils';
+import { err, mapToProductList, ok } from '@app/api/_utils';
+import type { NextResponse } from 'next/server';
 
 export async function GET(): Promise<NextResponse> {
   try {
