@@ -27,8 +27,6 @@ const NetflixOriginal = () => {
         const combinedResults = [...movieResults, ...tvResults];
         const shuffledResults = combinedResults.sort(() => Math.random() - 0.5);
         setItems(shuffledResults);
-      } catch (error) {
-        console.error("넷플릭스 오리지널 데이터 로딩 실패:", error);
       } finally {
         setLoading(false);
       }

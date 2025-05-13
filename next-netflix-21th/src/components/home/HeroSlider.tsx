@@ -30,8 +30,6 @@ const HeroSlider = () => {
       try {
         const response = await getTrendingAllDay();
         setTrendingData(response.results.slice(0, 10));
-      } catch (error) {
-        console.error("데이터를 불러오는 중 오류 발생:", error);
       } finally {
         setLoading(false);
       }
