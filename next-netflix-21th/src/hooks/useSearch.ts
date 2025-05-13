@@ -63,7 +63,7 @@ export const useSearch = () => {
 
   const handleSearch = useCallback(
     (input: string) => {
-      const trimmed = input.trim();
+      const trimmed = input.trim().replace(/\s+/g, " ");
       setQuery(trimmed);
       setPage(1);
       setItems([]);
