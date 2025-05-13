@@ -21,8 +21,8 @@ const NetflixOriginal = () => {
         const movieRes = await getMoviesByCompany(NETFLIX_ID);
         const tvRes = await getTVByNetwork(NETFLIX_ID);
 
-        const movieResults = movieRes.data.results;
-        const tvResults = tvRes.data.results;
+        const movieResults = movieRes.results;
+        const tvResults = tvRes.results;
 
         const combinedResults = [...movieResults, ...tvResults];
         const shuffledResults = combinedResults.sort(() => Math.random() - 0.5);

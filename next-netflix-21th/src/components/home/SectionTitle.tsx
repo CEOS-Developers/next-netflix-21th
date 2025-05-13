@@ -1,5 +1,5 @@
 const SectionTitle = ({ children }: { children: React.ReactNode }) => (
-  <div className="headline3 text-white mb-[14px] ml-4">{children}</div>
+  <div className="text-headline3 mb-[14px] ml-4 text-white">{children}</div>
 );
 
 export default SectionTitle;

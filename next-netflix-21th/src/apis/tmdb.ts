@@ -1,29 +1,48 @@
 import { axiosInstance } from "./axios";
 
 //HeroSlider
-export const getTrendingAllDay = () =>
-  axiosInstance.get("/trending/all/day", {
-    params: { language: "ko-KR" },
-  });
+export const getTrendingAllDay = async()=>{
+  try{
+    const res = await axiosInstance.get("/trending/all/day",{
+      params: {language:"ko-KR"},
+    });
+    return res.data;
+}catch(err){
+  console.error("HeroSlider data error")
+  return {results:[]};
+}};
 
 //장르별 영화
-export const getMoviesByGenre = (genreIds: string) =>
-  axiosInstance.get("/discover/movie", {
-    params: {
-      with_genres: genreIds,
-      sort_by: "popularity.desc",
-      language: "ko-KR",
-    },
-  });
+export const getMoviesByGenre = async(genreIds: string) =>{
+  try{
+    const res = await axiosInstance.get("/discover/movie",{
+      params:{
+        with_genres: genreIds,
+        sort_by: "popularity.desc",
+        language: "ko-KR",
+      }
+    });  return res.data;
+  }catch(err){
+    console.log("getMoviesByGenere data error")
+    return { results: [] };
+  }
+}
 
 //넷플릭스 오리지널
-export const getTVByNetwork = (networkId: number) =>
-  axiosInstance.get("/discover/tv", {
-    params: {
-      with_networks: networkId,
-      language: "ko-KR",
-    },
-  });
+export const getTVByNetwork = async (networkId: number) => {
+  try {
+    const res = await axiosInstance.get("/discover/tv", {
+      params: {
+        with_networks: networkId,
+        language: "ko-KR",
+      },
+    });
+    return res.data;
+  } catch (err) {
+    console.error("getTVByNetwork data error")
+    return { results: [] };
+  }
+};
 
 export const getMoviesByCompany = async (companyId: number) => {
   try {
@@ -35,34 +54,42 @@ export const getMoviesByCompany = async (companyId: number) => {
     });
     return res.data;
   } catch(err) {
-    //비동기 타입 처리 해야함....
+    console.error("getMoviesByCompany data error")
+    return { results: [] };
   }
-
 }
   
 
 //Preview
-export const getMoviePopular = () => {
-  return axiosInstance.get("/movie/popular", {
-    params: { language: "ko-KR" },
-  });
-};
-
-//Korea Movie
-export const getKoreaMovie = () => {
-  return axiosInstance.get("/discover/movie", {
-    params: { with_original_language: "ko", language: "ko-KR" },
-  });
-};
-
-export const getTV = () => {
-  return axiosInstance.get("search/tv",{
-    params: { language: "ko-KR", include_adult: "false"},
-  })
+export const getMoviePopular = async(page: number=1) =>{
+  try{
+    const res = await axiosInstance.get("movie/popular",{
+      params:{language: "ko-KR", page},
+    }); return res.data;
+  }catch(err){
+    console.log("preview data error")
+    return { results: [] };
+  }
 }
 
-export const getMovie = () => {
-  return axiosInstance.get("search/movie",{
-    params: { language: "ko-KR", include_adult: "false"},
-  })
+//Korea Movie
+export const getKoreaMovie = async() => {
+  try {const res = await axiosInstance.get("/discover/movie",{
+    params:{ with_original_language: "ko", language: "ko-KR" },
+    });  return res.data;
+  }catch(err){
+    console.log("getKoreaMovie data error")
+    return{results:[]};
+  }
+}
+
+//search
+export const searchMulti = async(query:string, page: number = 1) =>{
+  try{const res =  await axiosInstance.get("/search/multi",{
+    params:{query, language: "ko-KR", page, include_adult: "false"},
+  }); return res.data;
+  }catch(err){
+    console.log("searchMulti data error")
+    return{results:[]};
+  }
 }
