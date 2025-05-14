@@ -1,6 +1,7 @@
 'use client';
 
-import { useEffect, useState, useTransition } from 'react';
+import { useEffect, useState } from 'react';
+import { useInfiniteQuery, type QueryFunctionContext } from '@tanstack/react-query';
 import { useInView } from 'react-intersection-observer';
 import type { Product } from '@models/product';
 
@@ -9,54 +10,42 @@ import SearchList from './search-list';
 import SearchListSkeleton from './search-list-skeleton';
 
 export default function SearchBoard() {
-  // 무한 스크롤 상태 관리
-  const [movies, setMovies] = useState<Product[]>([]);
-  const [page, setPage] = useState(1);
-  const [hasMore, setHasMore] = useState(true);
-
-  // loading
-  const [isLoading, setIsLoading] = useState(false);
-  // searching
+  // keyword
   const [keyword, setKeyword] = useState('');
   const trimmedKeyword = keyword.trim();
 
-  // concurrent rendering
-  const [isPending, startTransition] = useTransition();
-
-  // intersectionObservation
+  // 무한스크롤 감지용 intersectionObservation
   const { ref, inView } = useInView();
 
+  // default page == 1, queryKey를 받아와서 query로 사용
+  const fetchMovies = async ({ pageParam = 1, queryKey }: QueryFunctionContext<readonly unknown[]>) => {
+    const keyword = queryKey[0];
+    const url = `/api/search?q=${keyword}&page=${pageParam}`;
+    const res = await fetch(url);
+    if (!res.ok) throw new Error('Failed to fetch');
+    const data: Product[] = await res.json();
+    return data;
+  };
+
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, isPending } = useInfiniteQuery<
+    Product[],
+    Error
+  >({
+    queryKey: [trimmedKeyword],
+    queryFn: fetchMovies,
+    getNextPageParam: (lastPage, allPages) => {
+      return lastPage.length > 0 ? allPages.length + 1 : undefined;
+    },
+    initialPageParam: 1,
+  });
+
+  const movies = data?.pages.flat() ?? [];
+
   useEffect(() => {
-    const fetchMovies = async () => {
-      setIsLoading(true);
-      const url = `/api/search?q=${trimmedKeyword}&page=${page}`;
-      const res = await fetch(url);
-      const data: Product[] = await res.json();
-
-      if (data.length === 0) {
-        setHasMore(false);
-      } else {
-        setMovies((prev) => (page === 1 ? data : [...prev, ...data]));
-      }
-      setIsLoading(false);
-    };
-
-    fetchMovies();
-  }, [page, keyword]);
-
-  useEffect(() => {
-    if (trimmedKeyword === '') {
-      setPage(1);
-      setHasMore(true);
+    if (inView && hasNextPage && !isFetchingNextPage) {
+      fetchNextPage();
     }
-  }, [trimmedKeyword]);
-
-  useEffect(() => {
-    console.log(inView);
-    if (inView && hasMore && !isLoading) {
-      setPage((prev) => prev + 1);
-    }
-  }, [inView, hasMore]);
+  }, [inView, hasNextPage, isFetchingNextPage, fetchNextPage]);
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
@@ -65,11 +54,7 @@ export default function SearchBoard() {
   };
 
   const handleSearch = (searchText = '') => {
-    startTransition(() => {
-      setKeyword(searchText);
-      setPage(1);
-      setHasMore(true);
-    });
+    setKeyword(searchText);
   };
 
   return (
@@ -81,14 +66,12 @@ export default function SearchBoard() {
         handleKeyDown={handleKeyDown}
       />
       <div className="text-headline-01 ml-2 pt-4 pb-4">Top Searches</div>
-      {(isPending || isLoading) && page === 1 ? (
+      {isPending || isLoading ? (
         <SearchListSkeleton />
       ) : (
         <div className="hide-scrollbar h-[631px] overflow-y-auto">
           <SearchList data={movies} />
-          <div ref={ref}>
-            {hasMore && <SearchListSkeleton />} {/* 추가 로딩용 */}
-          </div>
+          <div ref={ref}>{hasNextPage && <SearchListSkeleton />}</div>
         </div>
       )}
     </div>
