@@ -12,7 +12,7 @@ export default function SearchList({ data }: SearchListProps) {
     <div>
       {data.map((product: Product, index: number) => (
         <li
-          key={product.id + index}
+          key={`${product.id}-${index}`}
           className="bg-background-02 mb-1 flex w-full items-center justify-between rounded-sm transition-transform duration-200 hover:scale-102"
         >
           <div className="flex items-center">
