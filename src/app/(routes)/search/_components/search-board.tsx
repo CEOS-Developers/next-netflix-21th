@@ -17,6 +17,7 @@ export default function SearchBoard() {
   // 무한스크롤 감지용 intersectionObservation
   const { ref, inView } = useInView();
 
+  // default page == 1, queryKey를 받아와서 query로 사용
   const fetchMovies = async ({ pageParam = 1, queryKey }: QueryFunctionContext<readonly unknown[]>) => {
     const keyword = queryKey[0];
     const url = `/api/search?q=${keyword}&page=${pageParam}`;
@@ -39,10 +40,8 @@ export default function SearchBoard() {
   });
 
   const movies = data?.pages.flat() ?? [];
-  console.log(`movies: ${movies}`);
 
   useEffect(() => {
-    console.log(inView);
     if (inView && hasNextPage && !isFetchingNextPage) {
       fetchNextPage();
     }
