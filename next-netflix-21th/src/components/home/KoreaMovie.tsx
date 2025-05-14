@@ -15,12 +15,9 @@ const KoreaMovie = () => {
 
   useEffect(() => {
     const fetchMovies = async () => {
-      try {
         const response = await getKoreaMovie();
         setMovies(response.results);
-      } finally {
         setLoading(false);
-      }
     };
 
     fetchMovies();

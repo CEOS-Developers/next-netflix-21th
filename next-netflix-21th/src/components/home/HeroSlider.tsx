@@ -27,12 +27,9 @@ const HeroSlider = () => {
 
   useEffect(() => {
     const fetchTrending = async () => {
-      try {
         const response = await getTrendingAllDay();
         setTrendingData(response.results.slice(0, 10));
-      } finally {
         setLoading(false);
-      }
     };
     fetchTrending();
   }, []);

@@ -15,12 +15,9 @@ const Preview = () => {
 
   useEffect(() => {
     const fetchMovies = async () => {
-      try {
         const response = await getMoviePopular(1);
         setMovies(response.results);
-      } finally {
         setLoading(false);
-      }
     };
     fetchMovies();
   }, []);

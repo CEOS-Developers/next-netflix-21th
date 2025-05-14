@@ -14,12 +14,9 @@ const GenrePreview = () => {
 
   useEffect(() => {
     const fetchMovies = async () => {
-      try {
-        const res = await getMoviesByGenre("28,35");
-        setMovies(res.results);
-      } finally {
-        setLoading(false);
-      }
+      const res = await getMoviesByGenre("28,35");
+      setMovies(res.results);
+      setLoading(false);
     };
 
     fetchMovies();

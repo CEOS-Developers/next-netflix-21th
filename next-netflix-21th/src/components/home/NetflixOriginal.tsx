@@ -17,7 +17,6 @@ const NetflixOriginal = () => {
 
   useEffect(() => {
     const fetchNetflixOriginals = async () => {
-      try {
         const movieRes = await getMoviesByCompany(NETFLIX_ID);
         const tvRes = await getTVByNetwork(NETFLIX_ID);
 
@@ -27,9 +26,7 @@ const NetflixOriginal = () => {
         const combinedResults = [...movieResults, ...tvResults];
         const shuffledResults = combinedResults.sort(() => Math.random() - 0.5);
         setItems(shuffledResults);
-      } finally {
         setLoading(false);
-      }
     };
 
     fetchNetflixOriginals();
