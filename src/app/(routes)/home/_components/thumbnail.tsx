@@ -62,7 +62,7 @@ export default function Thumbnail({ path }: ThumbnailProps) {
           <PlusIcon className="text-grayscale-02-white h-6 w-6" />
           <span className="text-body-03 text-grayscale-02-white">My List</span>
         </div>
-        <div className="bg-background-03 hover:bg-background-03-hr flex h-[45px] w-[110.63px] items-center justify-between rounded-[5.63px] pt-2 pr-[19.63px] pb-[7px] pl-[19px]">
+        <div className="bg-background-03 hover:bg-background-03-hr flex h-[45px] w-[110.63px] cursor-pointer items-center justify-between rounded-[5.63px] pt-2 pr-[19.63px] pb-[7px] pl-[19px]">
           <PlayIcon className="text-grayscale-00-black h-[21.6px] w-[18px]" />
           <span className="text-subhead-01 text-grayscale-00-black">Play</span>
         </div>
