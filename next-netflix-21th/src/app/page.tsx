@@ -26,15 +26,15 @@ const Landing = () => {
   };
 
   return (
-    <div className="flex justify-center items-center w-full h-screen bg-black relative">
+    <div className="relative flex h-screen w-full items-center justify-center bg-black">
       {!started && (
         <div
-          className="absolute inset-0 flex justify-center items-center z-10 cursor-pointer"
+          className="absolute inset-0 z-10 flex cursor-pointer items-center justify-center"
           onClick={handleStart}
         >
           <Logo
             width={300}
-            className="cursor-pointer transform hover:scale-110 transition-transform duration-300 ease-in-out"
+            className="transform cursor-pointer transition-transform duration-300 ease-in-out hover:scale-110"
           />
         </div>
       )}
@@ -43,7 +43,7 @@ const Landing = () => {
         animationData={LandingLottie}
         play={started}
         speed={1.25}
-        className="w-full h-full"
+        className="h-full w-full"
         onComplete={handleAnimationComplete}
       />
       <audio src="/sounds/NetflixIntroSound.mp3" ref={audioRef} />

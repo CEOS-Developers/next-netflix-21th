@@ -29,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="flex justify-center bg-black text-white">
-        <div className="w-[375px] h-screen relative">
+        <div className="relative h-screen w-[375px]">
           {children}
           <BottomNavBar />
         </div>

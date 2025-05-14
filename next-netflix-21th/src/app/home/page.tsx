@@ -7,7 +7,7 @@ import Header from "@/components/layout/Header";
 
 const Home = () => {
   return (
-    <main className="scrollbar-hide overflow-auto h-screen relative w-full pb-20">
+    <main className="scrollbar-hide relative h-screen w-full overflow-auto pb-20 focus:outline-none">
       <Header />
       <HeroSlider />
       <div className="flex flex-col gap-[22px] pt-[101px]">
