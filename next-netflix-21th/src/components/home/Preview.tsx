@@ -15,14 +15,9 @@ const Preview = () => {
 
   useEffect(() => {
     const fetchMovies = async () => {
-      try {
-        const response = await getMoviePopular();
-        setMovies(response.data.results);
-      } catch (error) {
-        console.error("영화 데이터를 불러오는 중 오류 발생:", error);
-      } finally {
+        const response = await getMoviePopular(1);
+        setMovies(response.results);
         setLoading(false);
-      }
     };
     fetchMovies();
   }, []);

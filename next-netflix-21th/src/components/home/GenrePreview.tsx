@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-
 import { getMoviesByGenre } from "@/apis/tmdb";
 
 import MovieSwiper from "@/components/home/MovieSwiper";
@@ -15,14 +14,9 @@ const GenrePreview = () => {
 
   useEffect(() => {
     const fetchMovies = async () => {
-      try {
-        const res = await getMoviesByGenre("28,35");
-        setMovies(res.data.results);
-      } catch (error) {
-        console.error("데이터를 불러오는 중 오류 발생:", error);
-      } finally {
-        setLoading(false);
-      }
+      const res = await getMoviesByGenre("28,35");
+      setMovies(res.results);
+      setLoading(false);
     };
 
     fetchMovies();

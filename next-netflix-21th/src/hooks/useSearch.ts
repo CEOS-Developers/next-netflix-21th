@@ -18,7 +18,7 @@ export const useSearch = () => {
     setIsLoading(true);
     try {
       const res = await getMoviePopular(pageNum);
-      const { results, total_pages }: TMDBListResponse<Movie> = res.data;
+      const { results, total_pages }: TMDBListResponse<Movie> = res;
 
       setItems(prev => {
         const existingIds = new Set(prev.map(item => item.id));
@@ -44,7 +44,7 @@ export const useSearch = () => {
           results,
           total_pages,
           page,
-        }: TMDBListResponse<TrendingItem | { media_type: "person" }> = res.data;
+        }: TMDBListResponse<TrendingItem | { media_type: "person" }> = res;
 
         const filtered = results.filter(
           item => item.media_type === "movie" || item.media_type === "tv",
