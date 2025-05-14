@@ -32,21 +32,14 @@ export default function ProductList({ title, path, option }: ProductListProps) {
     <section className={`ml-3 flex flex-col gap-[14px] ${paddingClass}`}>
       <span className="text-headline-02 text-grayscale-02-white ml-1">{title}</span>
       <div className={`hide-scrollbar flex ${gapClass} overflow-x-auto pr-3`}>
-        {items.map((item, index) => {
+        {items.map((item) => {
           return item.name && item.image ? (
             <Link
               key={`${item.type}-${item.id}`}
               href={`/${item.type}/${item.id}`}
               className={`relative ${heightClass} ${widthClass} flex-shrink-0 transition-transform duration-200 hover:scale-105`}
             >
-              <Image
-                src={item.image}
-                alt={item.name}
-                fill
-                sizes={sizes}
-                className={`${roundedClass} object-cover`}
-                priority={index === 0} // LCP
-              />
+              <Image src={item.image} alt={item.name} fill sizes={sizes} className={`${roundedClass} object-cover`} />
             </Link>
           ) : null;
         })}
