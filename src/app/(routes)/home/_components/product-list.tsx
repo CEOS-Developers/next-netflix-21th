@@ -1,8 +1,7 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import type { Product } from '@models/product';
-import { useProductStore } from '@store/product';
+import { useSuspenseQuery } from '@tanstack/react-query';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -13,18 +12,10 @@ interface ProductListProps {
 }
 
 export default function ProductList({ title, path, option }: ProductListProps) {
-  const { setProduct } = useProductStore();
-  const [items, setItems] = useState<Product[]>([]);
-
-  useEffect(() => {
-    fetch(path)
-      .then((res) => res.json())
-      .then((products: Product[]) => {
-        products.forEach(setProduct);
-        setItems(products);
-      })
-      .catch(console.error);
-  }, [path, setProduct]);
+  const { data: items = [] } = useSuspenseQuery<Product[]>({
+    queryKey: ['tmdb', path],
+    queryFn: async () => (await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}${path}`)).json(),
+  });
 
   const isPreview = option === 'previews';
   const isNetflixOriginal = option === 'netflix-originals';
@@ -42,25 +33,22 @@ export default function ProductList({ title, path, option }: ProductListProps) {
       <span className="text-headline-02 text-grayscale-02-white ml-1">{title}</span>
       <div className={`hide-scrollbar flex ${gapClass} overflow-x-auto pr-3`}>
         {items.map((item, index) => {
-          return (
-            item.name &&
-            item.image && (
-              <Link
-                key={`${item.type}-${item.id}`}
-                href={`/${item.type}/${item.id}`}
-                className={`relative ${heightClass} ${widthClass} flex-shrink-0 transition-transform duration-200 hover:scale-105`}
-              >
-                <Image
-                  src={item.image}
-                  alt={item.name}
-                  fill
-                  sizes={sizes}
-                  className={`${roundedClass} object-cover`}
-                  priority={index === 0} // LCP
-                />
-              </Link>
-            )
-          );
+          return item.name && item.image ? (
+            <Link
+              key={`${item.type}-${item.id}`}
+              href={`/${item.type}/${item.id}`}
+              className={`relative ${heightClass} ${widthClass} flex-shrink-0 transition-transform duration-200 hover:scale-105`}
+            >
+              <Image
+                src={item.image}
+                alt={item.name}
+                fill
+                sizes={sizes}
+                className={`${roundedClass} object-cover`}
+                priority={index === 0} // LCP
+              />
+            </Link>
+          ) : null;
         })}
       </div>
     </section>

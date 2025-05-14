@@ -1,11 +1,10 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import type { Product } from '@models/product';
 import InformationIcon from '@public/icons/home/infomation.svg';
 import PlayIcon from '@public/icons/home/play.svg';
 import PlusIcon from '@public/icons/home/plus.svg';
-import { useProductStore } from '@store/product';
+import { useSuspenseQuery } from '@tanstack/react-query';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -19,24 +18,12 @@ interface ThumbnailData {
 }
 
 export default function Thumbnail({ path }: ThumbnailProps) {
-  const { setProduct } = useProductStore();
-  const [isLoading, setIsLoading] = useState(true);
-  const [thumbnailData, setThumbnailData] = useState<ThumbnailData | null>(null);
+  const { data } = useSuspenseQuery<ThumbnailData>({
+    queryKey: ['tmdb', path],
+    queryFn: async () => (await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}${path}`)).json(),
+  });
 
-  useEffect(() => {
-    fetch(path)
-      .then((res) => res.json())
-      .then((data: ThumbnailData) => {
-        setProduct(data.product);
-        setThumbnailData(data);
-        setIsLoading(false);
-      })
-      .catch(console.error);
-  }, [path, setProduct]);
-
-  if (isLoading || !thumbnailData) return null;
-
-  const { product: item, index } = thumbnailData;
+  const { product: item, index } = data;
 
   return (
     <section className="overflow-x-hidden">

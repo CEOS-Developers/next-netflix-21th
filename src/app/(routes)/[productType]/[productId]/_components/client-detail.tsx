@@ -1,9 +1,8 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import type { Product } from '@models/product';
 import PlayIcon from '@public/icons/home/play.svg';
-import { useProductStore } from '@store/product';
+import { useSuspenseQuery } from '@tanstack/react-query';
 import Image from 'next/image';
 
 interface ClientDetailProps {
@@ -12,27 +11,11 @@ interface ClientDetailProps {
 }
 
 export default function ClientDetail({ productType, productId }: ClientDetailProps) {
-  const { getProduct, setProduct } = useProductStore();
-  const [isLoading, setIsLoading] = useState(true);
-
-  const item = getProduct(productType, productId);
-
-  useEffect(() => {
-    if (item) {
-      setIsLoading(false);
-      return;
-    }
-
-    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/${productType}/${productId}`)
-      .then((res) => res.json())
-      .then((product) => {
-        setProduct(product);
-        setIsLoading(false);
-      })
-      .catch(console.error);
-  }, [productType, productId, item, setProduct]);
-
-  if (isLoading || !item) return null;
+  const path = `/api/${productType}/${productId}`;
+  const { data: item } = useSuspenseQuery<Product>({
+    queryKey: ['tmdb', `${process.env.NEXT_PUBLIC_BASE_URL}${path}`],
+    queryFn: async () => (await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}${path}`)).json(),
+  });
 
   return (
     <section className="hide-scrollbar h-full overflow-x-hidden overflow-y-auto pb-[85px]">
