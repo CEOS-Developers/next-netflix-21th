@@ -22,6 +22,8 @@ export interface TV extends BaseMedia {
 
 export type TrendingItem = Movie | TV;
 
+export type DetailItem = Movie | TV;
+
 export interface TMDBListResponse<T> {
   page: number;
   results: T[];

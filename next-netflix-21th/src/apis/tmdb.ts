@@ -93,3 +93,14 @@ export const searchMulti = async(query:string, page: number = 1) =>{
     return{results:[]};
   }
 }
+
+//overviewMovie
+export const getDetail = async(media_type: string, id: string) => {
+  try{const res= await axiosInstance.get(`/${media_type}/${id}`,{
+    params:{language:"ko-KR"}
+  }); return res.data;
+  }catch(err){
+    console.log("getDetail data error")
+    return null;
+  }
+}
