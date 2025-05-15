@@ -62,7 +62,6 @@ const HeroSlider = () => {
         {trendingData.map((item, index) => {
           const imageUrl = `${IMAGE_BASE_URL}original${item.poster_path}`;
           const title = "title" in item ? item.title : item.name;
-          console.log("배너", item)
           return (
             <SwiperSlide key={item.id}>
               <Link href={`/detail/${item.media_type}/${item.id}`}>
