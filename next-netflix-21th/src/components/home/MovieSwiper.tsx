@@ -13,6 +13,7 @@ import SectionTitle from "@/components/home/SectionTitle";
 import { IMAGE_BASE_URL } from "@/constants/tmdb";
 
 import { TrendingItem } from "@/types/tmdb";
+import Link from "next/link";
 
 interface MovieSwiperProps {
   title: string;
@@ -47,28 +48,33 @@ const MovieSwiper = ({
               ? item.title || "NO TITLE"
               : item.name || "NO TITLE";
 
+          const mediaType = "title" in item ? "movie" : "tv"
           return (
             <SwiperSlide key={item.id} style={{ width: itemWidth }}>
-              {item.poster_path ? (
-                <div
-                  className={clsx(
-                    "relative cursor-pointer overflow-hidden",
-                    shape === "circle" ? "rounded-full" : "rounded-[2px]",
-                  )}
-                  style={{ width: itemWidth, height: itemHeight }}
-                >
-                  <Image
-                    src={imageUrl}
-                    alt={displayTitle}
-                    fill
-                    sizes={itemWidth}
-                    className="pointer-events-none object-cover"
-                    priority={index < 3}
-                  />
-                </div>
-              ) : (
-                <div className="text-caption1 text-white">이미지 없음</div>
-              )}
+              <Link href={`/detail/${mediaType}/${item.id}`}>
+                {item.poster_path ? (
+                  <div
+                    className={clsx(
+                      "relative cursor-pointer overflow-hidden",
+                      shape === "circle" ? "rounded-full" : "rounded-[2px]",
+                    )}
+                    style={{ width: itemWidth, height: itemHeight }}
+                  >
+                      <Image
+                        src={imageUrl}
+                        alt={displayTitle}
+                        fill
+                        sizes={itemWidth}
+                        className="pointer-events-none object-cover"
+                        priority={index < 3}
+                      />
+
+                  </div>
+                ) : (
+                  <div className="text-caption1 text-white">이미지 없음</div>
+                )}
+              </Link>
+
             </SwiperSlide>
           );
         })}

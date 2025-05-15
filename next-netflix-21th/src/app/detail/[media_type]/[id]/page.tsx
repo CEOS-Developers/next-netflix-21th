@@ -7,6 +7,7 @@ import { useParams } from "next/navigation";
 import { IMAGE_BASE_URL } from "@/constants/tmdb";
 import Image from "next/image";
 import RightArrow from "@/public/icons/home/rightArrow.svg"
+import BannerSkeleton from "@/components/skeleton/BannerSkeleton";
 
 const ProgramsDetail = () => {
   const [detail, setDetail] = useState<DetailItem | null>(null);
@@ -25,7 +26,7 @@ const ProgramsDetail = () => {
   }, [params.id, params.media_type]);
 
   if (loading || !detail) {
-    return <div>Loading...</div>;
+    return  <BannerSkeleton />;
   }
 
   const imageUrl = `${IMAGE_BASE_URL}original${detail.poster_path}`;

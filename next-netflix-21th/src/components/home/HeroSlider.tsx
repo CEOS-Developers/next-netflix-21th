@@ -18,6 +18,7 @@ import { IMAGE_BASE_URL } from "@/constants/tmdb";
 import { TrendingItem } from "@/types/tmdb";
 
 import Top10Icon from "@/public/icons/home/Top10Icon.svg";
+import Link from "next/link";
 
 const HeroSlider = () => {
   const [trendingData, setTrendingData] = useState<TrendingItem[]>([]);
@@ -61,20 +62,23 @@ const HeroSlider = () => {
         {trendingData.map((item, index) => {
           const imageUrl = `${IMAGE_BASE_URL}original${item.poster_path}`;
           const title = "title" in item ? item.title : item.name;
-
+          console.log("배너", item)
           return (
             <SwiperSlide key={item.id}>
-              <div className="relative h-full w-full overflow-hidden">
-                <Image
-                  src={imageUrl}
-                  alt={title}
-                  fill
-                  sizes="375px"
-                  priority={index < 3}
-                  className="object-cover"
-                />
-                <div className="absolute bottom-0 left-0 z-10 h-1/4 w-full bg-gradient-to-t from-black to-transparent" />
-              </div>
+              <Link href={`/detail/${item.media_type}/${item.id}`}>
+                <div className="relative h-full w-full overflow-hidden">
+                    <Image
+                      src={imageUrl}
+                      alt={title}
+                      fill
+                      sizes="375px"
+                      priority={index < 3}
+                      className="object-cover"
+                    />
+                  <div className="absolute bottom-0 left-0 z-10 h-1/4 w-full bg-gradient-to-t from-black to-transparent" />
+                </div>
+              </Link>
+
             </SwiperSlide>
           );
         })}
