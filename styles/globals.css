@@ -21,8 +21,6 @@
 	--text-20: 20px;
 	--text-24: 24px;
 	--text-28: 28px;
-
-	--mobile-width: 375px;
 }
 
 @layer utilities {
@@ -60,13 +58,6 @@
 
 	.caption {
 		@apply font-netflix-sans text-10 font-normal leading-normal;
-	}
-
-	.poster-backdrop {
-		background:
-			linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%),
-			linear-gradient(180deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0) 87.26%, #000 100%),
-			var(--color-gray-200) 50% / cover no-repeat;
 	}
 
 	.swiper-wrapper {
