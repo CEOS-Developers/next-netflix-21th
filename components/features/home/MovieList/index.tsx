@@ -12,7 +12,12 @@ export default async function MovieList() {
 		<div className="flex flex-col gap-5 pb-21">
 			<PreviewList />
 			{responses.map((response, i) => (
-				<CategorizedMovieList key={i} category={categoryEndpointMap[i].category} movies={response?.results ?? null} />
+				<CategorizedMovieList
+					key={i}
+					category={categoryEndpointMap[i].category}
+					movies={response?.results ?? null}
+					type={categoryEndpointMap[i].type}
+				/>
 			))}
 		</div>
 	);
