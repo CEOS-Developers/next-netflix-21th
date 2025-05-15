@@ -19,8 +19,8 @@ export default async function Page({ params }: { params: Promise<{ type: 'tv' | 
 		<div>
 			<div
 				className="relative w-full aspect-5/7
-          before:content-[''] before:absolute before:left-0 before:top-0 before:right-0 before:bottom-0
-          before:z-10 before:bg-linear-(--movie-bg-gradient)"
+					before:content-[''] before:absolute before:left-0 before:top-0 before:right-0 before:bottom-0
+					before:z-10 before:bg-linear-(--movie-bg-gradient)"
 			>
 				<Image
 					className="object-cover"
