@@ -1,9 +1,9 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useInfiniteQuery, type QueryFunctionContext } from '@tanstack/react-query';
 import { useInView } from 'react-intersection-observer';
 import type { Product } from '@models/product';
+import { type QueryFunctionContext, useInfiniteQuery } from '@tanstack/react-query';
 
 import SearchInput from './search-input';
 import SearchList from './search-list';
