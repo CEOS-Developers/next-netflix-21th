@@ -1,4 +1,4 @@
-import HeaderNavigation from "./header-navigation";
+import HeaderNavigation from "./_components/header-navigation";
 
 export default function HomeLayout({
   children,

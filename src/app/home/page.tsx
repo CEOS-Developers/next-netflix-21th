@@ -1,10 +1,10 @@
 import Image from "next/image";
 import { fetchMovies } from "@/lib/tmdb";
 import { API_URLS } from "@/lib/apiUrls";
-import BannerDescription from "./banner-description";
-import BannerOptions from "./banner-options";
-import Previews from "./previews";
-import Movies from "./movies";
+import BannerDescription from "./_components/banner-description";
+import BannerOptions from "./_components/banner-options";
+import Previews from "./_components/previews";
+import Movies from "./_components/movies";
 import Link from "next/link";
 
 export default async function HomePage() {
