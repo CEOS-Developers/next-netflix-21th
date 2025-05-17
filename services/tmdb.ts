@@ -1,5 +1,5 @@
 import { fetcher } from '@/lib/fetcher';
-import { TMDBResponse } from '@/types/movie.types';
+import { MovieDetail, TMDBResponse, TVDetail } from '@/types/movie.types';
 
 export const getTrendingMovies = async () => {
 	try {
@@ -20,6 +20,16 @@ export async function getMoviesApi(endpoint: string): Promise<TMDBResponse | nul
 		return movieData;
 	} catch (error) {
 		console.error('Error fetching movie data:', error);
+		return null;
+	}
+}
+
+export async function getDetail(endpoint: string): Promise<MovieDetail | TVDetail | null> {
+	try {
+		const detailData = await fetcher(endpoint);
+		return detailData;
+	} catch (error) {
+		console.error('Error fetching detail data:', error);
 		return null;
 	}
 }
