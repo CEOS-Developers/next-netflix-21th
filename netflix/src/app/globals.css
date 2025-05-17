@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: Pretendard;
+  font-display: block;
+  src: url("../assets/font/PretendardVariable.woff2") format("woff2");
+}
+
+:root {
+  --background: #000000;
+  --foreground: #ffffff;
+}
+
+@theme {
+  --font-pretendard: "Pretendard", sans-serif;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+@layer base {
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: Pretendard, Arial, Helvetica, sans-serif;
+  }
+}
+
+@layer components {
+  body {
+    @apply font-pretendard box-border flex justify-center;
+  }
+
+  *:focus {
+    outline: none;
+  }
+
+  li {
+    list-style-type: none;
+  }
+
+  .h1 {
+    @apply text-[1.6718rem] leading-5 font-bold tracking-[-0.0046rem];
+  }
+
+  .h2 {
+    @apply text-[1.3076rem] leading-[.9777rem] font-bold tracking-[-0.0036rem];
+  }
+  .s1 {
+    @apply text-[1.0748rem] leading-[1.9029rem] font-normal tracking-[.0476rem];
+  }
+
+  .b1 {
+    @apply text-[.9201rem] leading-[1.875rem] font-normal tracking-[.0469rem];
+  }
+
+  .b2 {
+    @apply text-[.6963rem] leading-[.8856rem] font-normal tracking-[-0.0019rem];
+  }
+
+  .animate-skeleton {
+    animation: skeleton 3s infinite;
+  }
+
+  @layer utilities {
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  }
+}
+
+@keyframes skeleton {
+  0% {
+    background-color: #b4b4b4;
+  }
+  50% {
+    background-color: #dbdbdb;
+  }
+  100% {
+    background-color: #b4b4b4;
+  }
+}
