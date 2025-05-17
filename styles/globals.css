@@ -1,7 +1,10 @@
 @import 'tailwindcss';
 
+@import url('https://fonts.cdnfonts.com/css/sf-pro-display');
+
 @theme {
 	--font-netflix-sans: var(--font-netflix-sans);
+	--font-sf-pro-display: 'SF Pro Display', sans-serif;
 
 	--color-black: #000000;
 	--color-white: #ffffff;
@@ -29,7 +32,7 @@
 	}
 
 	.headline1 {
-		@apply font-netflix-sans text-24 font-bold leading-normal;
+		@apply font-sf-pro-display text-24 font-bold leading-normal;
 	}
 
 	.headline2 {
