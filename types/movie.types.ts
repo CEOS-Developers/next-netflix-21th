@@ -29,3 +29,8 @@ export interface TVDetail {
 	overview: string;
 	poster_path: string;
 }
+
+export interface SearchResult extends TMDBResponse {
+	total_pages: number;
+	total_results: number;
+}
