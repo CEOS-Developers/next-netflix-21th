@@ -4,7 +4,7 @@ export const TAB_BAR_OPTIONS = [
 	{
 		label: 'Home',
 		icon: I.HomeIcon,
-		route: '/',
+		route: '/home',
 	},
 	{
 		label: 'Search',
