@@ -40,5 +40,5 @@ export const useInfiniteScroll = (
     return () => {
       observer.disconnect();
     };
-  }, [onIntersect, options, delay]);
+  }, [targetRef, onIntersect, options, delay]);
 };

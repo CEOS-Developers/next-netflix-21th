@@ -53,7 +53,7 @@ export const useSearch = () => {
 
   useEffect(() => {
     fetchItems(1).finally(() => setIsInitialLoading(false));
-  }, [isSearching, query]);
+  }, [fetchItems]);
 
   return {
     items,

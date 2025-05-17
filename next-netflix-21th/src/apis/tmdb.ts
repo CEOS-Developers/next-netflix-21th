@@ -1,6 +1,6 @@
 import { axiosInstance } from "./axios";
 
-//HeroSlider
+// HeroSlider
 export const getTrendingAllDay = async () => {
   try {
     const res = await axiosInstance.get("/trending/all/day", {
@@ -8,12 +8,12 @@ export const getTrendingAllDay = async () => {
     });
     return res.data;
   } catch (err) {
-    console.error("HeroSlider data error");
+    console.error("getTrendingAllDay data error", err);
     return { results: [] };
   }
 };
 
-//장르별 영화
+// 장르별 영화
 export const getMoviesByGenre = async (genreIds: string) => {
   try {
     const res = await axiosInstance.get("/discover/movie", {
@@ -25,12 +25,12 @@ export const getMoviesByGenre = async (genreIds: string) => {
     });
     return res.data;
   } catch (err) {
-    console.log("getMoviesByGenere data error");
+    console.error("getMoviesByGenre data error", err);
     return { results: [] };
   }
 };
 
-//넷플릭스 오리지널
+// 넷플릭스 오리지널
 export const getTVByNetwork = async (networkId: number) => {
   try {
     const res = await axiosInstance.get("/discover/tv", {
@@ -41,7 +41,7 @@ export const getTVByNetwork = async (networkId: number) => {
     });
     return res.data;
   } catch (err) {
-    console.error("getTVByNetwork data error");
+    console.error("getTVByNetwork data error", err);
     return { results: [] };
   }
 };
@@ -56,12 +56,12 @@ export const getMoviesByCompany = async (companyId: number) => {
     });
     return res.data;
   } catch (err) {
-    console.error("getMoviesByCompany data error");
+    console.error("getMoviesByCompany data error", err);
     return { results: [] };
   }
 };
 
-//Preview
+// Preview
 export const getMoviePopular = async (page: number = 1) => {
   try {
     const res = await axiosInstance.get("movie/popular", {
@@ -69,12 +69,12 @@ export const getMoviePopular = async (page: number = 1) => {
     });
     return res.data;
   } catch (err) {
-    console.log("preview data error");
+    console.error("getMoviePopular data error", err);
     return { results: [] };
   }
 };
 
-//Korea Movie
+// Korea Movie
 export const getKoreaMovie = async () => {
   try {
     const res = await axiosInstance.get("/discover/movie", {
@@ -82,12 +82,12 @@ export const getKoreaMovie = async () => {
     });
     return res.data;
   } catch (err) {
-    console.log("getKoreaMovie data error");
+    console.error("getKoreaMovie data error", err);
     return { results: [] };
   }
 };
 
-//search
+// Search
 export const searchMulti = async (query: string, page: number = 1) => {
   try {
     const res = await axiosInstance.get("/search/multi", {
@@ -95,12 +95,12 @@ export const searchMulti = async (query: string, page: number = 1) => {
     });
     return res.data;
   } catch (err) {
-    console.log("searchMulti data error");
+    console.error("searchMulti data error", err);
     return { results: [] };
   }
 };
 
-//overview Movie
+// Overview Movie
 export const getDetail = async (media_type: string, id: string) => {
   try {
     const res = await axiosInstance.get(`/${media_type}/${id}`, {
@@ -108,7 +108,7 @@ export const getDetail = async (media_type: string, id: string) => {
     });
     return res.data;
   } catch (err) {
-    console.log("getDetail data error");
+    console.error("getDetail data error", err);
     return null;
   }
 };

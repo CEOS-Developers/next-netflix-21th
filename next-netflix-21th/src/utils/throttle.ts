@@ -1,8 +1,17 @@
-export const throttle = (handler: (...args: any[]) => void, timeout = 300) => {
-  let lastInvokeTime: number; // 마지막으로 handler가 호출된 시각
+// handler: 실행할 콜백 함수
+// timeout: 지정 시간(ms) 동안 여러 번 호출되더라도, 지정 시간 간격으로만 handler가 실행되도록 보장하는 throttle 함수
+export const throttle = <T extends (...args: any[]) => void>(
+  handler: T,
+  timeout = 300,
+): T => {
+  let lastInvokeTime = 0; // 마지막으로 handler가 호출된 시각
   let timer: ReturnType<typeof setTimeout>; // 남은 시간 후 handler를 호출하기 위한 타이머
 
-  return function (this: any, ...args: any[]) {
+  // 반환되는 throttle 함수
+  const throttled = function (
+    this: ThisParameterType<T>,
+    ...args: Parameters<T>
+  ) {
     const currentTime = Date.now(); // 현재 시간
 
     // 마지막 호출 이후 timeout이 지났으면 즉시 실행
@@ -21,4 +30,6 @@ export const throttle = (handler: (...args: any[]) => void, timeout = 300) => {
       );
     }
   };
+
+  return throttled as T; // 원래 함수 타입 유지
 };
