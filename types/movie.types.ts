@@ -17,3 +17,15 @@ export interface Movie {
 	vote_average: number;
 	vote_count: number;
 }
+
+export interface MovieDetail {
+	title: string;
+	overview: string;
+	poster_path: string;
+}
+
+export interface TVDetail {
+	name: string;
+	overview: string;
+	poster_path: string;
+}

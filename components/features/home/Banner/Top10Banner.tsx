@@ -10,6 +10,7 @@ import 'swiper/css';
 import { getTrendingMovies } from '@/services/tmdb';
 
 import Top10Chip from './Top10Chip';
+import Link from 'next/link';
 
 interface TrendingMovie {
 	adult: boolean;
@@ -47,7 +48,7 @@ export default function Top10Banner() {
 	}, []);
 
 	return (
-		<ul className="w-full h-fit aspect-[5/7] relative">
+		<ul className="w-full aspect-[5/7] relative">
 			{top10Movies.length > 0 && (
 				<Swiper
 					autoplay={{ delay: 6000 }}
@@ -58,19 +59,21 @@ export default function Top10Banner() {
 						setSwiperIndex(swiper.realIndex + 1); // 초기 인덱스 설정
 					}}
 					onSlideChange={(swiper) => setSwiperIndex(swiper.realIndex + 1)}
-					className="w-full h-full overflow-x-hidden"
+					className="w-full h-full before:absolute
+						before:left-0 before:top-0 before:right-0 before:bottom-0
+						before:z-10 before:bg-linear-(--movie-bg-gradient) before:pointer-events-none"
 				>
 					{top10Movies.map((movie, index) => (
 						<SwiperSlide key={movie.id} className="w-full h-full">
-							<li className="w-full h-full aspect-5/7 relative">
-								<div className="w-full h-full absolute top-0 left-0 z-5 opacity-20 poster-backdrop"></div>
-								<Image
-									src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-									alt={movie.title}
-									fill
-									sizes="(max-width: 512px) 100vw"
-									priority={index === 0}
-								/>
+							<li className="w-full h-full">
+								<Link href={`/movie/${movie.id}`} className="relative w-full h-full block">
+									<Image
+										src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+										alt={movie.title}
+										fill
+										priority={index === 0}
+									/>
+								</Link>
 							</li>
 						</SwiperSlide>
 					))}
