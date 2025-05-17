@@ -2,12 +2,12 @@ import Image from "next/image";
 
 import { IMAGE_BASE_URL } from "@/constants/tmdb";
 
-import { TrendingItem } from "@/types/tmdb";
+import { Media } from "@/types/tmdb";
 
 import PlayIcon from "@/public/icons/search/PlayIcon.svg";
 
 interface SearchCardItemProps {
-  media: TrendingItem;
+  media: Media;
   priority?: boolean;
 }
 

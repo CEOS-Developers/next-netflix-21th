@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 
 import React from "react";
 
@@ -12,12 +13,11 @@ import SectionTitle from "@/components/home/SectionTitle";
 
 import { IMAGE_BASE_URL } from "@/constants/tmdb";
 
-import { TrendingItem } from "@/types/tmdb";
-import Link from "next/link";
+import { Media } from "@/types/tmdb";
 
 interface MovieSwiperProps {
   title: string;
-  items: TrendingItem[];
+  items: Media[];
   itemWidth?: string;
   itemHeight?: string;
   shape?: "rectangle" | "circle";
@@ -48,7 +48,7 @@ const MovieSwiper = ({
               ? item.title || "NO TITLE"
               : item.name || "NO TITLE";
 
-          const mediaType = "title" in item ? "movie" : "tv"
+          const mediaType = "title" in item ? "movie" : "tv";
           return (
             <SwiperSlide key={item.id} style={{ width: itemWidth }}>
               <Link href={`/detail/${mediaType}/${item.id}`}>
@@ -60,21 +60,19 @@ const MovieSwiper = ({
                     )}
                     style={{ width: itemWidth, height: itemHeight }}
                   >
-                      <Image
-                        src={imageUrl}
-                        alt={displayTitle}
-                        fill
-                        sizes={itemWidth}
-                        className="pointer-events-none object-cover"
-                        priority={index < 3}
-                      />
-
+                    <Image
+                      src={imageUrl}
+                      alt={displayTitle}
+                      fill
+                      sizes={itemWidth}
+                      className="pointer-events-none object-cover"
+                      priority={index < 3}
+                    />
                   </div>
                 ) : (
                   <div className="text-caption1 text-white">이미지 없음</div>
                 )}
               </Link>
-
             </SwiperSlide>
           );
         })}

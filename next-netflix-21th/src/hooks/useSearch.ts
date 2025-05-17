@@ -2,10 +2,10 @@ import { useCallback, useEffect, useState } from "react";
 
 import { getMoviePopular, searchMulti } from "@/apis/tmdb";
 
-import { Movie, TMDBListResponse, TrendingItem } from "@/types/tmdb";
+import { Media, Movie, TMDBListResponse } from "@/types/tmdb";
 
 export const useSearch = () => {
-  const [items, setItems] = useState<TrendingItem[]>([]);
+  const [items, setItems] = useState<Media[]>([]);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
@@ -44,11 +44,11 @@ export const useSearch = () => {
           results,
           total_pages,
           page,
-        }: TMDBListResponse<TrendingItem | { media_type: "person" }> = res;
+        }: TMDBListResponse<Media | { media_type: "person" }> = res;
 
         const filtered = results.filter(
           item => item.media_type === "movie" || item.media_type === "tv",
-        ) as TrendingItem[];
+        ) as Media[];
 
         setItems(prev => [...prev, ...filtered]);
         setHasMore(page < total_pages);
