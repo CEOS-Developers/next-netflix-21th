@@ -20,7 +20,7 @@ export interface TV extends BaseMedia {
   original_name?: string;
 }
 
-export type TrendingItem = Movie | TV;
+export type Media = Movie | TV;
 
 export interface TMDBListResponse<T> {
   page: number;

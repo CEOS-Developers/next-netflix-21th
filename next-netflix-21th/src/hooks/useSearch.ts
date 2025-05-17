@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useState } from "react";
 
-import { getMoviePopular, searchMulti } from "@/apis/tmdb";
+import { Media } from "@/types/tmdb";
 
-import { Movie, TMDBListResponse, TrendingItem } from "@/types/tmdb";
+import { fetchPopular, fetchSearch } from "./useSearchFetcher";
 
 export const useSearch = () => {
-  const [items, setItems] = useState<TrendingItem[]>([]);
+  const [items, setItems] = useState<Media[]>([]);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
@@ -13,85 +13,47 @@ export const useSearch = () => {
   const [isSearching, setIsSearching] = useState(false);
   const [isInitialLoading, setIsInitialLoading] = useState(true);
 
-  // 인기 영화 가져오기
-  const fetchPopularMovies = useCallback(async (pageNum: number) => {
-    setIsLoading(true);
-    try {
-      const res = await getMoviePopular(pageNum);
-      const { results, total_pages }: TMDBListResponse<Movie> = res;
-
-      setItems(prev => {
-        const existingIds = new Set(prev.map(item => item.id));
-        const filtered = results.filter(item => !existingIds.has(item.id));
-        return [...prev, ...filtered];
-      });
-
-      setHasMore(pageNum < total_pages);
-    } catch (err) {
-      console.error("인기 영화 로딩 실패", err);
-    } finally {
-      setIsLoading(false);
-    }
-  }, []);
-
-  // 검색 결과 가져오기 (/search/multi 사용, person 제외)
-  const fetchSearchResults = useCallback(
-    async (searchQuery: string, pageNum: number) => {
+  const fetchItems = useCallback(
+    async (pageNum: number) => {
       setIsLoading(true);
       try {
-        const res = await searchMulti(searchQuery, pageNum);
-        const {
-          results,
-          total_pages,
-          page,
-        }: TMDBListResponse<TrendingItem | { media_type: "person" }> = res;
+        const newItems = isSearching
+          ? await fetchSearch(query, pageNum)
+          : await fetchPopular(pageNum);
 
-        const filtered = results.filter(
-          item => item.media_type === "movie" || item.media_type === "tv",
-        ) as TrendingItem[];
+        setItems(prev => {
+          const existingIds = new Set(prev.map(item => item.id));
+          return [...prev, ...newItems.filter(i => !existingIds.has(i.id))];
+        });
 
-        setItems(prev => [...prev, ...filtered]);
-        setHasMore(page < total_pages);
-      } catch (err) {
-        console.error("검색 실패", err);
+        setHasMore(newItems.length > 0);
+      } catch (e) {
+        console.error("데이터 로딩 실패", e);
       } finally {
         setIsLoading(false);
       }
     },
-    [],
+    [isSearching, query],
   );
 
-  const handleSearch = useCallback(
-    (input: string) => {
-      const trimmed = input.trim().replace(/\s+/g, " ");
-      setQuery(trimmed);
-      setPage(1);
-      setItems([]);
+  const handleSearch = useCallback((input: string) => {
+    const trimmed = input.trim().replace(/\s+/g, " ");
+    setQuery(trimmed);
+    setPage(1);
+    setItems([]);
 
-      if (!trimmed) {
-        setIsSearching(false);
-        return fetchPopularMovies(1);
-      } else {
-        setIsSearching(true);
-        return fetchSearchResults(trimmed, 1);
-      }
-    },
-    [fetchPopularMovies, fetchSearchResults],
-  );
+    setIsSearching(Boolean(trimmed));
+  }, []);
 
   const fetchNext = useCallback(() => {
-    const nextPage = page + 1;
-    if (isSearching) {
-      fetchSearchResults(query, nextPage);
-    } else {
-      fetchPopularMovies(nextPage);
-    }
-    setPage(nextPage);
-  }, [page, query, isSearching, fetchPopularMovies, fetchSearchResults]);
+    const next = page + 1;
+    setPage(next);
+    fetchItems(next);
+  }, [page, fetchItems]);
 
   useEffect(() => {
-    handleSearch("").finally(() => setIsInitialLoading(false));
-  }, [handleSearch]);
+    fetchItems(1).finally(() => setIsInitialLoading(false));
+  }, [isSearching, query]);
 
   return {
     items,
