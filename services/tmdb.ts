@@ -1,9 +1,9 @@
 import { fetcher } from '@/lib/fetcher';
-import { MovieDetail, TMDBResponse, TVDetail } from '@/types/movie.types';
+import { MovieDetail, SearchResult, TMDBResponse, TVDetail } from '@/types/movie.types';
 
-export const getTrendingMovies = async () => {
+export const getTrendingMovies = async (page: number = 1) => {
 	try {
-		const data = await fetcher('/trending/movie/day', {
+		const data = await fetcher(`/trending/movie/day?page=${page}`, {
 			language: 'en-US',
 		});
 
@@ -33,3 +33,14 @@ export async function getDetail(endpoint: string): Promise<MovieDetail | TVDetai
 		return null;
 	}
 }
+
+// 검색 API 호출 함수
+export const searchMovies = async (query: string): Promise<SearchResult | null> => {
+	try {
+		const data = await fetcher(`/search/multi?query=${query}`);
+		return data;
+	} catch (error) {
+		console.error(error);
+		return null;
+	}
+};
