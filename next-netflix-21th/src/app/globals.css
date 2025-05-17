@@ -1,0 +1,85 @@
+@import url("https://fonts.cdnfonts.com/css/sf-pro-display");
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "SF Pro Display", sans-serif;
+
+  --color-gray-100: #c4c4c4;
+  --color-gray-200: #8c8787;
+  --color-gray-300: #424242;
+  --color-gray-400: #303030;
+  --color-gray-500: #121212;
+
+  --color-overlay-100: rgba(0, 0, 0, 0.2);
+  --color-overlay-200: rgba(0, 0, 0, 0.57);
+}
+
+@layer base {
+  body {
+    font-family: var(--font-sans);
+  }
+}
+
+@layer utilities {
+  /* Headline */
+  .text-headline1 {
+    @apply font-sans text-[30px] leading-[150%] font-semibold tracking-[-0.057px];
+  }
+  .text-headline2 {
+    @apply font-sans text-[26.748px] leading-[100%] font-bold tracking-[-0.057px];
+  }
+  .text-headline3 {
+    @apply font-sans text-[20.921px] leading-[100%] font-bold tracking-[-0.057px];
+  }
+
+  /* Subhead */
+  .text-subhead1 {
+    @apply font-sans text-[20.462px] leading-[150%] font-semibold tracking-[-0.061px];
+  }
+  .text-subhead2 {
+    @apply font-sans text-[17.197px] leading-[150%] font-normal tracking-[0.762px];
+  }
+  .text-subhead3 {
+    @apply font-sans text-[13.723px] leading-[150%] font-bold tracking-[-0.041px];
+  }
+
+  /* Body */
+  .text-body1 {
+    @apply font-sans text-[15.213px] leading-[150%] font-normal tracking-[0.207px];
+  }
+  .text-body2 {
+    @apply font-sans text-[14.722px] leading-[150%] font-normal tracking-[0.921px];
+  }
+  .text-body3 {
+    @apply font-sans text-[13.642px] leading-[150%] font-normal tracking-[-0.041px];
+  }
+  .text-body4 {
+    @apply font-sans text-[12px] leading-[160%] font-normal tracking-[0];
+  }
+
+  /* Caption */
+  .text-caption1 {
+    @apply font-sans text-[14px] leading-[150%] font-medium;
+  }
+  .text-caption2 {
+    @apply font-sans text-[14px] leading-[150%] font-extralight;
+  }
+  .text-caption3 {
+    @apply font-sans text-[11.141px] leading-[150%] font-normal tracking-[-0.031px];
+  }
+  .text-caption4 {
+    @apply font-sans text-[9px] leading-[100%] font-medium tracking-[0.26px];
+  }
+  .text-caption5 {
+    @apply font-sans text-[8.2px] leading-[150%] font-medium tracking-[0.26px];
+  }
+
+  /* scrollbar hide */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
