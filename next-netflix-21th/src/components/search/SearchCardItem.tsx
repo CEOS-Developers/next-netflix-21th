@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import { IMAGE_BASE_URL } from "@/constants/tmdb";
 
@@ -22,29 +23,31 @@ const SearchCardItem = ({ media, priority }: SearchCardItemProps) => {
     : null;
 
   return (
-    <div className="flex h-[76px] w-full cursor-pointer">
-      {posterUrl ? (
-        <Image
-          src={posterUrl}
-          alt={displayTitle}
-          width={146}
-          height={76}
-          priority={priority}
-          className="h-full w-[146px] shrink-0 object-cover"
-        />
-      ) : (
-        <div className="text-caption2 flex h-full w-[146px] shrink-0 items-center justify-center bg-gray-400/70 text-white">
-          NO IMAGE
-        </div>
-      )}
+    <Link href={`/detail/${media.media_type}/${media.id}`}>
+      <div className="flex h-[76px] w-full cursor-pointer">
+        {posterUrl ? (
+          <Image
+            src={posterUrl}
+            alt={displayTitle}
+            width={146}
+            height={76}
+            priority={priority}
+            className="h-full w-[146px] shrink-0 object-cover"
+          />
+        ) : (
+          <div className="text-caption2 flex h-full w-[146px] shrink-0 items-center justify-center bg-gray-400/70 text-white">
+            NO IMAGE
+          </div>
+        )}
 
-      <div className="flex w-[229px] items-center justify-between bg-gray-300 py-[23px] pr-4 pl-[19px] hover:bg-gray-400">
-        <span className="text-body2 max-w-[158px] truncate text-white">
-          {displayTitle}
-        </span>
-        <PlayIcon className="h-7 w-7" />
+        <div className="flex w-[229px] items-center justify-between bg-gray-300 py-[23px] pr-4 pl-[19px] hover:bg-gray-400">
+          <span className="text-body2 max-w-[158px] truncate text-white">
+            {displayTitle}
+          </span>
+          <PlayIcon className="h-7 w-7" />
+        </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
