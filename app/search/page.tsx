@@ -10,7 +10,7 @@ import SearchBar from '@/components/features/search/SearchBar';
 import SearchCard from '@/components/features/search/SearchCard';
 
 const SearchPage = () => {
-	const { query, setQuery, results, setResults } = useSearchStore();
+	const { query, results, setResults } = useSearchStore();
 	const [hasMore, setHasMore] = useState<boolean>(false);
 	const [page, setPage] = useState<number>(1);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -19,14 +19,12 @@ const SearchPage = () => {
 	const loaderRef = useRef<HTMLDivElement | null>(null);
 	const isFirstPage = useRef(page === 1);
 
-	useEffect(() => {
-		setQuery('');
-	}, []);
+	// const prevPathRef = useRef<string | null>(null);
+	// const router = useRouter();
 
 	useEffect(() => {
 		// 검색어 변경 시 페이지 및 결과 초기화
 		setPage(1);
-		setResults([]);
 		isFirstPage.current = true;
 	}, [query]);
 
@@ -36,15 +34,15 @@ const SearchPage = () => {
 				setIsLoading(true); // API 호출 시작
 				const services = query.trim() !== '' ? searchMovies(query, page) : getTrendingMovies(page);
 				const data = await services;
-				console.log(data);
+				// console.log(data);
 				const movieInfoList = data.results as MediaInfos;
 
 				setResults((prev: MediaInfos) => {
 					const newItems = (movieInfoList || []).filter((item) => !prev?.some((p) => p.id === item.id));
-					return page === 1 ? newItems : [...prev, ...newItems];
+					return page === 1 ? [...newItems] : [...prev, ...newItems];
 				});
 
-				// Check if there are more pages to fetch
+				// 스크롤 페이지 유무 판단
 				setHasMore(data.page < data.total_pages);
 			} catch (error) {
 				console.error('Error fetching search page data:', error);
@@ -57,7 +55,7 @@ const SearchPage = () => {
 	}, [query, page]);
 
 	useEffect(() => {
-		if (!loaderRef.current) return;
+		if (!loaderRef.current || isLoading) return;
 
 		if (observer.current) observer.current.disconnect();
 
@@ -75,7 +73,13 @@ const SearchPage = () => {
 			{ threshold: 1 },
 		);
 		observer.current.observe(loaderRef.current);
-	}, [query, hasMore, loaderRef]);
+
+		return () => observer.current?.disconnect();
+	}, [query, hasMore, loaderRef, isLoading]);
+
+	const isInitialLoading = isLoading && results.length === 0;
+	const isNoResults = !isLoading && results.length === 0;
+	const isDataLoaded = results.length > 0;
 
 	return (
 		<div className="pb-[65px]">
@@ -83,18 +87,22 @@ const SearchPage = () => {
 
 			<div>
 				<h1 className="headline1 pl-4 mt-5 mb-4">{query.trim() !== '' ? 'Search Results' : 'Top Searches'}</h1>
-				{isLoading ? (
-					<p className="w-full h-100 flex items-center justify-center text-gray-300 body1">Loading...</p>
-				) : results.length === 0 ? (
-					<p className="w-full h-100 flex items-center justify-center text-gray-300 headline2-medium">
+				{isInitialLoading && (
+					<p className="w-full h-150 flex items-center justify-center text-gray-300 body1">Loading...</p>
+				)}
+
+				{isNoResults && (
+					<p className="w-full h-150 flex items-center justify-center text-gray-300 headline2-medium">
 						No results found.
 					</p>
-				) : (
+				)}
+
+				{isDataLoaded && (
 					<ul className="flex flex-col gap-1">
 						{results.map((result, index) => {
 							return (
 								<li key={result.id} className="w-full h-fit">
-									<SearchCard result={result} priority={index < 9 ? true : false} />
+									<SearchCard result={result} priority={index < 9} />
 								</li>
 							);
 						})}
