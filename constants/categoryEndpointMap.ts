@@ -5,6 +5,11 @@ export const categoryEndpointMap = [
 		type: 'movie',
 	},
 	{
+		category: "Today's Trend TV",
+		endpoint: '/trending/tv/day?language=en-US',
+		type: 'tv',
+	},
+	{
 		category: 'Now Playing',
 		endpoint: '/movie/now_playing',
 		type: 'movie',
@@ -15,14 +20,9 @@ export const categoryEndpointMap = [
 		type: 'movie',
 	},
 	{
-		category: 'Upcomming',
+		category: 'Upcoming',
 		endpoint: '/movie/upcoming',
 		type: 'movie',
-	},
-	{
-		category: "Todays's Trand TV",
-		endpoint: '/trending/tv/day?language=en-US',
-		type: 'tv',
 	},
 	{
 		category: 'Popular',

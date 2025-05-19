@@ -45,6 +45,7 @@ export default function Splash() {
 					alt="넷플릭스 로고"
 					width={208}
 					height={56}
+					priority
 				/>
 			</div>
 		)

@@ -71,6 +71,7 @@ export default function Top10Banner() {
 										src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
 										alt={movie.title}
 										fill
+										sizes="(max-width: 512px) 100vw"
 										priority={index === 0}
 									/>
 								</Link>

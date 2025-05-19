@@ -1,12 +1,12 @@
 import { create } from 'zustand';
 
-import { Movie } from '@/types/movie.types';
+import { MediaInfos } from '@/types/movie.types';
 
 interface SearchState {
 	query: string;
 	setQuery: (query: string) => void;
-	results: Movie[];
-	setResults: (v: Movie[] | ((prev: Movie[]) => Movie[])) => void;
+	results: MediaInfos;
+	setResults: (v: MediaInfos | ((prev: MediaInfos) => MediaInfos)) => void;
 }
 
 export const useSearchStore = create<SearchState>((set) => ({

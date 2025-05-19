@@ -35,9 +35,9 @@ export async function getDetail(endpoint: string): Promise<MovieDetail | TVDetai
 }
 
 // 검색 API 호출 함수
-export const searchMovies = async (query: string): Promise<SearchResult | null> => {
+export const searchMovies = async (query: string, page: number): Promise<SearchResult | null> => {
 	try {
-		const data = await fetcher(`/search/multi?query=${query}`);
+		const data = await fetcher(`/search/multi?query=${query}&page=${page}`);
 		return data;
 	} catch (error) {
 		console.error(error);
