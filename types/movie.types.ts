@@ -1,6 +1,6 @@
 export interface TMDBResponse {
 	page: number;
-	results: MediaInfos;
+	results: Movie[];
 }
 
 export interface Movie {
